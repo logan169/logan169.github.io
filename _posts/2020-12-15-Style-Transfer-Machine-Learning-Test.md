@@ -32,7 +32,7 @@ Today I'll share some pretty nice looking results of my personal experience usin
 
 | `Original` | `Style Transfer Output` |
 | --- |  --- |
-| ![0](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/0.jpg) | ![1](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/1.jpg) 
+| ![0](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/0.jpg) | ![1](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/1.jpg)  |
 | ![12](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/12.png) | ![13](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/13.jpg) |
 | ![14](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/14.png) | ![15](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/15.jpg) |
 | ![18](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/18.png) | ![19](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/19.jpg) |
@@ -42,6 +42,12 @@ Today I'll share some pretty nice looking results of my personal experience usin
 
 #### *Trash Truck CG serie*
 
+| `Original` | `Style Transfer Output` |
+| --- |  --- |
+| ![9o](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/9o.png) | ![9s](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/9s.png) |
+| ![9o](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/9o.png) | ![9s](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/9s.png) |
+| ![9o](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/9o.png) | ![9s](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/9s.png) |
+| ![9o](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/9o.png) | ![9s](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/9s.png) |
 
 {%- include extensions/youtube.html id='i2UT4DQUfMg' -%}
 {%- include extensions/youtube.html id='i8fIH5S9XoI' -%}
@@ -49,7 +55,7 @@ Today I'll share some pretty nice looking results of my personal experience usin
 
 
 #### *Random Pictures*
-
+<div style="align: center">
 | `Original` | `Style Transfer Output` |
 | --- |  --- |
 | ![2](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/2.jpg) | ![3](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/3.jpg) |
