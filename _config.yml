@@ -20,9 +20,9 @@ text_skin: dark # "default" (default), "dark", "forest", "ocean", "chocolate", "
 highlight_theme: tomorrow-night-eighties # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
 url     : # the base hostname & protocol for your site e.g. https://www.someone.com
 baseurl : # does not include hostname
-title   : Logan Schwartz
+title   : Logan Schwartz Fx TD @ Cinesite
 description: > # this means to ignore newlines until "Language & timezone"
-  Logan Schwartz just a regular molecular biologist who dreamed to become Fx TD. This is my personal website where I do share some houdini/code/web dev tricks.
+  Just a regular guy who dreamed to work one day in the cinema industry. This is my personal website where I do share some houdini/code/web dev tricks.
   I use it to share the results of my personal projects that I'm working on. Communication is the key to any great accomplishements => feel free to contact me for any questions/feedbacks. 
 
 ## => Language and Timezone
@@ -35,6 +35,7 @@ timezone: Canada/Eastern # see https://en.wikipedia.org/wiki/List_of_tz_database
 ##############################
 author:
   type      : person # "person" (default), "organization"
+  email     : logan1691987@gmail.com
   facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
   twitter   : # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
   weibo     : # "user_id"   the last part of your profile url, e.g. https://www.weibo.com/user_id/profile?...
@@ -43,8 +44,8 @@ author:
   medium    : # "user_name" the last part of your profile url, e.g. https://medium.com/user_name
   zhihu     : # "user_name" the last part of your profile url, e.g. https://www.zhihu.com/people/user_name
   douban    : # "user_name" the last part of your profile url, e.g. https://www.douban.com/people/user_name
-  linkedin  : https://ca.linkedin.com/in/logan-schwartz-76098432 # "user_name" the last part of your profile url, e.g. https://www.linkedin.com/in/user_name
-  github    : https://github.com/logan169 # "user_name" the last part of your profile url, e.g. https://github.com/user_name
+  linkedin  : logan-schwartz-76098432 # "user_name" the last part of your profile url, e.g. https://www.linkedin.com/in/user_name
+  github    : logan169 # "user_name" the last part of your profile url, e.g. https://github.com/user_name
   npm       : # "user_name" the last part of your profile url, e.g. https://www.npmjs.com/~user_name
 
 

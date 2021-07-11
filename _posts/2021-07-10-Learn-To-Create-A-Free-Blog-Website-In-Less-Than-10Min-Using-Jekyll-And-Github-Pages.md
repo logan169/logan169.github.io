@@ -1,6 +1,9 @@
 ---
 title: 'Learn To Create A Free Blog Website In Less Than 10Min Using Jekyll And Github Pages'
 tags: Github Jekyll WebDev TeXt-theme
+sharing: true
+show_author_profile: true
+show_subscribe: true
 ---
 
 ### Introduction
@@ -43,7 +46,7 @@ Ok, so at this point you are expected to have decided which Jekyll template you'
 ### Conclusion
 
 
-At this point, you should have a running website and now you can chill while customizing the template to your taste. If you've used the same template as I did tehn for each post you'll need to create a new file with this format when naming your file ```year-month-day-my-first-post.md```{:.info}. As well you might wanna read the Jekyll theme documention and other github markdown cheat sheet to refresh your memory about what is possible.
+At this point, you should have a running website and now you can chill while customizing the template to your taste. If you've used the same template as I did then for each posts you'll need to create a new file in the "_posts" folder with this format when naming your file ```year-month-day-my-first-post.md```{:.info}. As well you might wanna read the Jekyll theme documention and other github markdown cheat sheet to refresh your memory about what is possible.
 
 
 Technically, if you were only planning to do a single page app website like for a resume I wouldn't even set up a local coding environment and I'd use the Github IDE instead to fill the text and edit the look. Being able to do this kind of things without ever having to install anything locally is a gain of time that is most of the time never accounted for in other webdev blogs.
