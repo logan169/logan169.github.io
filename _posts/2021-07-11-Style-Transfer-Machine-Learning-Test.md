@@ -61,7 +61,7 @@ Today I'll share some pretty nice looking results of my personal experience usin
 
 
 
-#### *Random Pictures*
+### *Random Pictures*
 
 | `Original Pictures` | `Style Transfer Output Pictures` |
 | --- |  --- |
