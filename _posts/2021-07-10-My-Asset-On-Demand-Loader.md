@@ -30,6 +30,6 @@ This is just another one example of many use case scenarios. But the road doesn'
 
 ### Power-Knowledge  
 
-After working for the last 5 years in the Cinema industry, 95% of TDs I've met didn't have basic web-dev communication protocols knowledge. While it is not a mandatory thing to do their job, I feel that we do have the responsibility to harness all available tech at our disposal that could enhance artists' user experience. 
+After working for the last 5 years in the Cinema industry, 95% of TDs I've met didn't have basic web-dev communication protocols knowledge. While it is not a mandatory thing to do their job, I feel that the value of this knowledge is still being underrated. 
 
 I hope that this post excites you about all possibilities coming from inter-connecting softwares at a studio level and convince more people to approach their problem with a different angle.
