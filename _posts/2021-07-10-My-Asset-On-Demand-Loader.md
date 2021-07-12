@@ -24,11 +24,12 @@ Given todays' technologies you can connect any softwares together to get advance
 ![browser_to_houdini2](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/asset_loader/browser_to_houdini2.gif)
 
 Using the same code, I could easily use any production manager webapp (shotgun, ftrack) and turn them into an asset loader or link a webhook to auto-reload an artist's asset version if a new one just got published.
+
 This is just another one example of many use case scenarios. But the road doesn't end up there, sky and probably your imagination is the limit. As a last concluding example, using a similar setup I was able to connect multiple houdini sessions together to create an interconnected scene where artists could collaborate together in real time but this might be for another post.
 
 
 ### Power-Knowledge  
 
-After working for the last 5 years in the Cinema industry, 95% of TDs I've met didn't have basic web-dev communication protocols knowledge. While it is not a mandatory thing to do the job, I feel that we do have the responsibility to shake things up on the tech side to harness all available tech at our disposale that could make our life easier.
+After working for the last 5 years in the Cinema industry, 95% of TDs I've met didn't have basic web-dev communication protocols knowledge. While it is not a mandatory thing to do their job, I feel that we do have the responsibility to harness all available tech at our disposal that could enhance artists' user experience. 
 
 I hope that this post excites you about all possibilities coming from inter-connecting softwares at a studio level and convince more people to approach their problem with a different angle.
