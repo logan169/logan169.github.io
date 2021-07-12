@@ -3,6 +3,7 @@
   source0=layout.show_author_profile source1=page.show_author_profile -%}
 {%- assign _show_author_profile = __return -%}
 
+<!--
 {%- include snippets/assign.html
   target=site.data.variables.default.page.show_subscribe
   source0=layout.show_subscribe source1=page.show_subscribe -%}
@@ -12,6 +13,8 @@
   target=site.data.variables.default.page.license
   source0=layout.license source1=page.license -%}
 {%- assign _license = __return -%}
+
+-->
 
 <footer class="article__footer">
   {%- if page.modify_date -%}
