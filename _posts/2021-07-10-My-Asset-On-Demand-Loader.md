@@ -3,48 +3,32 @@ title: 'My "Asset On Demand" Loader'
 tags: Coding CG
 ---
 
-While working on side projects, I've realized that I was spending lot of time looking for assets on the web to work with instead of doing CG. The whole process of iteratively searching for an asset on one website, downloading, unziping and finally importing it was really slowing me. So I've decided to create an asset loader to help me out with this. 
+While working on side projects, I've realized that I was spending a lot of time looking for assets on the web to work with instead of doing CG. The whole process of iteratively searching for an asset on one website, downloading, unzipping and finally importing it was really slowing me down so I've decided to create an asset loader to help me out with this. 
+<!--more--> 
 
-Nothing creazy, but it got some particularities that makes it super usefull. The first one is that none of the assets are actually stored locally until I decide to import them. This doesn't looks like much but it does end up allowing me to scale up dramatically the amount of assets (roughly 60 000 assets) without having to be concerned about disk space issues. The whole process goes as follow, when I do import an asset from my asset loader interface, the code under the hood retrieves the associated asset from the website, download it and unzip it into the filepath destination of my choice.
+
+### An Asset Loader To Rule Them All
+
+The asset loader I've developed has some particularities that make it super useful. The first one is that none of the assets are actually stored locally until I decide to import them. This doesn't look like much but it does end up allowing me to scale up dramatically the amount of assets (roughly 60 000 assets) without having to be concerned about disk space issues. When I import an asset from my asset loader interface, the code under the hood retrieves the associated asset from the website, downloads it and unzips it into the file path destination of my choice.
 
 ![asset_loader](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/asset_loader/asset_loader.gif)
 
-
-The other big particularity is that while it is a stand alone tool, it is able to communicate with any sofware I want to let it knows that the asset is ready to be imported at a specific path destination. 
-
+The other big particularity is that while it is a stand alone tool, it is able to communicate with any software I want to let it know that the asset is ready to be imported at a specific path destination.
 
 ![import_to_houdini](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/asset_loader/import_to_houdini.gif)
 
-Given todays web technologies you can connect any softwares together with some web communication protocole knowledge to get advanced functionalities. To demonstrate my point, here is a prototype of how I'm interacting with houdini from some web page. Using the same code, I could easily use any production manager webapp (shotgun, ftrack) and turn them into an asset loader.
+### Adding A Pinch Of Web Magic
+
+Given todays' technologies you can connect any softwares together to get advanced functionalities using some web communication protocol knowledge. To demonstrate my point, here is a prototype on how I'm interacting with houdini from some web page. 
 
 ![browser_to_houdini2](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/asset_loader/browser_to_houdini2.gif)
 
-I was able to achieve this thanks to my the couple of years I've worked as a web developer. This being said though my years in the Cinema industry, I've rarely came upon TDs having basics knownledges in web development and communication protocols. While it is not a mandatory things to know to do the job, I've always found that to be super limiting if you only got Qt in your competence palette to solve technical issues. Don't get me wrong here, I do believe that Qt has its place in a studio and is doing a fine jobs to solve some needs. But as the tech team, it is also our responsabilities to shake things up a bit and not be afraid to try to rethink how we are allowing artists to work and interact with their softwares in 2021.
+Using the same code, I could easily use any production manager webapp (shotgun, ftrack) and turn them into an asset loader or link a webhook to auto-reload an artist's asset version if a new one just got published.
+This is just another one example of many use case scenarios. But the road doesn't end up there, sky and probably your imagination is the limit. As a last concluding example, using a similar setup I was able to connect multiple houdini sessions together to create an interconnected scene where artists could collaborate together in real time but this might be for another post.
 
 
+### Power-Knowledge  
 
+After working for the last 5 years in the Cinema industry, 95% of TDs I've met didn't have basic web-dev communication protocols knowledge. While it is not a mandatory thing to do the job, I feel that we do have the responsibility to shake things up on the tech side to harness all available tech at our disposale that could make our life easier.
 
-
-
-
-If you think this is cool, wait a minute and think for one second. What if instead of connecting two artist sofwares we were connecting one software from two different artists? Given the setup is already there, it wouldn't make a difference from the code point as the only thing that we would need to change would be the destination ip. Doing so we could 
-
-
-
-
-
-
-
-
-as Qt hasn't evolved that much compared to web technologies
-
-
-
-
-
-  Most of the time they relied mostly on Qt applications to provide artists with a gently user interface (GUI) to interact with their software. 
-
-What if we could propose an alternative way? 
-
-   
-
+I hope that this post excites you about all possibilities coming from inter-connecting softwares at a studio level and convince more people to approach their problem with a different angle.
