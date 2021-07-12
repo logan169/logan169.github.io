@@ -19,17 +19,16 @@ The other big particularity is that while it is a stand alone tool, it is able t
 
 ### Adding A Pinch Of Web Magic
 
-Given todays' technologies you can connect any softwares together to get advanced functionalities using some web communication protocol knowledge. To demonstrate my point, here is a prototype on how I'm interacting with houdini from some web page. 
+Given todays' technologies you can connect any softwares together to get advanced functionalities using some web communication protocol knowledge. To demonstrate my point, here is a prototype on how I'm interacting with houdini from some web page. In order to do it, I've just remade the asset loader communication code parts using javascript.
 
 ![browser_to_houdini2](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/asset_loader/browser_to_houdini2.gif)
 
 Using the same code, I could easily use any production manager webapp (shotgun, ftrack) and turn them into an asset loader or link a webhook to auto-reload an artist's asset version if a new one just got published.
 
-This is just another one example of many use case scenarios. But the road doesn't end up there, sky and probably your imagination is the limit. As a last concluding example, using a similar setup I was able to connect multiple houdini sessions together to create an interconnected scene where artists could collaborate together in real time but this might be for another post.
+This is just another example of many use case scenarios. But the road doesn't end up there, sky and probably your imagination is the limit. 
+As a last concluding example, using a similar setup I was able to connect multiple houdini sessions together to create an interconnected scene where artists could collaborate together in real time but this might be for another post.
 
 
 ### Power-Knowledge  
 
-After working for the last 5 years in the Cinema industry, 95% of TDs I've met didn't have basic web-dev communication protocols knowledge. While it is not a mandatory thing to do their job, I feel that the value of this knowledge is still being underrated. 
-
-I hope that this post excites you about all possibilities coming from inter-connecting softwares at a studio level and convince more people to approach their problem with a different angle.
+After working for the last 5 years in the Cinema industry, 95% of TDs I've met didn't have basic web-dev communication protocols knowledge. While it is not a mandatory thing to do the job, I feel that the value of this knowledge has been (and still) underrated in our profession. I think modern pipelines wouldn't look the same at all if everyone knew this. I hope that this post and all possibilities you might think of coming from inter-connecting softwares at a studio level will excite and convince you to approach the problems we are facing on a daily basis with a different angle.
