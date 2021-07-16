@@ -11,7 +11,7 @@ Machine learning has made giant steps in past years thanks to the democratizatio
 Machine learning splits up in different models categories, each of them being specialized into solving one type of problem. Most of this specialization is acquired through model's architecture, dataset that could be so huge that they are sometimes referred as data lake' and finally hyperparameters customization. One of the most available data for machine learning is pictures. Pictures machine learning models are so advanced that some people are turning their non visual datas like noise, mouse movement to images that could be ingested by those models to accomplish their classification tasks.
 
 
-Today we will talk about style transfer machine learning algorithm. Style transfer is an algorithm that given two images will output a picture containing the content of one of the input while being stylized by the second one. Here is a couple of examples to make this more visual.
+Today we will talk about style transfer machine learning algorithm. Style transfer is an algorithm that given two images will output a picture containing the content of one of the input while being stylized by the second one. Here is a couple of examples taken from the web to make this more visual.
 
 <p align="center">
   <img width="460" height="300" src="https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/machine_learning_style_transfer/style_transfer_example.jpeg">
