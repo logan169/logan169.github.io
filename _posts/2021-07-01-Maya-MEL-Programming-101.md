@@ -1,5 +1,5 @@
 ---
-title: 'Maya MEL Programming 101'
+title: 'Maya MEL Programming'
 tags: Maya MEL
 ---
 
