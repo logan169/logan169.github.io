@@ -3,7 +3,7 @@ title: 'Maya MEL Programming 101'
 tags: Maya MEL
 ---
 
-MEL (Maya Embedded Language) is the interpreted Maya Autodesk 3D software scripting language. While MEL as been there since a long time, it is still being used by cinema studio's technical directors to extend existing Maya UI, menus and tools. Given Maya compatible python package that were created on the way (like Pymel, cmds, openMaya) since Maya's creation, the place and use cases of MEL has been greatly reduced while it might still be usefull for some specific tasks or fast prototyping.
+MEL (Maya Embedded Language) is the interpreted Maya Autodesk 3D software scripting language. While MEL as been there since a long time, it is still being used by cinema studio's technical directors to extend existing Maya UI, menus and tools.<!--more--> Given Maya compatible python package that were created on the way (like Pymel, cmds, openMaya) since Maya's creation, the place and use cases of MEL has been greatly reduced while it might still be usefull for some specific tasks or fast prototyping.
 
 ## Ways to run MEL/Python code in Maya
 
