@@ -12,14 +12,11 @@ This being said, I'd highly suggest you to use a Qt based interface (pyside/pyQt
 ```python
 import maya.cmds as cmds
 
-# create windows
 cmds.window( title="Demonstration", menuBar=True, widthHeight=(300,200) )
 ```
 
 ## Menu Item Standard
 ```python
-## Menu ##
-# create menu and some menuItems
 cmds.menu( label='Menu' )
 cmds.menuItem( subMenu=True, label='MenuItem1' )
 cmds.menuItem( label='SubMenu1', enable=False )
@@ -34,7 +31,6 @@ cmds.setParent( '..', menu=True )
 
 ## Menu Item Radio Button
 ```python
-# create radio menu
 cmds.menu( label='RadioMenu')
 cmds.radioMenuItemCollection()
 cmds.menuItem( label='Yes', radioButton=False )
@@ -45,7 +41,6 @@ cmds.setParent( '..', menu=True )
 
 ## Menu Item Checkbox
 ```python
-# create checkbox menu
 cmds.menu( label='RadioMenu')
 cmds.menuItem( label='Top', checkBox=True )
 cmds.menuItem( label='Middle', checkBox=False )
@@ -79,7 +74,6 @@ cmds.tabLayout(cmds.columnLayout(), edit=True, tabLabel=[first_tab, 'Column Layo
 
 ## Buttons
 ```python
-## 1st tab Buttons
 cmds.rowLayout(numberOfColumns=3)
 cmds.button(label="dummy_args_callback", command=lambda x: button_callback('button was clicked'))
 cmds.button(label="print selection", command=lambda x: button_callback(cmds.ls(selection=True)))
@@ -97,7 +91,6 @@ cmds.setParent('..')
 
 ## Scrolling layout
 ```python
-# 2nd tab is a scrolllayout window
 cmds.tabLayout(tab_lay, edit=True, tabLabel=[ cmds.scrollLayout(), 'Scroll Layout'])
 cmds.columnLayout()
 
