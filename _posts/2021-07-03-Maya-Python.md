@@ -46,12 +46,12 @@ from maya import cmds, standalone
 standalone.initialize() # this is only needed in batch mode
 ```
 
-## Help
+## Open web documentation
 ```python
 cmds.help('polyCube', doc=True, language='python')
 ```
 
-## Reload updated python modules
+## Reload modules
 ```python
 import mySuperScript
 reload(mySuperScript)
