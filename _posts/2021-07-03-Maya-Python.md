@@ -3,7 +3,7 @@ title: 'Maya Python Programming'
 tags: Maya cmds
 ---
 
-Python is an object oriented programming language (OOP) that was created by Guido von Rossum in 1981. In 2021, Python has a considerable community behind it and is one of the most used programming languages around the world and in the CG/pipeline fields. In this blog, we will look at how we can use Python to interact with Maya.<!--more-->  Since maya was created, different flavors of python interfaces have been released as Pymel, Mayapy and OpenMaya. While they are all supposed to be able to achieve globally the same result they differ in their philosophy.
+Python is an object oriented programming language (OOP) that was created by Guido von Rossum in 1981. In 2021, Python has a considerable community behind it and is one of the most used programming languages around the world and in the CG/pipeline fields. In thiedgess blog, we will look at how we can use Python to interact with Maya.<!--more-->  Since maya was created, different flavors of python interfaces have been released as Pymel, Mayapy and OpenMaya. While they are all supposed to be able to achieve globally the same result they differ in their philosophy.
 
 ## Environnement Setup
 
@@ -108,7 +108,7 @@ cmds.move(1.0, 2.0, 3.0, relative=True)
 cmds.polyMoveVertex(shape_node + ".e[0]", t=[1.0, 2.0, 3.0]) # this is slower than cmds.move
 ```
 
-## Move edges
+## Move pivot
 ```python
 cmds.ls(selection=True) # select a sphere
 cmds.xform(pivot=(0,0,0)) # move pivot at origin
@@ -314,7 +314,7 @@ blinn_shaded_nodes = get_obj_from_shader( blinn_shader )
 
 ## Use shading nodes with 3D geo data
 
-![avgNode](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/maya_python/avgNodeMaya.gif)
+![avgNode](https://raw.githubusercontent.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/maya_python/avgNodeMaya.gif)
 
 ```python
 # use a plus minus average shading node to keep an object at the center
@@ -635,7 +635,7 @@ create_light_rig()
 
 ## Create a light rig controllers UI
 
-[light controller UI](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/maya_python/lightControllerUI.PNG)
+[light controller UI](https://raw.githubusercontent.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/maya_python/lightControllerUI.PNG)
 
 ```python
 class LightControllersUI():
