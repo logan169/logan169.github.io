@@ -62,8 +62,8 @@ reload(mySuperScript)
 from maya import mel
 
 def run_mel_script():
-	mel.eval("source myMelScript;")
-	mel.eval("myMelScript;")
+    mel.eval("source myMelScript;")
+    mel.eval("myMelScript;")
 ```
 
 ## Get vertex/edge/face numbers
@@ -120,7 +120,6 @@ cmds.makeIdentity(apply=True) # freeze transforms so object starts at 0, 0, 0
 cmds.listRelatives(children=True, allDescendents=True) # get child nodes
 cmds.listRelatives(parent=True) # get direct parent
 cmds.listRelatives(parent=True, fullPath=True) # get fullpath
-
 ```
 
 ## Create curves
@@ -192,11 +191,11 @@ custom_user_attrs = cmds.listAttr(obj, userDefined=True)
 # add a new custom attr
 my_new_attr = "custom_attr"
 if my_new_attr not in custom_user_attrs:
-	cmds.addAttr(
-			obj,
-			longName=my_new_attr,
-			keyable=True
-		)
+    cmds.addAttr(
+      obj,
+      longName=my_new_attr,
+      keyable=True
+    )
 
 # set attr
 my_new_value = 3
@@ -204,7 +203,6 @@ cmds.setAttr( "{}.{}".format(obj, my_new_attr), my_new_value)
 
 # get attr
 my_new_Attr_value = cmds.getAttr("{}.{}".format(obj, my_new_attr))
-
 ```
 
 ## Construction history
@@ -270,25 +268,24 @@ cmds.disconnectAttr(place_tex + ".offset", file_tex + ".offset")
 ## Check if node is a geo
 ```python
 def is_geo_generator(obj):
-
-	geo_type = ["mesh", "nurbsSurface", "subdiv"] 
-	shape = cmds.listRelatives(obj, shapes=True)[0]
-	shape_type = cmds.nodeType(shape) # retrieve node type where geo nodeType being in geo_type
-	if shape_type in geo_type:
-		return True
-	return False
+    geo_type = ["mesh", "nurbsSurface", "subdiv"] 
+    shape = cmds.listRelatives(obj, shapes=True)[0]
+    shape_type = cmds.nodeType(shape) # retrieve node type where geo nodeType being in geo_type
+    if shape_type in geo_type:
+        return True
+    return False
 ```
 
 ## Set default shader to unshaded obj
 ```python
 def is_shaded(obj):
-	cmds.select(obj, replace=True)
-	cmds.hyperShade(obj, shaderNetworksSelectionMaterialNodes=True)
-	result = cmds.ls(selection=True)
+    cmds.select(obj, replace=True)
+    cmds.hyperShade(obj, shaderNetworksSelectionMaterialNodes=True)
+    result = cmds.ls(selection=True)
 
-	if result:
-		return False
-	return True
+    if result:
+        return False
+    return True
 
 # Get unshaded obj
 transforms = cmds.ls(type="transform")
@@ -300,17 +297,17 @@ cmds.setAttr(blinn_shader + ".color", 0, 1, 1, type="double3")
 
 # Set shader obj
 for unshaded_node in unshaded_nodes:
-	cmds.select(unshaded, replace=True)
-	cmds.hyperShade(assign=blinn_shader)
+    cmds.select(unshaded, replace=True)
+    cmds.hyperShade(assign=blinn_shader)
 ```
 
 ## Found nodes that are assigned a shader
 ```python
 # following previous code
 def get_obj_from_shader(shader):
-	cmds.hyperShade(objects=shader)
-	objects = cmds.ls(selection=True)
-	return objects
+    cmds.hyperShade(objects=shader)
+    objects = cmds.ls(selection=True)
+    return objects
 
 blinn_shaded_nodes = get_obj_from_shader( blinn_shader )
 ```
@@ -322,23 +319,23 @@ blinn_shaded_nodes = get_obj_from_shader( blinn_shader )
 ```python
 # use a plus minus average shading node to keep an object at the center
 def center():
-	objs = cmds.ls(selection=True)
-	if len(objs) < 3:
-		cmds.error("Please select at least 3 nodes and retry!")
+    objs = cmds.ls(selection=True)
+    if len(objs) < 3:
+        cmds.error("Please select at least 3 nodes and retry!")
 
-	center_obj = objs.pop()
-	avg_node = cmds.shadingNode('plusMinusAverage', asUtility=True)
-	cmds.setAttr(avg_node + ".operation", 3) #set operation to average
+    center_obj = objs.pop()
+    avg_node = cmds.shadingNode('plusMinusAverage', asUtility=True)
+    cmds.setAttr(avg_node + ".operation", 3) #set operation to average
 
-	px, py, pz = [0,0,0]
-	for i, obj in enumerate(objs):
-		cmds.connectAttr(obj + ".translateX", avg_node + ".input3D[{}].input3Dx".format(i)) 
-		cmds.connectAttr(obj + ".translateY", avg_node + ".input3D[{}].input3Dy".format(i)) 
-		cmds.connectAttr(obj + ".translateZ", avg_node + ".input3D[{}].input3Dz".format(i)) 
+    px, py, pz = [0,0,0]
+    for i, obj in enumerate(objs):
+        cmds.connectAttr(obj + ".translateX", avg_node + ".input3D[{}].input3Dx".format(i)) 
+        cmds.connectAttr(obj + ".translateY", avg_node + ".input3D[{}].input3Dy".format(i)) 
+        cmds.connectAttr(obj + ".translateZ", avg_node + ".input3D[{}].input3Dz".format(i)) 
     
-	cmds.connectAttr(avg_node + ".output3D.output3Dx", center_obj + ".translateX")
-	cmds.connectAttr(avg_node + ".output3D.output3Dy", center_obj + ".translateY")
-	cmds.connectAttr(avg_node + ".output3D.output3Dz", center_obj + ".translateZ")
+    cmds.connectAttr(avg_node + ".output3D.output3Dx", center_obj + ".translateX")
+    cmds.connectAttr(avg_node + ".output3D.output3Dy", center_obj + ".translateY")
+    cmds.connectAttr(avg_node + ".output3D.output3Dz", center_obj + ".translateZ")
 
 cmds.select("pSphere1", "pSphere2", "pCylinder1", replace=True)
 center()
@@ -349,9 +346,9 @@ center()
 
 root = cmds.joint(name="root", position =[2.5, -1, 0])
 for i1 in range(5):
-	for i2 in range(3):
-		cmds.joint(name="root_finger{}_joint{}".format(i1, i2), position=(i1*2, i2*3, 0) )
-	cmds.select(root, replace=True)
+    for i2 in range(3):
+        cmds.joint(name="root_finger{}_joint{}".format(i1, i2), position=(i1*2, i2*3, 0) )
+    cmds.select(root, replace=True)
 
 # cmds.pickWalk(direction="Up") # could be use to travel trhough Maya hierarchy
 ```
@@ -363,23 +360,23 @@ for i1 in range(5):
 ```python
 def set_driven_key(objs, attr, min_driver_val, max_driver_val, min_driven_val, max_driven_val):
 	
-	# set driver attr
-	driver_joint = objs[0]
-	driver_attr = driver_joint + attr
-	original_driver_val = cmds.getAttr(driver_attr)
+    # set driver attr
+    driver_joint = objs[0]
+    driver_attr = driver_joint + attr
+    original_driver_val = cmds.getAttr(driver_attr)
 
-	childrens = cmds.listRelatives(children=True, allDescendents=True)
-	for child in childrens:
-		driven_attr = child + attr
+    childrens = cmds.listRelatives(children=True, allDescendents=True)
+    for child in childrens:
+        driven_attr = child + attr
 
-		# set driven key for max and min
-		cmds.setAttr(driver_attr, min_driver_val)
-		cmds.setDrivenKeyframe(driven_attr, cd=driver_attr, value=min_driven_val, driver_value=min_driver_val)
+        # set driven key for max and min
+        cmds.setAttr(driver_attr, min_driver_val)
+        cmds.setDrivenKeyframe(driven_attr, cd=driver_attr, value=min_driven_val, driver_value=min_driver_val)
 
-		cmds.setAttr(driver_attr, max_driver_val)
-		cmds.setDrivenKeyframe(driven_attr, cd=driver_attr, value=max_driven_val, driver_value=max_driver_val)
+        cmds.setAttr(driver_attr, max_driver_val)
+        cmds.setDrivenKeyframe(driven_attr, cd=driver_attr, value=max_driven_val, driver_value=max_driver_val)
 
-	cmds.setAttr(driver_attr, original_driver_val)
+    cmds.setAttr(driver_attr, original_driver_val)
 
 objs = cmds.ls(selection=True)
 set_driven_key(
@@ -435,12 +432,12 @@ cmds.attr(
 	)
 
 for color in ["colorR","colorG","colorB"]:
-	cmds.addAttr(
-		obj,
-		shortName="{}_attr".format(color),
-		longName="{}_attr".format(color),
-		attributeType="float",
-		parent="my_custom_color_attr"
+    cmds.addAttr(
+        obj,
+        shortName="{}_attr".format(color),
+        longName="{}_attr".format(color),
+        attributeType="float",
+        parent="my_custom_color_attr"
 		)
 ```
 
@@ -497,14 +494,14 @@ shot_frame_range=50
 
 for animated_attribute in animated_attributes:
 
-	keyframe_count = cmds.keyframe(animated_attribute, query=True, keyframeCount=True)
+    keyframe_count = cmds.keyframe(animated_attribute, query=True, keyframeCount=True)
 
-	if keyframe_count:
-		#index flag is only used if we don't want full shot frame range
-		times = cmds.keyframe(animated_attribute, query=True, index=(0,shot_frame_range), timeChange=True) 
-		values = cmds.keyframe(animated_attribute, query=True, index=(0,shot_frame_range), valueChange=True)
+    if keyframe_count:
+        #index flag is only used if we don't want full shot frame range
+        times = cmds.keyframe(animated_attribute, query=True, index=(0,shot_frame_range), timeChange=True) 
+        values = cmds.keyframe(animated_attribute, query=True, index=(0,shot_frame_range), valueChange=True)
 
-		print "{}.{}@{} = {}".format(obj, animated_attribute, times, values)
+        print "{}.{}@{} = {}".format(obj, animated_attribute, times, values)
 
 ```
 
@@ -514,17 +511,17 @@ for animated_attribute in animated_attributes:
 
 ```python
 def create_anim_layer(layer_name):
-	animation_layers=cmds.animLayer(query=True, root=True)
+    animation_layers=cmds.animLayer(query=True, root=True)
 
-	# check if layer already exists
-	if animation_layers:
-		sub_anim_layers = cmds.animLayer(animation_layers, query=True, children=True)
+    # check if layer already exists
+    if animation_layers:
+        sub_anim_layers = cmds.animLayer(animation_layers, query=True, children=True)
 
-		if sub_anim_layers and layer_name in sub_anim_layers:
-			print "Error: a layer with this name already exists"
-			return
+    if sub_anim_layers and layer_name in sub_anim_layers:
+        print "Error: a layer with this name already exists"
+        return
 
-	cmds.animLayer(layer_name)
+    cmds.animLayer(layer_name)
 
 # create layer
 mylayer = create_anim_layer('mylayer')
@@ -557,33 +554,33 @@ cmds.setKeyframe(
 get_attr_name = lambda longname: longname.split('.')[-1]
 
 def transfer_anim():
-	objs = cmds.ls(selection=True)
+    objs = cmds.ls(selection=True)
 
-	if len(objs < 2):
-		print "Error: need at least 2 items to transfer animation from 1st selected item to others"
-		return
+    if len(objs < 2):
+        print "Error: need at least 2 items to transfer animation from 1st selected item to others"
+        return
 
-	driver = objs[0]
-	animated_attributes = cmds.listAnimatable(driver)
-	for animated_attribute in animated_attributes:
-		keyframes = cmds.keyframe(animated_attribute, query=True, keyframeCount=True)
+    driver = objs[0]
+    animated_attributes = cmds.listAnimatable(driver)
+    for animated_attribute in animated_attributes:
+        keyframes = cmds.keyframe(animated_attribute, query=True, keyframeCount=True)
 
-		if keyframes:
-			cmds.copyKey(animated_attribute)
-			for driven_obj in objs[1:]:
-				# we can specify a animLayer flag to pasteKey to not overwrite keys data
-				cmds.pasteKey(
-					driven_obj,
-					attribute= get_attr_name(animated_attribute),
-					option="replace"
-					)
+        if keyframes:
+            cmds.copyKey(animated_attribute)
+            for driven_obj in objs[1:]:
+                # we can specify a animLayer flag to pasteKey to not overwrite keys data
+                cmds.pasteKey(
+                    driven_obj,
+                    attribute= get_attr_name(animated_attribute),
+                    option="replace"
+                )
 ```
 
 ## Create expression
 ```python
 def make_expression(node, attr, value):
-	# expression strings needs to be written with mel syntax
-	return "{}.{} = {}".format(node,attr,value)
+    # expression strings needs to be written with mel syntax
+    return "{}.{} = {}".format(node,attr,value)
 
 expression_str = make_expression(transform_node, "translateX", "cos(time/2)*10")
 cmds.expression(string=expression_str)
