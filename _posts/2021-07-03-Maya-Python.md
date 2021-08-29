@@ -314,7 +314,7 @@ blinn_shaded_nodes = get_obj_from_shader( blinn_shader )
 
 ## Use shading nodes with 3D geo data
 
-![avgNode](https://raw.githubusercontent.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/maya_python/avgNodeMaya.gif)
+![avgNode](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/maya_python/avgNodeMaya.gif)
 
 ```python
 # use a plus minus average shading node to keep an object at the center
@@ -635,7 +635,7 @@ create_light_rig()
 
 ## Create a light rig controllers UI
 
-[light controller UI](https://raw.githubusercontent.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/maya_python/lightControllerUI.PNG)
+![light controller UI](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/maya_python/lightControllerUI.PNG)
 
 ```python
 class LightControllersUI():
@@ -842,7 +842,7 @@ createContext()
 
 Maya script jobs are like houdini parm callback and can be super usefull for a couple of use cases: switching asset variation, ik/fk rig switch, ...
 
-[scriptJobs](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/maya_python/scriptJob.gif)
+![scriptJobs](https://raw.githubusercontent.com/logan169/logan169.github.io/master/assets/images/posts_images/maya_python/scriptJob.gif)
 
 ```python
 # small variation switcher proof of concept
