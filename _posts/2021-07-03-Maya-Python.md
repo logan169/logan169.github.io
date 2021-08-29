@@ -3,7 +3,7 @@ title: 'Maya Python Programming'
 tags: Maya cmds
 ---
 
-Python is an object oriented programmation language (OOP) that has been created by Guido von Rossum in 1981. In 2021, Python have a considerable community behind it and is one of the most used programming language around the world and in the CG/pipeline fields. In this blog, we will look at how we can use Python to interact with Maya.<!--more--> Since maya was created, different flavors of python interfaces has been released as Pymel, Mayapy and OpenMaya. While they are all supposed to be able to achieve globaly the same result they differs in their philosophy.
+Python is an object oriented programming language (OOP) that was created by Guido von Rossum in 1981. In 2021, Python has a considerable community behind it and is one of the most used programming languages around the world and in the CG/pipeline fields. In this blog, we will look at how we can use Python to interact with Maya.<!--more-->  Since maya was created, different flavors of python interfaces have been released as Pymel, Mayapy and OpenMaya. While they are all supposed to be able to achieve globally the same result they differ in their philosophy.
 
 ## Environnement Setup
 
