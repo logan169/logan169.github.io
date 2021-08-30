@@ -921,19 +921,6 @@ without inducing pipeline dependancies.
 ```python
 def embed_script():
 
-    script_folder = cmds.internalVar(userScriptDir=True)
-    path = cmds.fileDialog2(
-        fileMode=1, # only allow a single file selection
-        fileFilter="Mel Files (*.mel);;Python files (*.py)",
-        startingDirectory=script_folder
-        )
-
-    if not path:
-        return
-
-    sourceType = "python" if path[0].endswith(".py") else "mel"
-def embed_script():
-
     path = cmds.fileDialog2(
         fileMode=1, # only allow a single file selection
         fileFilter="Python files (*.py);;Mel Files (*.mel)",
