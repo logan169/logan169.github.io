@@ -6,7 +6,7 @@ tags: Houdini VEX
 VEX evaluation is typically very efficient giving performance close to compiled C/C++ code. VEX is not an alternative to scripting, but rather a smaller, more efficient general purpose language for writing shaders and custom nodes. VEX is loosely based on the C language, but takes ideas from C++ as well as the RenderMan shading language.
 
 VEX is used in several places in Houdini:
-```
+
 	- Rendering – mantra uses VEX for all shading computation. This includes light, surface, displacement and fog shaders.
 
 	- Compositing – The VEX Generator and VEX Filter COPs allows you to write complex custom COPs in VEX. The expressions evaluate very close to C/C++ speeds and run 1000's of times faster than the Pixel Expression COP.
@@ -18,9 +18,11 @@ VEX is used in several places in Houdini:
 	- CHOPs – The VEX CHOP lets you to custom CHOPs. The CHOP functions can manipulate arbitrary numbers of input channels and process channel data in arbitrary ways. In some cases, the VEX code can run faster than compiled C++ code.
 
 	- Fur – Procedural fur behavior is implemented with VEX.
-```
 
-Here is a VEX cheat sheet 100% taken from this [website](https://mrkunz.com) blog. I'm not the one who produce this content. My goal here is to curate and gather interesting web ressources at a specific location that is easier for me to access.
+
+
+Here is a VEX cheat sheet 100% taken from this [website](https://mrkunz.com) blog. I'm not the one who produce this content, All credit goes to John Kunz.
+My goal here is to curate and gather interesting web ressources at a specific location that is easier for me to access.
 
 ## Global Variables
 A list of variables available in wrangles. The type indicator isn't needed, but is included as a reminder.
@@ -390,6 +392,15 @@ v@Lz    // Angular momentum Z axis
 ```
 
 ## Setting primitives visibility
+A frequently overlooked feature of the Alembic format is it's visiblity property. This property allows for entire scemes, objects or specific faces of an object to be flagged as either visible or hidden.
+
+This is particularly useful for effects because it allows objects or faces to appear or disaper over time, by animating the visiblity property.
+Quite commonly in Houdini, geometry will be created and deleted to show and hide it.
+This can be problematic when it comes to transfering the geomtetry to another software package or rendering engine. The majority of applications and file formats aren't designed to support changing topology. They expect the same amount of objects, faces, verticies, etc. to exist on the first frame, the last frame and every frame in between. If the topology is changing, small issues can arise such as lack of motion blur, mismatched shader assignments and missing areas of geometry. In the worst of cases, it can result in freezing and crashes.
+
+![broken_glass1](https://mrkunz.com/blog/img/20161208/without_visibility_animation_playblast.gif)
+![broken_glass2](https://mrkunz.com/blog/img/20161208/with_visibility_animation_playblast.gif)
+
 Using the Visibility SOP, this is the most straightforward method. The Group SOP can be used to specify visibility as well, by setting the "Group Name" field to: "_3d_hidden_primitives".
 
 Houdini's Alembic Exporter looks for any primitives in this group and sets the Alembic propery accordingly upon export.
