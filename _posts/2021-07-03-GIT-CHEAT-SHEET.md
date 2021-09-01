@@ -1,5 +1,5 @@
 ---
-title: 'Git 101'
+title: 'Git Cheat Sheet'
 tags: GIT
 ---
 
