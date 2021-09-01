@@ -3,7 +3,7 @@ title: 'USD curated ressources'
 tags: USD
 ---
 
-Series of curated links related to USD video/tutorials/examples
+Series of curated links related to USD video/tutorials/examples. <!--more-->
 
 # USD Ressources
 
