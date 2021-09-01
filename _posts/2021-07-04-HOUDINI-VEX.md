@@ -400,6 +400,7 @@ This can be problematic when it comes to transfering the geomtetry to another so
 
 | --- |  --- |
 |![broken_glass1](https://mrkunz.com/blog/img/20161208/without_visibility_animation_playblast.gif)|![broken_glass2](https://mrkunz.com/blog/img/20161208/with_visibility_animation_playblast.gif)|
+
 In the image on the left, the visiblity isn't animated at all. This makes it look like the glass is broken before it even begins to shatter.
 On the right, the visibility of the edge faces of the glass have animated visiblity so that they reveal the cracks as the pane breaking. This creates a much cleaner and more convincing shattering effect.
 
