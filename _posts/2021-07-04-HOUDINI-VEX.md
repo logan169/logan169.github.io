@@ -391,7 +391,22 @@ v@Ly    // Angular momentum Y axis
 v@Lz    // Angular momentum Z axis
 ```
 
-## Setting primitives visibility
+##  USD attributes
+```javascript
+Build-in variables
+@primpath // Path of the prim, on the stage .
+@elemnum // Current element number, whether prim or array element.
+@numelem // Total number of prims or array elements.
+@primtype // The prim type name.
+@primkind // A prim’s kind if set.
+@primname // The name of a primitive.
+@primpurpose // The display purpose of the current prim.
+@primdrawmode // The draw mode of the prim.
+@primactive // Returns whether the current prim is active or deactivated.
+@primvisible // Returns the visibility of the prim.
+```
+
+## Setting primitives visibility for abc export
 A frequently overlooked feature of the Alembic format is it's visiblity property. This property allows for entire scemes, objects or specific faces of an object to be flagged as either visible or hidden.
 
 This is particularly useful for effects because it allows objects or faces to appear or disaper over time, by animating the visiblity property.
@@ -465,3 +480,9 @@ v@Cd = 1 - pow(nval / nweight, 0.8765);     // Visualize Noise Output
 
 Offseting the 4th dimension of the noise input coordinates over time produces this evolving motion.
 ![vein noise2](https://mrkunz.com/blog/img/03-04-2017/20170304_ezgif.com-optimize.gif)
+
+## Source 
+```
+  - https://mrkunz.com
+  - https://www.sidefx.com/docs/houdini/solaris/vex.html
+```
