@@ -398,8 +398,8 @@ This is particularly useful for effects because it allows objects or faces to ap
 Quite commonly in Houdini, geometry will be created and deleted to show and hide it.
 This can be problematic when it comes to transfering the geomtetry to another software package or rendering engine. The majority of applications and file formats aren't designed to support changing topology. They expect the same amount of objects, faces, verticies, etc. to exist on the first frame, the last frame and every frame in between. If the topology is changing, small issues can arise such as lack of motion blur, mismatched shader assignments and missing areas of geometry. In the worst of cases, it can result in freezing and crashes.
 
-![broken_glass1](https://mrkunz.com/blog/img/20161208/without_visibility_animation_playblast.gif)
-![broken_glass2](https://mrkunz.com/blog/img/20161208/with_visibility_animation_playblast.gif)
+| --- |  --- |
+|![broken_glass1](https://mrkunz.com/blog/img/20161208/without_visibility_animation_playblast.gif)|![broken_glass2](https://mrkunz.com/blog/img/20161208/with_visibility_animation_playblast.gif)|
 
 Using the Visibility SOP, this is the most straightforward method. The Group SOP can be used to specify visibility as well, by setting the "Group Name" field to: "_3d_hidden_primitives".
 
