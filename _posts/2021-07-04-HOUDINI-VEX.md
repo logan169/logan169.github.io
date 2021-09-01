@@ -3,7 +3,7 @@ title: 'Houdini vex 101'
 tags: Houdini VEX
 ---
 
-VEX evaluation is typically very efficient giving performance close to compiled C/C++ code. VEX is not an alternative to scripting, but rather a smaller, more efficient general purpose language for writing shaders and custom nodes. VEX is loosely based on the C language, but takes ideas from C++ as well as the RenderMan shading language.
+VEX is a Houdini (sideFx) language. Its evaluation is typically very efficient giving performance close to compiled C/C++ code. VEX is not an alternative to scripting, but rather a smaller, more efficient general purpose language for writing shaders and custom nodes.<!--more--> VEX is loosely based on the C language, but takes ideas from C++ as well as the RenderMan shading language.
 
 VEX is used in several places in Houdini:
 
