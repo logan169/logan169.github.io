@@ -22,6 +22,12 @@ git checkout <branch_name> # change current followed branch
 git checkout -b <branch_name> # checkout to a new branch and create it if it doesn't exists 
 ```
 
+## Delete branch
+```bash
+git branch -d <branch_name> # remove local branch
+git push -d origin <branch_name> # remove remote branch
+```
+
 ## Pull code
 ```bash
 git pull # pull from current branch
