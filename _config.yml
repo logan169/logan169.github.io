@@ -20,7 +20,7 @@ text_skin: dark # "default" (default), "dark", "forest", "ocean", "chocolate", "
 highlight_theme: tomorrow-night-eighties # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
 url     : # the base hostname & protocol for your site e.g. https://www.someone.com
 baseurl : # does not include hostname
-title   : Logan Schwartz Fx TD @ Cinesite
+title   : Logan Schwartz Lead Pipeline TD @ FrontierVFX
 description: > # this means to ignore newlines until "Language & timezone"
   Just a regular guy who dreamed to work one day in the cinema industry. This is my personal website where I do share some houdini/code/web dev tricks.
   I use it to share the results of my personal projects that I'm working on. Communication is the key to any great accomplishements => feel free to contact me for any questions/feedbacks. 
