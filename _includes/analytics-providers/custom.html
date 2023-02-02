@@ -12,7 +12,7 @@
         
         // Change how long a tab needs to be active to be counted as viewed in seconds/
         // Requires a page to be actively viewed for 30 seconds for any heart beat request to be sent.
-        _paq.push(['enableHeartBeatTimer', 30]);
+        _paq.push(['enableHeartBeatTimer', 10]);
         
         var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
         g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
