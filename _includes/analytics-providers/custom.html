@@ -9,6 +9,11 @@
         var u="//matomo.montreal-synology.synology.me/";
         _paq.push(['setTrackerUrl', u+'matomo.php']);
         _paq.push(['setSiteId', '1']);
+        
+        // Change how long a tab needs to be active to be counted as viewed in seconds/
+        // Requires a page to be actively viewed for 30 seconds for any heart beat request to be sent.
+        _paq.push(['enableHeartBeatTimer', 30]);
+        
         var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
         g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
       })();
