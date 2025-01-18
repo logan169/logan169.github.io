@@ -909,12 +909,16 @@ def generate_sudoku_grid():
 generate_sudoku_grid()
 ```
 
-If you were to run this, you should be ending with something that looks like this.
+If you were to run this, you should be ending with something that looks like this in the shell.
 ![wfc output](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/wfc/wfc5.png?raw=true)
 
-I was only able to add a picture since the output is too long to be properly displayed on the page. 
+# Graph Based WFC In Houdini
 
+![wfc setup create grid](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/wfc/wfc1.png?raw=true)
 
+![wfc setup create tiles](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/wfc/wfc3.png?raw=true)
+
+![wfc setup populate integer](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/wfc/wfc.png?raw=true)
 
 
 
