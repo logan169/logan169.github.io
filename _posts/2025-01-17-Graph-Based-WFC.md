@@ -1,29 +1,49 @@
 ---
-title: 'Wave Function Collapse (WFC) R&D' 
+title: 'Graph Based Wave Function Collapse (WFC)' 
 tags: Algorithm Procedural
 ---
 
-The Wave Function Collapse (WFC) algorithm is an innovative approach to procedural generation, often applied in fields like game development, 3D modeling, and level design. Inspired by quantum mechanics, the algorithm operates by collapsing a "wave function" of possible configurations into a single, consistent result, much like how the quantum state of particles is observed in physics. The core idea of WFC is to generate patterns, textures, or levels that adhere to local constraints (like adjacency rules) while maintaining global consistency across the entire structure as shown below from a gif picked from the [WFC original repository](https://github.com/mxgmn/WaveFunctionCollapse/tree/master).
+Developed by Maxim Gumin, WFC has been utilized in various applications, including image synthesis, level design, and texture generation. Inspired by quantum mechanics, the algorithm operates by collapsing a "wave function" of possible configurations into a single, consistent result, much like how the quantum state of particles is observed in physics. The core idea of WFC is to generate patterns, textures, or levels that adhere to local constraints (like adjacency rules) while maintaining global consistency across the entire structure as shown below from a gif picked from the [WFC original repository](https://github.com/mxgmn/WaveFunctionCollapse/tree/master). It is a fascinating mix of randomness and determinism, allowing for the creation of complex structures that appear both organic and highly structured.
 
 <div class="grid">
   <div class="cell cell--2"></div>
   <div class="cell cell--auto">
     <img src="https://github.com/mxgmn/WaveFunctionCollapse/blob/master/images/wfc.gif?raw=true" alt="city generator">
   </div>
-
   <div class="cell cell--2"></div>
 </div>
 
+# How It Works
 
-The process starts with a grid or a defined space where each cell is in a superposition of all possible states (or patterns). As the algorithm progresses, it 'collapses' these possibilities one constantly reducing the system entropy until a unique configuration is achieved that satisfies the predefined constraints. It is a fascinating mix of randomness and determinism, allowing for the creation of complex structures that appear both organic and highly structured.
+The original WFC implementation process starts with a grid or a defined space where each cell is in a superposition of all possible states (or patterns). The algorithm progresses by collapsing these possibilities, one cell at a time, based on predefined constraints that dictate how patterns can adjacently align. This process continues until the entire grid is resolved into a coherent output that adheres to the specified rules. Since its introduction, alternative implementations of the WFC algorithm have emerged, enabling its use in generating procedural 3D voxel-based worlds and even in crafting poetry.
 
-## How is this usefull to me ?
+# Challenges and Considerations
+While the Wave Function Collapse (WFC) algorithm is powerful, it has notable limitations. A primary challenge is ensuring global coherence in the generated output. The algorithm prioritizes local constraints, which can occasionally result in inconsistencies at a larger scale. For example, when generating expansive structures such as cities, the local arrangements might be logical and consistent, but the overall layout could lack cohesion. Additionally, if the constraints are too loose, some visible tile redundancy may occur, reducing the uniqueness of the output.
+
+![city generator](https://camo.githubusercontent.com/8016d071f236aa7d1f00572740069b57360b5100f55598a517b766f67526b2a8/68747470733a2f2f692e696d6775722e636f6d2f764c3830697a762e6a7067) [source](https://github.com/marian42/wavefunctioncollapse)
+
+Another significant limitation of WFC is its computational cost. The algorithm involves frequent recalculation of possible states for each cell in the grid, particularly after every collapse, to ensure the constraints are maintained. As the size of the grid and the number of potential states increase, the computational demand grows exponentially. This makes WFC especially resource-intensive for larger grids or complex constraint sets, potentially slowing down generation times or requiring optimizations to remain practical for real-time applications. 
+
+Additionally, the algorithm employs a brute-force approach to resolve conflicts. When it encounters an unsolvable state—where constraints make further progress impossible—the system must either completely restart from the beginning or, if a backtracking functionality is implemented, revert to a prior state and attempt a different resolution path. This process may need to be repeated multiple times until a viable solution is achieved. This iterative retry mechanism significantly contributes to the algorithm’s computational inefficiency, particularly when working with highly constrained or complex models, as each restart or backtrack requires reevaluating and recalculating possible states for the grid.
+
+Today, we will demonstrate how to address these limitations by implementing a graph-based Wave Function Collapse (WFC) algorithm. This approach aims to mitigate the drawbacks of traditional WFC, such as computational inefficiency and challenges with global coherence, by leveraging graph structures to improve constraint management, enhance scalability, and reduce the need for brute-force resolution.
+
+# Why Making A Graph Based WFC
+
+A graph-based Wave Function Collapse (WFC) algorithm offers several improvements over the traditional grid-based implementation, directly addressing the previously discussed limitations:
+
+## Global Coherence 
+
+By using a graph-based representation, relationships between elements are explicitly defined in terms of nodes (tiles or states) and edges (constraints between tiles). This allows for better propagation of global constraints throughout the graph, ensuring that changes in one part of the structure have an appropriate impact on other related areas. Graphs also make it easier to identify and enforce long-range dependencies that contribute to global coherence.
+
+## Tile Redundancy
+
+A graph structure can accommodate more sophisticated constraints tailored to specific relationships between nodes. This allows for fine-grained control over how patterns align, reducing the likelihood of redundancy.
 
 ## Why It Is Cool ?
 
 A significant limitation of current AI generative technologies is that while they often produce content that is consistent on a local scale, this consistency diminishes when evaluated on a wider/global scale. The WFC algorithm also suffer from this (*potentialy only in its native implementation), as seen in the following screenshot of an infinite city generator, where the overall structure appears disconnected, despite local consistency. 
 
-![city generator](https://camo.githubusercontent.com/8016d071f236aa7d1f00572740069b57360b5100f55598a517b766f67526b2a8/68747470733a2f2f692e696d6775722e636f6d2f764c3830697a762e6a7067) [source](https://github.com/marian42/wavefunctioncollapse)
 
 
 In the previous block, I've 
