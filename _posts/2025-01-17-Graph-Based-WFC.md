@@ -24,13 +24,11 @@ While the Wave Function Collapse (WFC) algorithm is powerful, it has notable lim
 
 Another significant limitation of WFC is its computational cost. The algorithm involves frequent recalculation of possible states for each cell in the grid, particularly after every collapse, to ensure the constraints are maintained. As the size of the grid and the number of potential states increase, the computational demand grows exponentially. This makes WFC especially resource-intensive for larger grids or complex constraint sets, potentially slowing down generation times or requiring optimizations to remain practical for real-time applications. 
 
-Additionally, the algorithm employs a brute-force approach to resolve conflicts. When it encounters an unsolvable state—where constraints make further progress impossible—the system must either completely restart from the beginning or, if a backtracking functionality is implemented, revert to a prior state and attempt a different resolution path. This process may need to be repeated multiple times until a viable solution is achieved. This iterative retry mechanism significantly contributes to the algorithm’s computational inefficiency, particularly when working with highly constrained or complex models, as each restart or backtrack requires reevaluating and recalculating possible states for the grid.
-
 Today, we will demonstrate how to address these limitations by implementing a graph-based Wave Function Collapse (WFC) algorithm. This approach aims to mitigate the drawbacks of traditional WFC, such as computational inefficiency and challenges with global coherence, by leveraging graph structures to improve constraint management, enhance scalability, and reduce the need for brute-force resolution.
 
 # Why Making A Graph Based WFC
 
-A graph-based Wave Function Collapse (WFC) algorithm offers several improvements over the traditional grid-based implementation, directly addressing the previously discussed limitations:
+A graph-based Wave Function Collapse (WFC) algorithm offers the following improvements over the traditional grid-based implementation, directly addressing the previously discussed limitations
 
 ## Global Coherence 
 
@@ -38,7 +36,16 @@ By using a graph-based representation, relationships between elements are explic
 
 ## Tile Redundancy
 
-A graph structure can accommodate more sophisticated constraints tailored to specific relationships between nodes. This allows for fine-grained control over how patterns align, reducing the likelihood of redundancy.
+A graph structure can accommodate more sophisticated constraints tailored to specific relationships between nodes, enabling finer-grained control over patterns at a higher area or scale level compared to the original pixel-based WFC. By focusing on broader structural relationships rather than individual grid cells, the graph-based approach reduces the likelihood of redundancy by ensuring that constraints are applied more cohesively across larger sections and even distant portions of the generated output. This allows for the creation of globally consistent structures while minimizing repetitive patterns.
+
+# WFC In Houdini
+
+The ["WFC Dungeon Generator"](https://www.sidefx.com/tutorials/wfc-dungeon-generator/) tutorial by SideFX, authored by Simon Verstraete, demonstrates how to use the Wave Function Collapse (WFC) algorithm within Houdini using the SideFX Labs to generate procedural dungeon layouts. The process involves using Wang Tiles, a method for tiling patterns, to create a grid-based layout. The output is a diverse dungeon design that can be exported to Unreal Engine or used directly in houdini, complete with walls, rooms, and decorative elements, providing a flexible framework for game level generation. 
+
+## Why Making An Other WFC Algorithm In Houdini
+
+Depending on your needs, there is nothing wrong going 
+
 
 ## Why It Is Cool ?
 
