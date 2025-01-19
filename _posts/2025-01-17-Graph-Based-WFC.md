@@ -24,11 +24,11 @@ While the Wave Function Collapse (WFC) algorithm is powerful, it has notable lim
 
 Another significant limitation of WFC is its computational cost. The algorithm involves frequent recalculation of possible states for each cell in the grid, particularly after every collapse, to ensure the constraints are maintained. As the size of the grid and the number of potential states increase, the computational demand grows exponentially. This makes WFC especially resource-intensive for larger grids or complex constraint sets, potentially slowing down generation times or requiring optimizations to remain practical for real-time applications. 
 
-Today, we will demonstrate how to address these limitations by implementing a graph-based Wave Function Collapse (WFC) algorithm. This approach aims to mitigate the drawbacks of traditional WFC, such as computational inefficiency and challenges with global coherence, by leveraging graph structures to improve constraint management, enhance scalability, and reduce the need for brute-force resolution.
+# GBWFC Advantages
 
-# Graph Based WFC Advantages
+Today, we will demonstrate how to address the limitations of traditional Wave Function Collapse (WFC) by implementing a graph-based WFC (GBWFC) algorithm. This approach aims to overcome the common drawbacks of the traditional method, including computational inefficiency and issues with global coherence, by utilizing graph structures to improve constraint management, enhance scalability, and minimize the reliance on brute-force resolution. As a simple test case, we will apply our GBWFC implementation to generate Sudoku grids, which feature non-neighborhood constraints (such as rows, columns, and subgrids)—a challenge that would be difficult to address using the original WFC method.
 
-The first mentions of graph-based Wave Function Collapse (WFC) can be traced back to 2019 in scientific literature, as seen [here](https://scholar.google.ca/scholar?q=2019+graph+based+wfc&hl=fr&as_sdt=0&as_vis=1&oi=scholart). Since then, several articles have been published discussing the advantages of using graph-based WFC over the original pixel-based implementation.
+The first mentions of graph-based Wave Function Collapse (GBWFC) can be traced back to 2019 in scientific literature, as seen [here](https://scholar.google.ca/scholar?q=2019+graph+based+wfc&hl=fr&as_sdt=0&as_vis=1&oi=scholart). Since then, several articles have been published discussing the advantages of using GBWFC over the original pixel-based WFC implementation.
  
 This algorithm offers the following improvements over the traditional grid-based approach, directly addressing the limitations previously discussed:
 
@@ -51,7 +51,7 @@ Since I work in the cinema industry with large, complex 3D environments, we are 
 
 For example, a Nested Recursive Multi-Level Graph-Based Wave Function Collapse (WFC) approach could be particularly effective for generating complex structures like cities. The process begins by running a WFC algorithm to assign neighborhood types to each grid cell. Once neighborhoods are defined, each cell is treated as a subgrid, and a new WFC process is initiated to assign house or block types to the cells within each subgrid. This recursive process could continue at multiple levels—populating building interiors, adding furniture, and placing objects on furniture—while preserving the constraints at both the higher neighborhood level and the local room or object level. This multi-level approach ensures the generated city remains coherent, with local details aligning with the broader global structure, offering a scalable and flexible framework for procedural content generation.
 
-# Graph Based WFC Implementation
+# GBWFC Implementation
 
 ## Imports
 
@@ -666,7 +666,7 @@ class WFC:
             self.wfc_log_function(self)
 
 ```
-By reaching this point, you should now have all the essential components needed to operate your graph based WFC. In the following section, we will explore how to develop case-specific methods to interact with the code we've already written.
+By reaching this point, you should now have all the essential components needed to operate your GBWFC. In the following section, we will explore how to develop case-specific methods to interact with the code we've already written.
 
 ## Sudoku WFC Parts:
 
@@ -919,7 +919,7 @@ generate_sudoku_grid()
 If you were to run this, you should be ending with something that looks like this in the shell.
 ![wfc output](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/wfc/wfc5.png?raw=true)
 
-# Graph Based WFC In Houdini
+# GBWFC In Houdini
 
 ![wfc setup create grid](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/wfc/wfc1.png?raw=true)
 
