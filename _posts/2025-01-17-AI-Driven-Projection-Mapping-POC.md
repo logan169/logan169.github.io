@@ -7,13 +7,23 @@ Growing up in Lyon, France, I’ve been fortunate to witness the celebrated “F
 
 {%- include extensions/youtube.html id='sGBTVngHvug' -%}
 
-Today, I decided to take on a personal challenge: using Houdini, a 3D software, to create and simulate a light art installation inspired by the “Fête des Lumières.” This concept has been on my mind for some time, and I envisioned a unique approach. My goal was to place the visitor at the heart of the experience by integrating an onsite prompt system. This system would dynamically generate a projected image over the building based on prompts provided by the visitors, powered by generative AI. 
+# Motivations
 
+Today, I decided to take on a personal challenge: using Houdini, a 3D software, to create and simulate an AI driven light art installation inspired by the “Fête des Lumières.” 
+
+My objective was to immerse the visitor at the center of the experience by incorporating an interactive prompt system. This system, powered by generative AI, would dynamically create and project images on buildings based on visitor prompts, ensuring a highly personalized and engaging display.
+
+
+## Handling The AI Side
 In this project, we will generate some image from prompts using [MLOPS Houdini package](https://www.sidefx.com/tutorials/introducing-mlops-machine-learning-operators/). The MLOPS Houdini library integrates machine learning capabilities within the Houdini environment, facilitating AI model deployment and integration into 3D workflows. It enables the seamless interaction between generative AI models and Houdini's procedural generation tools. 
 
+## Building Mesh
 Now let's explore how we can create a proof of concept for this whole idea. To begin, we need to find a fitting 3D model for our project. Personally, I decided to use a 3D model of the door from the French medieval church of Sainte-Radegonde in Poitiers. This model is freely available for download [here](https://sketchfab.com/3d-models/eglise-sainte-radegonde-poitiers-86-66dab155a9fc44df8e9f10e830d536dd), providing an excellent starting point for our light art installation. 
 
 ![projection mapping houdini setup 0](https://miro.medium.com/v2/resize:fit:1400/format:webp/0*VBML6nzsFjJpf9Uo)
+
+
+# Implementation
 
 After importing the model into Houdini, the first step is to align it with the viewport grid using a series of transformations. The next step is to split the mesh into Houdini groups. These groups will be used to populate a custom attribute named "building_parts," which will be essential in the next steps. This attribute will help us create masks, which will be critical when we integrate generative AI-generated layers during the compositing phase of the project.
 
@@ -50,20 +60,29 @@ Next, at the /obj level, we set the gobo light’s “Projection Map” paramete
   </div>
   <div class="item__content">
     <div class="item__description">
-      <p>We also enable the viewport’s high-quality lighting option (the bulb button on the left) and select “Show All Objects” from the top viewport button options. This ensures we can accurately preview the scene’s lighting and overall appearance in real-time feedback.</p>
+      <p>
+      We also enable the viewport’s high-quality lighting option (the bulb button on the left) and select “Show All Objects” from the top viewport button options. This ensures we can accurately preview the scene’s lighting and overall appearance in real-time feedback.
+      Using this approach ensures a seamless workflow, allowing for continuous iteration without the need to render after each adjustment.</p>
     </div>
   </div>
 </div>
 
 
-Once this is set, the gobo map projection over your mesh should be visible in your viewport
+## Testing Everything
+
+After completing the previous steps, the gobo map projection should now be visible over your mesh within the viewport. 
+
 ![projection mapping houdini setup 9](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*zyQiB9l3c9mYTrC7mwP9vQ.png)
 
-Using this approach will provide you a continous working workflow to quickly iterate without having to render each time.
+# Final Thoughts
 
-Of course, it is a workflow proof of concept and the quality could be enhanced with better lighting, different testing with the parameters, we could use a new version of the stable diffusion model. As always, there is a lot of space for improvement in machine learning projects and that is the beauty of it! At the time of doing it, this project have been using stable diffusion 1.5, while at the time of writting this blog stable diffusion 3 went out winter 2024. 
+In this article, we demonstrated how to project AI-generated gobo maps onto a 3D building mesh. The key advantage of the described workflow lies in its ability to efficiently test and iterate on customizations and optimizations directly from a computer, offering significant time savings compared to configuring and adjusting similar setups onsite.
 
-Consider the excitement of a light festival and envision the endless possibilities if participants could directly engage with various elements of the lighting spectacle. The interactivity would provide so much excitement. The potential for innovation knows no bounds; all it takes is a single prompt to unleash boundless creativity.
+For refinement, upgrading to Stable Diffusion 3 (compared to the Stable Diffusion 1.5 model used here) could enhance image quality significantly. Additionally, while segmenting images into parts offers greater control, it introduces challenges like inconsistencies when stitching AI-generated sections back together. For quicker setups without requiring this extra control, providing the full image without part separation may be more practical, as it avoids the complexity of realigning mismatched elements. This approach streamlines the workflow while maintaining reasonable output quality.
+
+In a real-world application, achieving this setup would require integrating a camera mounted on a projector, along with a companion tablet or mobile app to facilitate interaction. However, exploring the details of such an implementation will be the focus of a potential future article.
+
+# AI Generated Outputs
 
 
 <div class="item">
