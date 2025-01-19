@@ -35,7 +35,7 @@ In this article, we'll demonstrate how to implement GBWFC, and apply it to an ex
 
 # WFC In Houdini
 
-In Houdini, an already existing [SideFX Labs WFC implementation](https://www.sidefx.com/tutorials/wfc-dungeon-generator/) relies on Houdini node-based approach to procedurally generate environments like dungeons. By utilizing Wang tiles, it ensures that adjacency constraints are satisfied, providing a flexible and powerful solution to create complex game level design.
+In Houdini, an already existing [SideFX Labs WFC implementation](https://www.sidefx.com/tutorials/wfc-dungeon-generator/) relies on Houdini node-based approach to procedurally generate environments like dungeons. By using Wang tiles, it ensures that adjacency constraints are satisfied, providing a flexible and powerful solution to create complex game level design.
 
 If this tool aligns with your needs, it may be all you require, and I highly recommend giving it a try, as it is a well-designed solution. However, if computational costs become a concern, you may want to consider an alternative implementation that will also supports backtracking (which isn't the case of this tool from my last read of its source code).
 
@@ -43,7 +43,7 @@ Additionally, if your constraints involve non square tiles (e.g., Voronoi or hex
 
 # Motivations
 
-Since I work in the cinema industry with large, complex 3D environments, we are often pushing the boundaries of what the current Wang tiles method can offer with the SideFX Labs approach. However, I still dream of utilizing this technology to create vast, immersive environments.
+Since I work in the cinema industry with large, complex 3D environments, we are often pushing the boundaries of what the current Wang tiles method can offer with the SideFX Labs approach. However, I still dream of using this technology to create vast, immersive environments.
 
 For example, a Nested Recursive Multi-Level GBWFC approach could be particularly effective for generating complex structures like cities. The process begins by running a WFC algorithm to assign neighborhood types to each grid cell. Once neighborhoods are defined, each cell is treated as a subgrid, and a new WFC process is initiated to assign house or block types to the cells within each subgrid. This recursive process could continue at multiple levels—populating building interiors, adding furniture, and placing objects on furniture—while preserving the constraints at both the higher neighborhood level and the local room or object level. This multi-level approach ensures the generated city remains coherent, with local details aligning with the broader global structure, offering a scalable and flexible framework for procedural content generation.
 
