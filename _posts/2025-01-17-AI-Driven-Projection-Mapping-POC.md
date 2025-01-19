@@ -52,7 +52,21 @@ Here is how our cop2net node looks like, showing the different stages of impleme
 
 ![projection mapping houdini setup 6](https://miro.medium.com/v2/resize:fit:4160/format:webp/1*PqkIiF5wwTqI51lZmYrJUQ.png)
 
-Next, at the /obj level, we set the gobo light’s “Projection Map” parameter to dynamically retrieve the image directly from the cop2net1 node using the following expression “op:/obj/sd/cop2net1/OUT/”. This allows us to procedurally feed the camera gobo map input without needing to bake anything.
+
+<div class="item">
+  <div class="item__image">
+    <img class="image image--lg" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/ai_projection_mapping_poc/sd_images.gif?raw=true"/>
+  </div>
+  <div class="item__content">
+    <div class="item__header">
+      <h5>AI Generated Images From Stable Diffusion</h5>
+    </div>
+  </div>
+</div>
+
+## Testing Everything
+
+To finish, we set the gobo light’s “Projection Map” parameter to dynamically retrieve the image directly from the cop2net1 node using the following expression “op:/obj/sd/cop2net1/OUT/”. This allows us to procedurally feed the camera gobo map input without needing to bake anything.
 
 <div class="item">
   <div class="item__image">
@@ -68,8 +82,6 @@ Next, at the /obj level, we set the gobo light’s “Projection Map” paramete
 </div>
 
 
-## Testing Everything
-
 After completing the previous steps, the gobo map projection should now be visible over your mesh within the viewport. 
 
 ![projection mapping houdini setup 9](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*zyQiB9l3c9mYTrC7mwP9vQ.png)
@@ -83,7 +95,6 @@ For refinement, upgrading to Stable Diffusion 3 (compared to the Stable Diffusio
 In a real-world application, achieving this setup would require integrating a camera mounted on a projector, along with a companion tablet or mobile app to facilitate interaction. However, exploring the details of such an implementation will be the focus of a potential future article.
 
 # AI Generated Outputs
-
 
 <div class="item">
   <div class="item__image">
@@ -116,3 +127,13 @@ In a real-world application, achieving this setup would require integrating a ca
 
 
 
+<div class="item">
+  <div class="item__image">
+    <img class="image image--lg" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/ai_projection_mapping_poc/roman_door_render.gif?raw=true"/>
+  </div>
+  <div class="item__content">
+    <div class="item__header">
+      <h5>Render</h5>
+    </div>
+  </div>
+</div>
