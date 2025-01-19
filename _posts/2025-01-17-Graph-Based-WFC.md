@@ -18,7 +18,7 @@ The GBWFC is a variation of the Wave Function (WFC) Collapse algorithm developed
 
 The original WFC implementation process starts with a grid or a defined space where each cell is in a superposition of all possible states (or patterns). The algorithm progresses by collapsing these possibilities, one cell at a time, based on predefined constraints that dictate how patterns can adjacently align. This process continues until the entire grid is resolved into a coherent output that adheres to the specified rules. Since its introduction, alternative implementations of the WFC algorithm have emerged, enabling its use in generating procedural 3D voxel-based worlds and even in crafting poetry.
 
-# Challenges and Considerations
+# Limitations
 While the Wave Function Collapse (WFC) algorithm is powerful, it has notable limitations. A primary challenge is ensuring global coherence in the generated output. The algorithm prioritizes local constraints, which can occasionally result in inconsistencies at a larger scale. For example, when generating expansive structures such as cities, the local arrangements might be logical and consistent, but the overall layout could lack cohesion. Additionally, if the constraints are too loose, some visible tile redundancy may occur, reducing the uniqueness of the output.
 
 ![city generator](https://camo.githubusercontent.com/8016d071f236aa7d1f00572740069b57360b5100f55598a517b766f67526b2a8/68747470733a2f2f692e696d6775722e636f6d2f764c3830697a762e6a7067) [source](https://github.com/marian42/wavefunctioncollapse)
@@ -940,20 +940,18 @@ As seen in the previous screenshot, our GBWFC implementation successfully enforc
 
 # Final Thoughts
 
-In this article, we have shown how to implementat a Graph-Based Wave Function Collapse algorithm. Using Sudoku grids as a practical simple test case, we demonstrated how it can address non-neighborhood constraints while generating consistent procedural content. 
+In this article, we demonstrated the implementation of a Graph-Based Wave Function Collapse (GBWFC) backbone algorithm designed for flexibility. This framework can be seamlessly adapted to address diverse problem-specific constraints while maintaining the ability to generate consistent and coherent procedural content.
 
-We did our implementation in such ways that it would be easy to complete extra methods in any WFC Logic Components
+Our implementation allows flexibility to modify the core GBWFC behavior during convergence. Depending on the specific requirements of a problem, you can extend logic components in the following classes:
 
+- WFCTileSelector: Customize how the next tile is chosen for collapse.
+- WFCStateResolver: Define how a tile's state is selected during collapse.
+- WFCNeighborhoodCollapser: Adjust how waves propagate to update neighboring tile states.
+
+This modularity ensures the algorithm's adaptability to diverse procedural generation tasks. For instance, when creating a kitchen layout, instead of purely random tile selection, the GBWFC could prioritize placing essential, larger assets like a table with chairs, an oven, or a fridge early in the process. Once these key items are positioned, the algorithm could revert to its default random tile-picking method. This strategy ensures that critical elements are properly integrated into the layout, preventing conflicts and maintaining functional and spatial coherence.
+
+Additionally, instead of randomly selecting a state to collapse a tile, we could use a Markov chain to guide this decision based on probabilistic data. This approach would allow for outputs that better reflect realistic environments by leveraging patterns and correlations in the data, leading to more contextually accurate and natural results.
+
+Finally, custom edge types could be implemented to address various constraint types effectively. For instance, in a Nested Recursive Multi-Level GBWFC approach (discussed in the motivation section), each tile in a subgrid could be linked to its parent converged tile. Metadata from the parent tile—such as biome, neighborhood type, house type, or room type—would guide the selection of assets eligible for instantiation within the subgrid as a new GBWFC runs at that level. This structure ensures context-sensitive asset placement and enforces coherence across hierarchical levels of generation.
 
 I hope that this introduction will get people in the cinema industry a bit closer to integrate this algorithm in their daily tasks.
-
-While we produced a working implementation, there are still opportunities for optimization. 
-
-To enhance performance and reduce computational costs, advanced pruning techniques and real-time constraint adjustments could be implemented. 
-
-Additionally, our GBWFC behaviour could be greatly customized by adding new custom methods  WFCTileSelector, WFCStateResolver or WFCNeighborhoodCollapser classes 
-
- select which state a node/tile should be collapsed to should be adapted to your use case. For instance, our current method collapse a tile by picking a random state from the one remaining, but using a probabilistic Markov Chains models might prove to output more realistic results in some use case  
-like the Markov Chains for state resolution can streamline the probabilistic tile selection and produce more realistic results in some use case context than our random value approach. 
-
-GBWFC could also benefit from parallelization, running multiple graph processes concurrently and merging resolved nodes. Furthermore, optimizing graph traversal algorithms could significantly improve the efficiency, especially for larger and more complex grids, allowing for better scalability and reduced processing time.
