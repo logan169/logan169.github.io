@@ -68,7 +68,7 @@ At this stage, we can begin implementing the core components of the WFC algorith
 - Tile: Represents the individual grid tiles, store edges and states information.
 - Edge: Enables us to abstract the input shape, allowing support for any shape, not just grid-based inputs. It also facilitates the creation of more complex pattern relationships.
 
-### State
+#### State
 
 ```python
 class State(object):
@@ -104,7 +104,7 @@ class State(object):
 
 ```
 
-### Tile
+#### Tile
 
 ```python
 class Tile:
@@ -176,7 +176,7 @@ class Tile:
         """
         return self.repr_str
 ```
-### Edge
+#### Edge
 
 ```python
 class Edge:
@@ -245,7 +245,7 @@ By designing our code this way, we can easily add new methods in the future to e
 
 At the beggining of each epochs, we use one of the WFCTileSelector class methods to select the next tile to collapse. We then, call one of the WFCStateResolver class methods to select a state and assign it to the current evaluated tile. Since all tiles are connected together by signal with the Observer design pattern, updating one tile'state will trigger a revaluation of neighboorhood 
 
-### GBWFC TileSelector
+#### GBWFC TileSelector
 
 In the WFCTileSelector class, we will implement a base method responsible for selecting the next tile to process. By default, this method will choose the tile with the lowest entropy in the model. In other words, at the start of a new WFC epoch or cycle, it identifies the tile with the fewest potential states it can collapse into. This approach is crucial to minimizing the likelihood of reaching an unsolvable model state. 
 
@@ -291,7 +291,7 @@ class WFCTileSelector:
 
 ```
 
-### GBWFC StateResolver
+#### GBWFC StateResolver
 
 ```python
 
@@ -329,7 +329,7 @@ class WFCStateResolver:
         return rnd_state
 
 ```
-### GBWFC NeighborhoodCollapser
+#### GBWFC NeighborhoodCollapser
 
 ```python
 class WFCNeighborhoodCollapser:
@@ -378,7 +378,7 @@ class WFCNeighborhoodCollapser:
         return new_destination_tile_states
 ```
 
-### GBWF CLogger
+#### GBWF CLogger
 
 ```python
 
@@ -673,7 +673,7 @@ To specialize our WFC for generating Sudoku grids, we need to implement the foll
 - generate_sudoku_tiles: Returns all Sudoku tiles instances (81 tiles for default grid's 9x9 format).
 - generate_sudoku_edges: Returns all tile's edges instances that link them with same row, column, and subgrid tiles.
 
-### generate_sudoku_states
+#### generate_sudoku_states
 
 ```python
 def generate_sudoku_states():
@@ -703,7 +703,7 @@ def generate_sudoku_states():
 
 ```
 
-### generate_sudoku_tiles
+#### generate_sudoku_tiles
 ```python
 def generate_sudoku_tiles(sudoku_subgrid_width_count, states):
     """
@@ -747,7 +747,7 @@ def generate_sudoku_tiles(sudoku_subgrid_width_count, states):
     return tiles
 ```
 
-### generate_sudoku_edges
+#### generate_sudoku_edges
 
 ```python
 def generate_sudoku_edges(tiles):
