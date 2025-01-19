@@ -15,6 +15,7 @@ My objective was to immerse the visitor at the center of the experience by incor
 
 
 ## Handling The AI Side
+
 In this project, we will generate some image from prompts using [MLOPS Houdini package](https://www.sidefx.com/tutorials/introducing-mlops-machine-learning-operators/). The MLOPS Houdini library integrates machine learning capabilities within the Houdini environment, facilitating AI model deployment and integration into 3D workflows. It enables the seamless interaction between generative AI models and Houdini's procedural generation tools. 
 
 ## Building Mesh
@@ -26,7 +27,6 @@ Now let's explore how we can create a proof of concept for this whole idea. To b
 # Implementation
 
 After importing the model into Houdini, the first step is to align it with the viewport grid using a series of transformations. The next step is to split the mesh into Houdini groups. These groups will be used to populate a custom attribute named "building_parts," which will be essential in the next steps. This attribute will help us create masks, which will be critical when we integrate generative AI-generated layers during the compositing phase of the project.
-
 
 For this proof of concept, we've identified three zones of interest on the 3D model: the main door group (all areas within the arch), the sidewalls (including the two side columns and the main wall), and everything else. This segmentation enables us to focus on specific areas when applying transformations and generating AI-based projections. The mesh handling setup, which organizes these zones, serves as a foundation for the next steps in the process.At that point, our setup that handles the mesh looks like the one below.
 
@@ -40,7 +40,7 @@ As illustrated in the preceding screenshot, a critical procedure involved config
 
 Now, let’s explore the generative AI step further. Within our “/obj/sd” node containing our MLOPS setup, we’ll create three separate graphs, each tasked with generating an image for a specific part of the segmented mesh using the custom attribute “building_parts” we established earlier. This segmentation enables us to tailor the generative AI process to each distinct area of interest in the scene, ensuring precise and targeted image generation.
 
-This means we use the same design to build three different prompt and model architectures for the doors or arch, the mainwall, and the sidewalls. Below is the design explained for the door area.
+This means we use the same design to build three different prompt and model architectures for the doors or arch, the mainwall, and the sidewalls. Below is the design explained for the door area. I won’t go into too much detail about MLOps here, as I’ve already taken the time to comment on each part of the MLOps setup in the screenshot. If you’re curious about the function of each node, you can refer to those comments for a clearer understanding of what’s happening at each step.
 
 ![projection mapping houdini setup 4](https://miro.medium.com/v2/resize:fit:2730/format:webp/1*zPZ9SnvJ2_t--jM8EuLvcw.png)
 
@@ -90,7 +90,14 @@ To finalize, we configure the gobo light’s “Projection Map” parameter to d
 
 After completing the previous steps, the gobo map projection should now be visible over your mesh within the viewport. 
 
-![projection mapping houdini setup 9](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*zyQiB9l3c9mYTrC7mwP9vQ.png)
+
+<div class="grid">
+  <div class="cell cell--2"></div>
+  <div class="cell cell--auto">
+    <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*zyQiB9l3c9mYTrC7mwP9vQ.png" alt="city generator">
+  </div>
+  <div class="cell cell--2"></div>
+</div>
 
 # Final Thoughts
 
@@ -119,6 +126,21 @@ In a real-world application, achieving this setup would require integrating a ca
 
 <div class="item">
   <div class="item__image">
+    <img class="image image--lg" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/ai_projection_mapping_poc/roman_door_render.gif?raw=true"/>
+  </div>
+  <div class="item__content">
+    <div class="item__header">
+      <h5>Mantra Render</h5>
+    </div>
+    <div class="item__description">
+      <p>Prompt: "An intricately detailed Roman-style door, set in a classical stone archway flanked by columns adorned with Roman carvings. The surrounding architecture is inspired by ancient Roman temples, with ornate stonework and decorative reliefs."</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="item">
+  <div class="item__image">
     <img class="image image--lg" src="https://miro.medium.com/v2/resize:fit:1024/format:webp/1*Mawsg9kMN-AAeG2OEZPeQw.gif"/>
   </div>
   <div class="item__content">
@@ -133,13 +155,3 @@ In a real-world application, achieving this setup would require integrating a ca
 
 
 
-<div class="item">
-  <div class="item__image">
-    <img class="image image--lg" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/ai_projection_mapping_poc/roman_door_render.gif?raw=true"/>
-  </div>
-  <div class="item__content">
-    <div class="item__header">
-      <h5>Mantra Render</h5>
-    </div>
-  </div>
-</div>
