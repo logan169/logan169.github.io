@@ -1,6 +1,6 @@
 ---
 title: 'Graph Based Wave Function Collapse (WFC)' 
-tags: Algorithm Procedural
+tags: Algorithm Procedural Houdini
 ---
 
 Developed by Maxim Gumin, WFC has been utilized in various applications, including image synthesis, level design, and texture generation. Inspired by quantum mechanics, the algorithm operates by collapsing a "wave function" of possible configurations into a single, consistent result, much like how the quantum state of particles is observed in physics. The core idea of WFC is to generate patterns, textures, or levels that adhere to local constraints (like adjacency rules) while maintaining global consistency across the entire structure as shown below from a gif picked from the [WFC original repository](https://github.com/mxgmn/WaveFunctionCollapse/tree/master). It is a fascinating mix of randomness and determinism, allowing for the creation of complex structures that appear both organic and highly structured.
