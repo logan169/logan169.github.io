@@ -61,12 +61,18 @@ Here is how our cop2net node looks like, showing the different stages of impleme
     <div class="item__header">
       <h5>AI Generated Images From Stable Diffusion</h5>
     </div>
+    <div class="item__content">
+    <div class="item__description">
+      <p>
+      From the captured image in Houdini's camera, I generated a few door images to be projected onto the mesh. Some of the results show more significant deviations in shape compared to the original door mesh. By tweaking parameters that control the model's flexibility to deviate from the prompt and the building mesh image, I was able to fine-tune the results. This customization allows for variations in how the AI-generated imagery aligns with both the scene and the desired design concept.</p>
+    </div>
+  </div>
   </div>
 </div>
 
 ## Testing Everything
 
-To finish, we set the gobo light’s “Projection Map” parameter to dynamically retrieve the image directly from the cop2net1 node using the following expression “op:/obj/sd/cop2net1/OUT/”. This allows us to procedurally feed the camera gobo map input without needing to bake anything.
+To finalize, we configure the gobo light’s “Projection Map” parameter to dynamically pull the image directly from the cop2net1 node using the expression “op:/obj/sd/cop2net1/OUT/”. This setup enables a procedural flow of the camera gobo map input, removing the need to bake anything.
 
 <div class="item">
   <div class="item__image">
@@ -94,7 +100,7 @@ For refinement, upgrading to Stable Diffusion 3 (compared to the Stable Diffusio
 
 In a real-world application, achieving this setup would require integrating a camera mounted on a projector, along with a companion tablet or mobile app to facilitate interaction. However, exploring the details of such an implementation will be the focus of a potential future article.
 
-# AI Generated Outputs
+# Results
 
 <div class="item">
   <div class="item__image">
@@ -102,10 +108,10 @@ In a real-world application, achieving this setup would require integrating a ca
   </div>
   <div class="item__content">
     <div class="item__header">
-      <h5>Prompt</h5>
+      <h5>Viewport Preview</h5>
     </div>
     <div class="item__description">
-      <p>"An intricately detailed Roman-style door, set in a classical stone archway flanked by columns adorned with Roman carvings. The surrounding architecture is inspired by ancient Roman temples, with ornate stonework and decorative reliefs."</p>
+      <p>Prompt: "An intricately detailed Roman-style door, set in a classical stone archway flanked by columns adorned with Roman carvings. The surrounding architecture is inspired by ancient Roman temples, with ornate stonework and decorative reliefs."</p>
     </div>
   </div>
 </div>
@@ -117,10 +123,10 @@ In a real-world application, achieving this setup would require integrating a ca
   </div>
   <div class="item__content">
     <div class="item__header">
-      <h5>Prompt</h5>
+      <h5>Viewport Preview</h5>
     </div>
     <div class="item__description">
-      <p>“luxurious and vibrant tropical forest plants with vivid colored flowers, very detailed and lots of red, orange, greens”</p>
+      <p>Prompt: “luxurious and vibrant tropical forest plants with vivid colored flowers, very detailed and lots of red, orange, greens”</p>
     </div>
   </div>
 </div>
@@ -133,7 +139,7 @@ In a real-world application, achieving this setup would require integrating a ca
   </div>
   <div class="item__content">
     <div class="item__header">
-      <h5>Render</h5>
+      <h5>Mantra Render</h5>
     </div>
   </div>
 </div>
