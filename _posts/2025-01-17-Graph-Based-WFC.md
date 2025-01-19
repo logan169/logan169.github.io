@@ -30,16 +30,21 @@ Graph-based Wave Function Collapse (GBWFC), first introduced in scientific liter
 
 # WFC In Houdini
 
-The ["WFC Dungeon Generator"](https://www.sidefx.com/tutorials/wfc-dungeon-generator/) tutorial by SideFX, authored by Simon Verstraete, demonstrates how to use an implementation of the Wave Function Collapse (WFC) algorithm within Houdini using the SideFX Labs to generate procedural dungeon layouts. The process involves using Wang Tiles, a method for tiling patterns, to create a grid-based layout. The output is a diverse dungeon design that can be exported to Unreal Engine or used directly in houdini, complete with walls, rooms, and decorative elements, providing a flexible framework for game level generation. 
-If this tool aligns with your needs, it may be all you require, and I highly recommend giving it a try, as it is a well-designed solution. However, if computational costs become a concern, you may want to consider an alternative implementation that supports backtracking. The HDA source code currently restarts the process from the beginning when it encounters an unsolvable state, and this is based on my reading of the code a couple of years ago—there may have been updates or changes since then.
+In Houdini, an already existing [SideFX Labs WFC implementation](https://www.sidefx.com/tutorials/wfc-dungeon-generator/) relies on Houdini node-based approach to procedurally generate environments like dungeons. By utilizing Wang tiles, it ensures that adjacency constraints are satisfied, providing a flexible and powerful solution to create complex game level design.
 
-Additionally, if your constraints involve linking tiles that aren’t adjacent on the grid, or if your setup isn't "pixel" based (e.g., Voronoi or hexagonal tiles), the SideFX Labs implementation may not be suitable for your purposes, and you might need to develop your own WFC solution.
+If this tool aligns with your needs, it may be all you require, and I highly recommend giving it a try, as it is a well-designed solution. However, if computational costs become a concern, you may want to consider an alternative implementation that will also supports backtracking (which isn't the case of this tool from my last read of its source code).
 
-Since I work in the cinema industry with large, complex 3D environments, we are often pushing the boundaries of what the current Wang tiles method can offer in the SideFX Labs approach. However, I still dream of utilizing this technology to create vast, immersive environments.
+Additionally, if your constraints involve non square tiles (e.g., Voronoi or hexagonal tiles) or tiles that aren’t adjacent on the grid, the SideFX Labs implementation will not be suitable for your purposes, and you might need to develop your own WFC solution.
 
-For example, a Nested Recursive Multi-Level Graph-Based Wave Function Collapse (WFC) approach could be particularly effective for generating complex structures like cities. The process begins by running a WFC algorithm to assign neighborhood types to each grid cell. Once neighborhoods are defined, each cell is treated as a subgrid, and a new WFC process is initiated to assign house or block types to the cells within each subgrid. This recursive process could continue at multiple levels—populating building interiors, adding furniture, and placing objects on furniture—while preserving the constraints at both the higher neighborhood level and the local room or object level. This multi-level approach ensures the generated city remains coherent, with local details aligning with the broader global structure, offering a scalable and flexible framework for procedural content generation.
+# Motivations
+
+Since I work in the cinema industry with large, complex 3D environments, we are often pushing the boundaries of what the current Wang tiles method can offer with the SideFX Labs approach. However, I still dream of utilizing this technology to create vast, immersive environments.
+
+For example, a Nested Recursive Multi-Level GBWFC approach could be particularly effective for generating complex structures like cities. The process begins by running a WFC algorithm to assign neighborhood types to each grid cell. Once neighborhoods are defined, each cell is treated as a subgrid, and a new WFC process is initiated to assign house or block types to the cells within each subgrid. This recursive process could continue at multiple levels—populating building interiors, adding furniture, and placing objects on furniture—while preserving the constraints at both the higher neighborhood level and the local room or object level. This multi-level approach ensures the generated city remains coherent, with local details aligning with the broader global structure, offering a scalable and flexible framework for procedural content generation.
 
 # GBWFC Implementation
+
+If you've made it this far, it's time to dive into implementing our GBWFC. The objective was to design the core components to be as generic as possible, so they could be easily extended with additional attributes specific to the needs of different generators (e.g., generating Sudoku grids). This approach ensures flexibility and adaptability for a range of applications while maintaining the core functionality of the algorithm.
 
 ## Imports
 
@@ -908,6 +913,8 @@ If you were to run this, you should be ending with something that looks like thi
 ![wfc output](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/wfc/wfc5.png?raw=true)
 
 # GBWFC In Houdini
+
+Now that the GBWFC implementation is functional, I've created a Houdini setup that allows the Sudoku grid to be populated from our implementation procedurally. This setup makes the process more visual, providing a real-time view of the grid in the viewport. It not only enhances the user experience but also helps in identifying issues or bugs more easily by allowing for immediate feedback and observation of how the grid evolves.
 
 ![wfc setup create grid](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/wfc/wfc1.png?raw=true)
 
