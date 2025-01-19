@@ -2,7 +2,7 @@
 title: 'Graph Based Wave Function Collapse (WFC)' 
 tags: Algorithm Procedural Houdini
 ---
-In this article, we will delve into implementing a Graph-Based Wave Function Collapse (GBWFC) algorithm, explaining its core principles, highlighting its advantages over traditional methods, and showcasing its application through practical examples.
+In this article, we will delve into implementing a Graph-Based Wave Function Collapse (GBWFC) algorithm, explaining its core principles, highlighting its advantages over traditional methods, and showcasing its application through practical examples. Graph-based Wave Function Collapse (GBWFC), first introduced in scientific literature in 2019. Since then, it has been gaining attention with more scientific articles and studies being published exploring its ability to overcome the limitations of traditional grid-based WFC methods.
 
 The GBWFC is a variation of the Wave Function (WFC) Collapse algorithm developed by Maxim Gumin, WFC has been used in various applications, including image synthesis, level design, and texture generation. Inspired by quantum mechanics, the algorithm operates by collapsing a "wave function" of possible configurations into a single, consistent result, much like how the quantum state of particles is observed in physics. The core idea of WFC is to generate patterns, textures, or levels that adhere to local constraints (like adjacency rules) while maintaining global consistency across the entire structure as shown below from a gif picked from the [WFC original repository](https://github.com/mxgmn/WaveFunctionCollapse/tree/master). It is a fascinating mix of randomness and determinism, allowing for the creation of complex structures that appear both organic and highly structured.
 
@@ -26,8 +26,6 @@ While the Wave Function Collapse (WFC) algorithm is powerful, it has notable lim
 Another significant limitation of WFC is its computational cost. The algorithm involves frequent recalculation of possible states for each cell in the grid, particularly after every collapse, to ensure the constraints are maintained. As the size of the grid and the number of potential states increase, the computational demand grows exponentially. This makes WFC especially resource-intensive for larger grids or complex constraint sets, potentially slowing down generation times or requiring optimizations to remain practical for real-time applications. 
 
 # Graph Based WFC
-
-Graph-based Wave Function Collapse (GBWFC), first introduced in scientific literature in 2019, has been gaining attention for its ability to address the limitations of traditional grid-based WFC. 
 
 By leveraging graph structures, GBWFC improves constraint management, scalability, and computational efficiency. It minimizes redundancy and enhances global coherence, making it more effective for larger, more complex systems. 
 
