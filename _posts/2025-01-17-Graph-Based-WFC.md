@@ -24,21 +24,9 @@ While the Wave Function Collapse (WFC) algorithm is powerful, it has notable lim
 
 Another significant limitation of WFC is its computational cost. The algorithm involves frequent recalculation of possible states for each cell in the grid, particularly after every collapse, to ensure the constraints are maintained. As the size of the grid and the number of potential states increase, the computational demand grows exponentially. This makes WFC especially resource-intensive for larger grids or complex constraint sets, potentially slowing down generation times or requiring optimizations to remain practical for real-time applications. 
 
-# GBWFC Advantages
+# Graph Based WFC
 
-Today, we will demonstrate how to address the limitations of traditional Wave Function Collapse (WFC) by implementing a graph-based WFC (GBWFC) algorithm. This approach aims to overcome the common drawbacks of the traditional method, including computational inefficiency and issues with global coherence, by utilizing graph structures to improve constraint management, enhance scalability, and minimize the reliance on brute-force resolution. As a simple test case, we will apply our GBWFC implementation to generate Sudoku grids, which feature non-neighborhood constraints (such as rows, columns, and subgrids)—a challenge that would be difficult to address using the original WFC method.
-
-The first mentions of graph-based Wave Function Collapse (GBWFC) can be traced back to 2019 in scientific literature, as seen [here](https://scholar.google.ca/scholar?q=2019+graph+based+wfc&hl=fr&as_sdt=0&as_vis=1&oi=scholart). Since then, several articles have been published discussing the advantages of using GBWFC over the original pixel-based WFC implementation.
- 
-This algorithm offers the following improvements over the traditional grid-based approach, directly addressing the limitations previously discussed:
-
-## Global Coherence 
-
-By using a graph-based representation, relationships between elements are explicitly defined in terms of nodes (tiles or states) and edges (constraints between tiles). This allows for better propagation of global constraints throughout the graph, ensuring that changes in one part of the structure have an appropriate impact on other related areas. Graphs also make it easier to identify and enforce long-range dependencies that contribute to global coherence.
-
-## Tile Redundancy
-
-A graph structure can accommodate more sophisticated constraints tailored to specific relationships between nodes, enabling finer-grained control over patterns at a higher area or scale level compared to the original pixel-based WFC. By focusing on broader structural relationships rather than individual grid cells, the graph-based approach reduces the likelihood of redundancy by ensuring that constraints are applied more cohesively across larger sections and even distant portions of the generated output. This allows for the creation of globally consistent structures while minimizing repetitive patterns.
+Graph-based Wave Function Collapse (GBWFC), first introduced in scientific literature in 2019, has been gaining attention for its ability to address the limitations of traditional grid-based WFC. By leveraging graph structures, GBWFC improves constraint management, scalability, and computational efficiency. It minimizes redundancy and enhances global coherence, making it more effective for larger, more complex systems. In this article, we'll demonstrate how to implement GBWFC, using Sudoku grids as a test case, which feature non-neighborhood constraints that the original WFC method struggles to handle.
 
 # WFC In Houdini
 
