@@ -22,7 +22,7 @@ For this proof of concept, we've identified three zones of interest on the 3D mo
 
 ![projection mapping houdini setup 1](https://miro.medium.com/v2/resize:fit:4202/format:webp/1*HmTh8uXhkvN265GA_D-TbQ.png)
 
-Now, we return to Houdini root at the “/obj” level and create a camera and a point light, used as a gobo light to project our image over our mesh. We established the camera resolution at 512x512, which serves as the maximum resolution input image for the stable diffusion model we will be using. Once we are done setting up our setup, our “/obj” level looks like this.
+Now, we return to Houdini root at the “/obj” level and create a camera and a point light, used as a gobo light to project our image over our mesh. We established the camera resolution at 512x512, which serves as the maximum resolution input image for the stable diffusion 1.5 model we will be using. Once we are done setting up our setup, our “/obj” level looks like this.
 
 ![projection mapping houdini setup 3](https://miro.medium.com/v2/resize:fit:2800/format:webp/0*Tp4-KZp6GgBTRG-2)
 
@@ -43,9 +43,22 @@ Here is how our cop2net node looks like, showing the different stages of impleme
 ![projection mapping houdini setup 6](https://miro.medium.com/v2/resize:fit:4160/format:webp/1*PqkIiF5wwTqI51lZmYrJUQ.png)
 
 
-Next, we set the gobo light’s “Projection Map” parameter to dynamically retrieve the image directly from the cop2net1 node using the following expression “op:/obj/sd/cop2net1/OUT/”.
+<div class="item">
+  <div class="item__image">
+    <img class="image image--lg" src="https://miro.medium.com/v2/resize:fit:198/format:webp/0*d2UsD3q3Z4WnbG1a"/>
+  </div>
+  <div class="item__content">
+    <div class="item__description">
+      <p>Next, we set the gobo light’s “Projection Map” parameter to dynamically retrieve the image directly from the cop2net1 node using the following expression “op:/obj/sd/cop2net1/OUT/”.</p>
+    </div>
+  </div>
+</div>
 
-![projection mapping houdini setup 8](https://miro.medium.com/v2/resize:fit:198/format:webp/0*d2UsD3q3Z4WnbG1a)
+
+
+
+
+
 
 We also enable the viewport’s high-quality lighting option (the bulb button on the left) and select “Show All Objects” from the top viewport button options. This ensures we can accurately preview the scene’s lighting and overall appearance in real-time feedback.
 
@@ -53,46 +66,39 @@ Here is an example of a new door style when applying the code and the different 
 ![projection mapping houdini setup 9](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*zyQiB9l3c9mYTrC7mwP9vQ.png)
 
 
-Of course, it is a woprkflow proof of concept and the quality could be enhanced with better lighting, different testing with the parameters, we could use a new version of the stable diffusion model. As always, there is a lot of space for improvement in machine learning projects and that is the beauty of it! At the time of doing it, this project have been using stable diffusion 1, while at the time of writting this blog stable diffusion 3 went out winter 2024.
-
-Here are some viewpoer screenshot output example from the following prompts:
-
-
-<div class="item">
-  <div class="item__image">
-    <img class="image image--lg" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/ai_projection_mapping_poc/roman_door_previz.gif?raw=true"/>
-  </div>
-  <div class="item__content">
-    <div class="item__header">
-      <h5>"An intricately detailed Roman-style door, set in a classical stone archway flanked by columns adorned with Roman carvings. The surrounding architecture is inspired by ancient Roman temples, with ornate stonework and decorative reliefs."</h5>
-    </div>
-    <div class="item__description">
-      <p>...</p>
-    </div>
-  </div>
-</div>
-
-
-<div class="item">
-  <div class="item__image">
-    <img class="image image--lg" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/ai_projection_mapping_poc/roman_door_previz.gif?raw=true"/>
-  </div>
-  <div class="item__content">
-    <div class="item__header">
-      <h5>“luxurious and vibrant tropical forest plants with vivid colored flowers, very detailed and lots of red, orange, greens”</h5>
-    </div>
-    <div class="item__description">
-      <p>...</p>
-    </div>
-  </div>
-</div>
-
-![output ai projection mapping with romans doors ](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/ai_projection_mapping_poc/roman_door_previz.gif?raw=true)
-
-- “luxurious and vibrant tropical forest plants with vivid colored flowers, very detailed and lots of red, orange, greens”
-
-![output ai projection mapping with flowers ](https://miro.medium.com/v2/resize:fit:1024/format:webp/1*Mawsg9kMN-AAeG2OEZPeQw.gif)
-
+Of course, it is a woprkflow proof of concept and the quality could be enhanced with better lighting, different testing with the parameters, we could use a new version of the stable diffusion model. As always, there is a lot of space for improvement in machine learning projects and that is the beauty of it! At the time of doing it, this project have been using stable diffusion 1.5, while at the time of writting this blog stable diffusion 3 went out winter 2024. 
 
 Consider the excitement of a light festival and envision the endless possibilities if participants could directly engage with various elements of the lighting spectacle. The interactivity would provide so much excitement. The potential for innovation knows no bounds; all it takes is a single prompt to unleash boundless creativity.
+
+
+<div class="item">
+  <div class="item__image">
+    <img class="image image--lg" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/ai_projection_mapping_poc/roman_door_previz.gif?raw=true"/>
+  </div>
+  <div class="item__content">
+    <div class="item__header">
+      <h5>Prompt</h5>
+    </div>
+    <div class="item__description">
+      <p>"An intricately detailed Roman-style door, set in a classical stone archway flanked by columns adorned with Roman carvings. The surrounding architecture is inspired by ancient Roman temples, with ornate stonework and decorative reliefs."</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="item">
+  <div class="item__image">
+    <img class="image image--lg" src="https://miro.medium.com/v2/resize:fit:1024/format:webp/1*Mawsg9kMN-AAeG2OEZPeQw.gif"/>
+  </div>
+  <div class="item__content">
+    <div class="item__header">
+      <h5>Prompt</h5>
+    </div>
+    <div class="item__description">
+      <p>“luxurious and vibrant tropical forest plants with vivid colored flowers, very detailed and lots of red, orange, greens”</p>
+    </div>
+  </div>
+</div>
+
+
 
