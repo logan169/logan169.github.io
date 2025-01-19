@@ -294,7 +294,6 @@ class WFCTileSelector:
 ### GBWFC StateResolver
 
 ```python
-import random
 
 class WFCStateResolver:
     """
