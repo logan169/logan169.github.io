@@ -28,7 +28,9 @@ Today, we will demonstrate how to address these limitations by implementing a gr
 
 # Graph Based WFC Advantages
 
-A graph-based Wave Function Collapse (WFC) algorithm offers the following improvements over the traditional grid-based implementation, directly addressing the previously discussed limitations
+The first mentions of graph-based Wave Function Collapse (WFC) can be traced back to 2019 in scientific literature, as seen [here](https://scholar.google.ca/scholar?q=2019+graph+based+wfc&hl=fr&as_sdt=0&as_vis=1&oi=scholart). Since then, several articles have been published discussing the advantages of using graph-based WFC over the original pixel-based implementation.
+ 
+This algorithm offers the following improvements over the traditional grid-based approach, directly addressing the limitations previously discussed:
 
 ## Global Coherence 
 
@@ -41,8 +43,13 @@ A graph structure can accommodate more sophisticated constraints tailored to spe
 # WFC In Houdini
 
 The ["WFC Dungeon Generator"](https://www.sidefx.com/tutorials/wfc-dungeon-generator/) tutorial by SideFX, authored by Simon Verstraete, demonstrates how to use an implementation of the Wave Function Collapse (WFC) algorithm within Houdini using the SideFX Labs to generate procedural dungeon layouts. The process involves using Wang Tiles, a method for tiling patterns, to create a grid-based layout. The output is a diverse dungeon design that can be exported to Unreal Engine or used directly in houdini, complete with walls, rooms, and decorative elements, providing a flexible framework for game level generation. 
+If this tool aligns with your needs, it may be all you require, and I highly recommend giving it a try, as it is a well-designed solution. However, if computational costs become a concern, you may want to consider an alternative implementation that supports backtracking. The HDA source code currently restarts the process from the beginning when it encounters an unsolvable state, and this is based on my reading of the code a couple of years ago—there may have been updates or changes since then.
 
-If this matches the scope of your needs, this tool might be all you require, and I encourage you to give it a try, as it's a very well-designed solution. However, if computational cost becomes a concern, you may want to explore an alternative implementation that supports backtracking, as the HDA source code only restarts the process from the beginning when it encounters an unsolvable state. Please note that this observation is based on my reading of the source code a couple of years ago, so there could have been updates or changes since then. Additionally, if your constraints involve linking tiles that aren't adjacent on the grid or if your setup is "pixel" based, this implementation may not be suitable for your need and you'll need to implement your own that might be similar to the one I'm gonna be explaining here.
+Additionally, if your constraints involve linking tiles that aren’t adjacent on the grid, or if your setup isn't "pixel" based (e.g., Voronoi or hexagonal tiles), the SideFX Labs implementation may not be suitable for your purposes, and you might need to develop your own WFC solution.
+
+Since I work in the cinema industry with large, complex 3D environments, we are often pushing the boundaries of what the current Wang tiles method can offer in the SideFX Labs approach. However, I still dream of utilizing this technology to create vast, immersive environments.
+
+For example, a Nested Recursive Multi-Level Graph-Based Wave Function Collapse (WFC) approach could be particularly effective for generating complex structures like cities. The process begins by running a WFC algorithm to assign neighborhood types to each grid cell. Once neighborhoods are defined, each cell is treated as a subgrid, and a new WFC process is initiated to assign house or block types to the cells within each subgrid. This recursive process could continue at multiple levels—populating building interiors, adding furniture, and placing objects on furniture—while preserving the constraints at both the higher neighborhood level and the local room or object level. This multi-level approach ensures the generated city remains coherent, with local details aligning with the broader global structure, offering a scalable and flexible framework for procedural content generation.
 
 # Graph Based WFC Implementation
 
@@ -65,7 +72,7 @@ At this stage, we can begin implementing the core components of the WFC algorith
 - Tile: Represents the individual grid tiles, store edges and states information.
 - Edge: Enables us to abstract the input shape, allowing support for any shape, not just grid-based inputs. It also facilitates the creation of more complex pattern relationships, like those seen in Sudoku.
 
-### State:
+### State
 
 ```python
 class State(object):
@@ -101,7 +108,7 @@ class State(object):
 
 ```
 
-### Tile:
+### Tile
 
 ```python
 class Tile:
@@ -173,7 +180,7 @@ class Tile:
         """
         return self.repr_str
 ```
-### Edge:
+### Edge
 
 ```python
 class Edge:
@@ -242,7 +249,7 @@ By designing our code this way, we can easily add new methods in the future to e
 
 At the beggining of each epochs, we use one of the WFCTileSelector class methods to select the next tile to collapse. We then, call one of the WFCStateResolver class methods to select a state and assign it to the current evaluated tile. Since all tiles are connected together by signal with the Observer design pattern, updating one tile'state will trigger a revaluation of neighboorhood 
 
-### WFCTileSelector:
+### WFCTileSelector
 
 In the WFCTileSelector class, we will implement a base method responsible for selecting the next tile to process. By default, this method will choose the tile with the lowest entropy in the model. In other words, at the start of a new WFC epoch or cycle, it identifies the tile with the fewest potential states it can collapse into. This approach is crucial to minimizing the likelihood of reaching an unsolvable model state. 
 
@@ -288,7 +295,7 @@ class WFCTileSelector:
 
 ```
 
-### WFCStateResolver:
+### WFCStateResolver
 
 ```python
 import random
@@ -327,7 +334,7 @@ class WFCStateResolver:
         return rnd_state
 
 ```
-### WFCNeighborhoodCollapser:
+### WFCNeighborhoodCollapser
 
 ```python
 class WFCNeighborhoodCollapser:
@@ -376,7 +383,7 @@ class WFCNeighborhoodCollapser:
         return new_destination_tile_states
 ```
 
-### WFCLogger:
+### WFCLogger
 
 ```python
 
@@ -428,7 +435,7 @@ To integrate all components, we will now implement the following classes:
 - WFCModel: Responsible for managing the runtime state of the WFC algorithm. It provides mechanisms to save and restore the model's state, facilitating backtracking when tiles fail to converge.
 - WFC: The core engine of the WFC algorithm, controlling its initialization and execution.
 
-### WFCModel:
+### WFCModel
 
 ```python
 
@@ -533,7 +540,7 @@ class WFCModel:
         self.has_converged = False
 ```
 
-### WFC:
+### WFC
 ```python
 class WFC:
     """
@@ -659,7 +666,7 @@ class WFC:
             self.wfc_log_function(self)
 
 ```
-By reaching this point, you should now have all the essential components needed to operate your WFC. In the following section, we will explore how to develop case-specific methods to interact with the code we've already written.
+By reaching this point, you should now have all the essential components needed to operate your graph based WFC. In the following section, we will explore how to develop case-specific methods to interact with the code we've already written.
 
 ## Sudoku WFC Parts:
 
@@ -921,22 +928,5 @@ If you were to run this, you should be ending with something that looks like thi
 ![wfc setup populate integer](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/wfc/wfc.png?raw=true)
 
 
-
-
 # Final Thoughts
 
-
-
-
-
-In the previous block, I've 
-The WFC algorithm provides more control over the output generation than generative AI workflows. Given
-
-
-
-One possible solution to address these issues could be to implement nested, sequential WFC processes across multiple grid levels. Specifically, for a city, you would start by running a WFC to assign a neighborhood type to each cell. Then, within each neighborhood, you would create a new grid for the cell and assign house or block types. This recursive WFC process could continue, running repeatedly to populate the interiors of buildings, add furniture, and even place objects on the furniture to enhance realism.
-
-One potential solution to address this would be to adapt the WFC algorithm to use a graph-based model instead of a pixel-based one. This would allow each cell or node to be connected to more cells or nodes beyond just the ones surrounding it. Today, we’ll implement a graph-based model and use it to generate Sudoku grids. This serves as a great example, as each cell must also be unique within its subgrid, requiring the algorithm to consider non-adjacent cells as well. 
-
-
-## Code Implementation
