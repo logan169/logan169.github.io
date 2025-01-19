@@ -17,9 +17,70 @@ First things first, let’s found a 3D model worth of our inspiration. On my sid
   </div>
 </div>
 
+Now that we’ve downloaded and imported our model into Houdini, we will apply a series of transformations to align it with the viewport grid. We then split the mesh into Houdini groups, which we’ll later use to populate a custom attribute named “building_parts”. This attribute will prove useful shortly when we delve into the generative AI step, as it will be used to create masks I will use to merge all our generated AI layers using compositing.
+
+For this proof of concept, we’ve limited ourselves to three zones of interest: the main door group, encompassing all areas within the arch; the sidewalls, consisting of the two side columns and the main wall; essentially everything else. At that point, our setup that handles the mesh looks like the one below.
+
+
+![projection mapping houdini setup 1](https://miro.medium.com/v2/resize:fit:4202/format:webp/1*HmTh8uXhkvN265GA_D-TbQ.png)
+
+
+Now, we return to Houdini root at the “/obj” level and create a camera and a point light, which we’ll utilize as a gobo light to project our image. 
+
+--------------------------
+TODO add picture from 1st article
+--------
+Additionally, we set up an environment light. Finally, as demonstrated in our previous article, we import our image-generative AI workflow. At that point, our “/obj” level looks like this.
+
+![projection mapping houdini setup 3](https://miro.medium.com/v2/resize:fit:2800/format:webp/0*Tp4-KZp6GgBTRG-2)
+
+We established the camera resolution at 512x512, which serves as the maximum resolution input image for the stable diffusion model.
+
+As illustrated in the preceding screenshot, a critical procedure involved configuring the camera settings to attain consistent viewpoints between the camera and the gobo-equipped point light. This alignment is essential because we want the image projected from the gobo to match what has been captured by the camera.
+
+Now, let’s explore the generative AI step further. Within our “/obj/sd” node, we’ll create three separate graphs, each tasked with generating an image for a specific part of the segmented mesh using the custom attribute “building_parts” we established earlier. This segmentation enables us to tailor the generative AI process to each distinct area of interest in the scene, ensuring precise and targeted image generation.
+
+This means we use the same design to build three different prompt and model architectures for the doors or arch, the mainwall, and the sidewalls. Below is the design explained for the door area.
+
+![projection mapping houdini setup 4](https://miro.medium.com/v2/resize:fit:2730/format:webp/1*zPZ9SnvJ2_t--jM8EuLvcw.png)
+
+We connect all of those branches back using a merge node and connect this later one to a Python SOP node. This Python node will refresh the loading of the COP nodes, which will load the generated AI image residing within the “cop2net” node below. Once each branch has finished generating an image, this refresh triggers an update in the compositing process, consequently updating the projected image at the gobo level. This linkage is dynamic, as it’s directly associated with our “cop2net” node's final output node.
+
+![projection mapping houdini setup 5](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*xnIdqhz-r6J_tTSaGxJ-Zg.png)
+
+![projection mapping houdini setup 6](https://miro.medium.com/v2/resize:fit:4160/format:webp/1*PqkIiF5wwTqI51lZmYrJUQ.png)
+
+Above is the design for the cop2net node, showing the different stages of implementation of the stable diffusion images and the masks from the attributes into composite images. This leads to the final output image.
+
+Next, we set the gobo light’s “Projection Map” parameter to dynamically retrieve the image directly from the cop2net1 node using the following expression “op:/obj/sd/cop2net1/OUT/”.
+
+![projection mapping houdini setup 8](https://miro.medium.com/v2/resize:fit:198/format:webp/0*d2UsD3q3Z4WnbG1a)
+
+We also enable the viewport’s high-quality lighting option (the bulb button on the left) and select “Show All Objects” from the top viewport button options. This ensures we can accurately preview the scene’s lighting and overall appearance in real-time feedback.
+
+Here is an example of a new door style when applying the code and the different steps of scene view options:
+![projection mapping houdini setup 9](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*zyQiB9l3c9mYTrC7mwP9vQ.png)
+
+
+Of course, it is a proof of concept and the quality could be enhanced with better lighting, different testing with the parameters, we could use a new version of the stable diffusion model. As always, there is a lot of space for improvement in machine learning projects and that is the beauty of it!
+
+Consider the excitement of a light festival and envision the endless possibilities if participants could directly engage with various elements of the lighting spectacle. The interactivity would provide so much excitement. The potential for innovation knows no bounds; all it takes is a single prompt to unleash boundless creativity.
 
 
 ----------------------------------------------------------------
+
+
+![projection mapping houdini setup 4]()
+![projection mapping houdini setup 4]()
+![projection mapping houdini setup 4]()
+![projection mapping houdini setup 4]()
+![projection mapping houdini setup 4]()
+![projection mapping houdini setup 4]()
+![projection mapping houdini setup 4]()
+
+
+![projection mapping houdini setup 4]()
+
 This article shares some research and development done on procedural world generation based on plate tectonic simulations.
 
 
