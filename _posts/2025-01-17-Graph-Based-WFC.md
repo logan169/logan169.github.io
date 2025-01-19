@@ -954,4 +954,4 @@ Additionally, instead of randomly selecting a state to collapse a tile, we could
 
 Finally, custom edge types could be implemented to address various constraint types effectively. For instance, in a Nested Recursive Multi-Level GBWFC approach (discussed in the motivation section), each tile in a subgrid could be linked to its parent converged tile. Metadata from the parent tile—such as biome, neighborhood type, house type, or room type—would guide the selection of assets eligible for instantiation within the subgrid as a new GBWFC runs at that level. This structure ensures context-sensitive asset placement and enforces coherence across hierarchical levels of generation.
 
-I hope that this introduction will get people in the cinema industry a bit closer to integrate this algorithm in their daily tasks.
+I hope that this introduction will get people in the cinema industry a bit closer to integrate this amazing algorithm in their daily tasks.
