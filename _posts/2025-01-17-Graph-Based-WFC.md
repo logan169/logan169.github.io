@@ -2,8 +2,9 @@
 title: 'Graph Based Wave Function Collapse (WFC)' 
 tags: Algorithm Procedural Houdini
 ---
+In this article, we will delve into implementing a Graph-Based Wave Function Collapse (GBWFC) algorithm, explaining its core principles, highlighting its advantages over traditional methods, and showcasing its application through practical examples.
 
-Developed by Maxim Gumin, WFC has been utilized in various applications, including image synthesis, level design, and texture generation. Inspired by quantum mechanics, the algorithm operates by collapsing a "wave function" of possible configurations into a single, consistent result, much like how the quantum state of particles is observed in physics. The core idea of WFC is to generate patterns, textures, or levels that adhere to local constraints (like adjacency rules) while maintaining global consistency across the entire structure as shown below from a gif picked from the [WFC original repository](https://github.com/mxgmn/WaveFunctionCollapse/tree/master). It is a fascinating mix of randomness and determinism, allowing for the creation of complex structures that appear both organic and highly structured.
+The GBWFC is a variation of the Wave Function (WFC) Collapse algorithm developed by Maxim Gumin, WFC has been used in various applications, including image synthesis, level design, and texture generation. Inspired by quantum mechanics, the algorithm operates by collapsing a "wave function" of possible configurations into a single, consistent result, much like how the quantum state of particles is observed in physics. The core idea of WFC is to generate patterns, textures, or levels that adhere to local constraints (like adjacency rules) while maintaining global consistency across the entire structure as shown below from a gif picked from the [WFC original repository](https://github.com/mxgmn/WaveFunctionCollapse/tree/master). It is a fascinating mix of randomness and determinism, allowing for the creation of complex structures that appear both organic and highly structured.
 
 <div class="grid">
   <div class="cell cell--2"></div>
@@ -26,7 +27,11 @@ Another significant limitation of WFC is its computational cost. The algorithm i
 
 # Graph Based WFC
 
-Graph-based Wave Function Collapse (GBWFC), first introduced in scientific literature in 2019, has been gaining attention for its ability to address the limitations of traditional grid-based WFC. By leveraging graph structures, GBWFC improves constraint management, scalability, and computational efficiency. It minimizes redundancy and enhances global coherence, making it more effective for larger, more complex systems. In this article, we'll demonstrate how to implement GBWFC, using Sudoku grids as a test case, which feature non-neighborhood constraints that the original WFC method struggles to handle.
+Graph-based Wave Function Collapse (GBWFC), first introduced in scientific literature in 2019, has been gaining attention for its ability to address the limitations of traditional grid-based WFC. 
+
+By leveraging graph structures, GBWFC improves constraint management, scalability, and computational efficiency. It minimizes redundancy and enhances global coherence, making it more effective for larger, more complex systems. 
+
+In this article, we'll demonstrate how to implement GBWFC, and apply it to an example which feature non-neighborhood constraints that the original WFC method struggles to handle.
 
 # WFC In Houdini
 
@@ -44,7 +49,7 @@ For example, a Nested Recursive Multi-Level GBWFC approach could be particularly
 
 # GBWFC Implementation
 
-If you've made it this far, it's time to dive into implementing our GBWFC. The objective was to design the core components to be as generic as possible, so they could be easily extended with additional attributes specific to the needs of different generators (e.g., generating Sudoku grids). This approach ensures flexibility and adaptability for a range of applications while maintaining the core functionality of the algorithm.
+If you've made it this far, it's time to dive into implementing our GBWFC. The objective was to design the core components to be as generic as possible, so they could be easily extended with additional attributes specific to the needs of different generators (e.g., generating Sudoku/voronoi grids). This approach ensures flexibility and adaptability for a range of applications while maintaining the core functionality of the algorithm.
 
 ## Imports
 
@@ -63,7 +68,7 @@ At this stage, we can begin implementing the core components of the WFC algorith
 
 - State: Holds all possible configurations that can be assigned to tiles.
 - Tile: Represents the individual grid tiles, store edges and states information.
-- Edge: Enables us to abstract the input shape, allowing support for any shape, not just grid-based inputs. It also facilitates the creation of more complex pattern relationships, like those seen in Sudoku.
+- Edge: Enables us to abstract the input shape, allowing support for any shape, not just grid-based inputs. It also facilitates the creation of more complex pattern relationships.
 
 ### State
 
@@ -228,7 +233,7 @@ class Edge:
         return ' | '.join(self.names)
 ```
 
-## WFC Logic Components
+## GBWFC Logic Components
 
 
 Now that we have implemented the core WFC components, we need to create a few additional classes:
@@ -238,11 +243,11 @@ Now that we have implemented the core WFC components, we need to create a few ad
 - WFCNeighborhoodCollapser: Manages the updating of connected tile states based on custom rules.
 - WFCLogger: Provides methods for logging custom information during each epoch of the WFC process.
 
-By designing our code this way, we can easily add new methods in the future to each class to provide extra flexibility and handle different scenarios beyond generating Sudoku grids, all while maintaining a consistent structure.
+By designing our code this way, we can easily add new methods in the future to each class to provide extra flexibility and handle different scenarios, all while maintaining a consistent structure.
 
 At the beggining of each epochs, we use one of the WFCTileSelector class methods to select the next tile to collapse. We then, call one of the WFCStateResolver class methods to select a state and assign it to the current evaluated tile. Since all tiles are connected together by signal with the Observer design pattern, updating one tile'state will trigger a revaluation of neighboorhood 
 
-### WFCTileSelector
+### GBWFC TileSelector
 
 In the WFCTileSelector class, we will implement a base method responsible for selecting the next tile to process. By default, this method will choose the tile with the lowest entropy in the model. In other words, at the start of a new WFC epoch or cycle, it identifies the tile with the fewest potential states it can collapse into. This approach is crucial to minimizing the likelihood of reaching an unsolvable model state. 
 
@@ -288,7 +293,7 @@ class WFCTileSelector:
 
 ```
 
-### WFCStateResolver
+### GBWFC StateResolver
 
 ```python
 import random
@@ -327,7 +332,7 @@ class WFCStateResolver:
         return rnd_state
 
 ```
-### WFCNeighborhoodCollapser
+### GBWFC NeighborhoodCollapser
 
 ```python
 class WFCNeighborhoodCollapser:
@@ -376,7 +381,7 @@ class WFCNeighborhoodCollapser:
         return new_destination_tile_states
 ```
 
-### WFCLogger
+### GBWF CLogger
 
 ```python
 
@@ -422,13 +427,13 @@ class WFCLogger:
             print(formatted_row)
 ```
 
-## WFC Core Component
+## GBWFC Core Component
 
 To integrate all components, we will now implement the following classes:
 - WFCModel: Responsible for managing the runtime state of the WFC algorithm. It provides mechanisms to save and restore the model's state, facilitating backtracking when tiles fail to converge.
 - WFC: The core engine of the WFC algorithm, controlling its initialization and execution.
 
-### WFCModel
+### GBWFC Model
 
 ```python
 
@@ -533,7 +538,7 @@ class WFCModel:
         self.has_converged = False
 ```
 
-### WFC
+### GBWFC
 ```python
 class WFC:
     """
@@ -659,15 +664,17 @@ class WFC:
             self.wfc_log_function(self)
 
 ```
-By reaching this point, you should now have all the essential components needed to operate your GBWFC. In the following section, we will explore how to develop case-specific methods to interact with the code we've already written.
+At this stage, you should now have all the foundational components necessary to implement your GBWFC algorithm effectively.
 
-## Sudoku WFC Parts:
+Next, we’ll focus on crafting specialized methods tailored to generate Sudoku grids. Sudoku serves as an excellent test case due to its unique constraints involving non-adjacent tiles: each cell’s value must remain distinct across its row, column, and subgrid. This makes it a compelling example to demonstrate the capabilities and flexibility of GBWFC in handling complex, non-local constraints.
+
+## Sudoku GBWFC Parts:
 
 To specialize our WFC for generating Sudoku grids, we need to implement the following functions that will provide the necessary components:
 
 - generate_sudoku_states: Returns all possible Sudoku states (values from 1 to 9).
-- generate_sudoku_tiles: Returns instances of all Sudoku tiles (81 tiles for default grid's format).
-- generate_sudoku_edges: Returns all the edges between Sudoku tiles that link them with adjacent tiles in the same row, column, and subgrid.
+- generate_sudoku_tiles: Returns all Sudoku tiles instances (81 tiles for default grid's 9x9 format).
+- generate_sudoku_edges: Returns all tile's edges instances that link them with same row, column, and subgrid tiles.
 
 ### generate_sudoku_states
 
@@ -807,18 +814,19 @@ def generate_sudoku_edges(tiles):
     return edges
 ```
 
-Create a custom exception that will be raised when facing tiles that can't converge anymore 
+Design a custom exception to handle scenarios where tiles in a GBWFC implementation fail to resolve to a valid state paired with an autofix_empty_states_tiles method, which detects and resolves such tiles by assigning fallback or calculated states, ensuring the algorithm progresses despite convergence issues. 
+
+This method helps maintain stability in procedural generation while providing a mechanism to gracefully handle errors without restarting the entire process.
+
 ```python
+
 class UnresolvableWfcException(Exception):
     """
     Exception raised when the WFC model encounters a situation that cannot be resolved.
     """
     def __init__(self, *args: object) -> None:
         super().__init__(*args)
-```
 
-Create a method
-```python
 def autofix_empty_states_tiles(wfc):
     """
     Attempts to resolve empty tile states by recursively rolling back the WFC model 
@@ -852,9 +860,9 @@ def autofix_empty_states_tiles(wfc):
         wfc.run()
 ```
 
-## Running Everything
+## Testing Everything
 
-Generates our sudoku grid.
+Develop a primary generate_sudoku_grid method that encapsulates all the necessary logic to create a Sudoku grid. This method should return the completed grid as a string of characters, effectively representing the Sudoku puzzle in a compact and accessible format.
 ```python
 
 def generate_sudoku_grid():
@@ -914,18 +922,38 @@ If you were to run this, you should be ending with something that looks like thi
 
 # GBWFC In Houdini
 
-Now that the GBWFC implementation is functional, I've created a Houdini setup that allows the Sudoku grid to be populated from our implementation procedurally. This setup makes the process more visual, providing a real-time view of the grid in the viewport. It not only enhances the user experience but also helps in identifying issues or bugs more easily by allowing for immediate feedback and observation of how the grid evolves.
+Now that the GBWFC implementation is functional, I've created a Houdini setup that allows the Sudoku grid to be populated from our implementation procedurally. 
 
+This setup makes the process more visual, providing a real-time view of the grid in the viewport. It not only enhances the user experience but also helps in identifying issues or bugs more easily by allowing for immediate feedback and observation of how the grid evolves.
+
+To start, we create a grid mesh and calculate the centroid of each cell. This mesh represents the Sudoku layout, where each cell corresponds to a position in the puzzle. The centroids serve as spatial anchors that will be use later to place numbers.
 ![wfc setup create grid](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/wfc/wfc1.png?raw=true)
+
+Next, we use a font node in conjunction with a switch node. The switch node dynamically selects the corresponding number from the Sudoku grid string at the current iteration index. This number is then converted into a visual representation through the font node. 
 
 ![wfc setup create tiles](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/wfc/wfc3.png?raw=true)
 
+The output is subsequently copied to the centroid of each associated cell point in the grid mesh, effectively assigning and displaying the Sudoku values in their respective positions on the grid. 
 ![wfc setup populate integer](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/wfc/wfc.png?raw=true)
 
+As seen in the previous screenshot, our GBWFC implementation successfully enforces all constraints for rows, columns, and subgrids, ensuring the Sudoku grid remains valid and adheres to the rules at every step of the generation process.
 
 # Final Thoughts
-While the graph-based WFC (GBWFC) approach solves many issues found in traditional methods, there are still opportunities for optimization.
 
-To enhance performance and reduce computational costs, advanced pruning techniques and real-time constraint adjustments could be implemented. Additionally, using Markov Chains for state resolution can streamline the probabilistic tile selection. 
+In this article, we have shown how to implementat a Graph-Based Wave Function Collapse algorithm. Using Sudoku grids as a practical simple test case, we demonstrated how it can address non-neighborhood constraints while generating consistent procedural content. 
+
+We did our implementation in such ways that it would be easy to complete extra methods in any WFC Logic Components
+
+
+I hope that this introduction will get people in the cinema industry a bit closer to integrate this algorithm in their daily tasks.
+
+While we produced a working implementation, there are still opportunities for optimization. 
+
+To enhance performance and reduce computational costs, advanced pruning techniques and real-time constraint adjustments could be implemented. 
+
+Additionally, our GBWFC behaviour could be greatly customized by adding new custom methods  WFCTileSelector, WFCStateResolver or WFCNeighborhoodCollapser classes 
+
+ select which state a node/tile should be collapsed to should be adapted to your use case. For instance, our current method collapse a tile by picking a random state from the one remaining, but using a probabilistic Markov Chains models might prove to output more realistic results in some use case  
+like the Markov Chains for state resolution can streamline the probabilistic tile selection and produce more realistic results in some use case context than our random value approach. 
 
 GBWFC could also benefit from parallelization, running multiple graph processes concurrently and merging resolved nodes. Furthermore, optimizing graph traversal algorithms could significantly improve the efficiency, especially for larger and more complex grids, allowing for better scalability and reduced processing time.
