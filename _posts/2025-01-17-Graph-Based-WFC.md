@@ -430,7 +430,7 @@ To integrate all components, we will now implement the following classes:
 - WFCModel: Responsible for managing the runtime state of the WFC algorithm. It provides mechanisms to save and restore the model's state, facilitating backtracking when tiles fail to converge.
 - WFC: The core engine of the WFC algorithm, controlling its initialization and execution.
 
-### GBWFC Model
+#### GBWFC Model
 
 ```python
 
@@ -535,7 +535,7 @@ class WFCModel:
         self.has_converged = False
 ```
 
-### GBWFC
+#### GBWFC
 ```python
 class WFC:
     """
