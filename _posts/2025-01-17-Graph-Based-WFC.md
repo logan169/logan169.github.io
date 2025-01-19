@@ -924,4 +924,8 @@ Now that the GBWFC implementation is functional, I've created a Houdini setup th
 
 
 # Final Thoughts
+While the graph-based WFC (GBWFC) approach solves many issues found in traditional methods, there are still opportunities for optimization.
 
+To enhance performance and reduce computational costs, advanced pruning techniques and real-time constraint adjustments could be implemented. Additionally, using Markov Chains for state resolution can streamline the probabilistic tile selection. 
+
+GBWFC could also benefit from parallelization, running multiple graph processes concurrently and merging resolved nodes. Furthermore, optimizing graph traversal algorithms could significantly improve the efficiency, especially for larger and more complex grids, allowing for better scalability and reduced processing time.
