@@ -27,7 +27,7 @@ To organize and manage Python snippets efficiently within Houdini, we utilize th
 <div class="grid">
   <div class="cell cell--2"></div>
   <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img1.png?raw=true" alt="pdg custom UIs">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img1.png?raw=true" alt="pdg custom UIs" style="-webkit-transform: scale(2);">
   </div>
   <div class="cell cell--2"></div>
 </div>
@@ -37,7 +37,7 @@ To organize and manage Python snippets efficiently within Houdini, we utilize th
 <div class="grid">
   <div class="cell cell--2"></div>
   <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img2.png?raw=true" alt="pdg custom UIs">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img2.png?raw=true" alt="pdg custom UIs" style="-webkit-transform: scale(3);">
   </div>
   <div class="cell cell--2"></div>
 </div>
