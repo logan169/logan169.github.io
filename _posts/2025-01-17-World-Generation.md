@@ -24,7 +24,8 @@ Here’s a full list of maps you can expect from Worldengine.
 
 <div class="grid-container">
   <div class="grid grid--p-3">
-    <div class="cell cell--6"><div class="item">
+    <div class="cell cell--6">
+      <div class="item">
         <div class="item__image">
           <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_temperature.png?raw=true"/>
         </div>
@@ -35,115 +36,91 @@ Here’s a full list of maps you can expect from Worldengine.
         </div>
       </div>
     </div>
-    <div class="cell cell--6"><div class="item">
+    <div class="cell cell--6">
+      <div class="item">
         <div class="item__image">
-          <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_temperature.png?raw=true"/>
+          <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_satellite.png?raw=true"/>
         </div>
         <div class="item__content">
           <div class="item__header">
-            <h4>Temperature</h4>
+            <h4>Satellite</h4>
           </div>
         </div>
       </div>
-    </div>    <div class="cell cell--6"><div class="item">
+    </div>    
+    <div class="cell cell--6">
+      <div class="item">
         <div class="item__image">
-          <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_temperature.png?raw=true"/>
+          <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_rivers.png?raw=true"/>
         </div>
         <div class="item__content">
           <div class="item__header">
-            <h4>Temperature</h4>
-          </div>
-        </div>
-      </div>
-    </div>    <div class="cell cell--6"><div class="item">
-        <div class="item__image">
-          <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_temperature.png?raw=true"/>
-        </div>
-        <div class="item__content">
-          <div class="item__header">
-            <h4>Temperature</h4>
+            <h4>River</h4>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-
-
-<div class="item">
-  <div class="item__image">
-    <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_satellite.png?raw=true"/>
-  </div>
-  <div class="item__content">
-    <div class="item__header">
-      <h4>Satellite</h4>
+    <div class="cell cell--6">
+      <div class="item">
+        <div class="item__image">
+          <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_precipitation.png?raw=true"/>
+        </div>
+        <div class="item__content">
+          <div class="item__header">
+            <h4>Precipitation</h4>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<div class="item">
-  <div class="item__image">
-    <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_rivers.png?raw=true"/>
-  </div>
-  <div class="item__content">
-    <div class="item__header">
-      <h4>Rivers</h4>
+    <div class="cell cell--6">
+      <div class="item">
+        <div class="item__image">
+          <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_ocean.png?raw=true"/>
+        </div>
+        <div class="item__content">
+          <div class="item__header">
+            <h4>Ocean</h4>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
-<div class="item">
-  <div class="item__image">
-    <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_precipitation.png?raw=true"/>
-  </div>
-  <div class="item__content">
-    <div class="item__header">
-      <h4>Precipitation</h4>
+    <div class="cell cell--6">
+      <div class="item">
+        <div class="item__image">
+          <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_icecaps.png?raw=true"/>
+        </div>
+        <div class="item__content">
+          <div class="item__header">
+            <h4>Ice Caps</h4>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<div class="item">
-  <div class="item__image">
-    <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_ocean.png?raw=true"/>
-  </div>
-  <div class="item__content">
-    <div class="item__header">
-      <h4>Ocean</h4>
+    <div class="cell cell--6">
+      <div class="item">
+        <div class="item__image">
+          <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_grayscale.png?raw=true"/>
+        </div>
+        <div class="item__content">
+          <div class="item__header">
+            <h4>Elevation</h4>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
-<div class="item">
-  <div class="item__image">
-    <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_icecaps.png?raw=true"/>
-  </div>
-  <div class="item__content">
-    <div class="item__header">
-      <h4>Ice Cap</h4>
+    <div class="cell cell--6">
+      <div class="item">
+        <div class="item__image">
+          <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_biome.png?raw=true"/>
+        </div>
+        <div class="item__content">
+          <div class="item__header">
+            <h4>Biome</h4>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
-<div class="item">
-  <div class="item__image">
-    <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_grayscale.png?raw=true"/>
-  </div>
-  <div class="item__content">
-    <div class="item__header">
-      <h4>Elevation</h4>
-    </div>
-  </div>
-</div>
-
-<div class="item">
-  <div class="item__image">
-    <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_biome.png?raw=true"/>
-  </div>
-  <div class="item__content">
-    <div class="item__header">
-      <h4>Biomes</h4>
-    </div>
-  </div>
 </div>
 
 Since Worldengine doesn’t accept an initial state as input, I modified its source code to enable this functionality. This adjustment allowed me to feed an updated version of the elevation map into the system and recompute the additional maps generated by Worldengine. The result is enhanced artistic control over the output, as I could iteratively refine the elevation map using Houdini height fields nodes to better suit the creative vision for the terrain and recompute the climate, biome, and other contextual data.
