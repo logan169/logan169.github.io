@@ -1,6 +1,6 @@
 ---
 title: 'My "Asset On Demand" Loader'
-tags: Coding CG
+tags: Python Qt
 ---
 
 While working on side projects, I've realized that I was spending a lot of time looking for assets on the web to work with instead of doing CG. The whole process of iteratively searching for an asset on one website, downloading, unzipping and finally importing it was really slowing me down so I've decided to create an asset loader to help me out with this. 

@@ -1,6 +1,6 @@
 ---
 title: 'Graph Based Wave Function Collapse' 
-tags: Algorithm Procedural Houdini
+tags: Algorithm Procedural Houdini Python
 ---
 In this article, we will delve into implementing a Graph-Based Wave Function Collapse (GBWFC) algorithm, explaining its core principles, highlighting its advantages over traditional methods, and showcasing its application through practical examples. Graph-based Wave Function Collapse (GBWFC), first introduced in scientific literature in 2019. Since then, it has been gaining attention with more scientific articles and studies being published exploring its ability to overcome the limitations of traditional grid-based WFC methods.
 

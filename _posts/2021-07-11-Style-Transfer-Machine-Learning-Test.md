@@ -1,6 +1,6 @@
 ---
 title: 'Style Transfer Machine Learning Tests'
-tags: Machine_Learning Style_transfer Tensor_Flow
+tags: AI Machine_Learning Tensor_Flow Python
 ---
 
 Machine learning has made giant steps in past years thanks to the democratization of cloud computing infrastructure that allows it to train models on hundreds/thousands TPU at the same time. Mastering this technology becomes a mandatory qualification for any company willing to stay competitive and innovative.

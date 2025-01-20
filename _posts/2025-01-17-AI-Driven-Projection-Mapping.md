@@ -13,7 +13,6 @@ Today, I decided to take on a personal challenge: using Houdini, a 3D software, 
 
 My objective was to immerse the visitor at the center of the experience by incorporating an interactive prompt system. This system, powered by generative AI, would dynamically create and project images on buildings based on visitor prompts, ensuring a highly personalized and engaging display.
 
-
 ## Handling The AI Side
 
 In this project, we will generate some image from prompts using [MLOPS Houdini package](https://www.sidefx.com/tutorials/introducing-mlops-machine-learning-operators/). The MLOPS Houdini library integrates machine learning capabilities within the Houdini environment, facilitating AI model deployment and integration into 3D workflows. It enables the seamless interaction between generative AI models and Houdini's procedural generation tools. 

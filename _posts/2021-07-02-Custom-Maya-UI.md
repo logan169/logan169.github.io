@@ -1,6 +1,6 @@
 ---
 title: 'Custom Maya UI'
-tags: Maya cmds
+tags: Maya cmds Python
 ---
 
 Augmenting Maya factory UI with new menus, buttons and tool windows is a redundant need for a TD. Most of the time, you'll just need to add a new menu item to your studio menu and trigger a callback from there to launch your brand new tool/script. Using cmds/pymel becomes handy to quickly build up custom Maya specific tool windows.<!--more-->

@@ -5,6 +5,11 @@ tags: Procedural Houdini
 
 This article shares some research and development done on procedural world generation based on plate tectonic simulations.
 
+# Motivations
+# Limitations
+# Final Thoughts
+
+
 # Why Is This Cool ?
 
 <div class="item">
