@@ -12,13 +12,40 @@ Houdini's PDG (Procedural Dependency Graph) offers powerful tools for managing c
 
 However, the default workflow for creating custom Houdini UIs can be time-consuming and often lacks scalability for rapid prototyping Iterating quickly becomes a bottleneck when user-friendly, flexible interfaces are needed for frequent adjustments.
 
-While this might not be a concern for everyone, I spend a significant portion of my time building UIs in Houdini for both professional and personal projects. Having a streamlined solution to reduce the time spent on UI development allows me to focus more on prototyping and refining the core aspects of my ideas, enhancing productivity and creativity.
+While this might not be a concern for everyone, I spend a significant portion of my time building UIs in Houdini for both professional and personal projects. Having a streamlined solution to reduce the time spent on UI development allows me to focus more on prototyping and refining the core aspects of my ideas, enhancing productivity and creativity. This the reason why I created my Houdini package "Hou Databox".
 
 # Implementation
 
-Houdini provides several utility files like 123.py and externaldragdrop.py, enabling users to customize the software’s behavior for specific events. Similarly, it utilizes files like PythonScripts.txt to manage available Python node snippets. These files allow users to streamline their workflows by centralizing custom scripts and making them accessible when needed. This approach facilitates better software customization and ensures that common tasks, such as adding new nodes or handling external data interactions, can be automated efficiently to suit individual project needs.
+Houdini provides several utility files like 123.py and externaldragdrop.py, enabling users to customize the software’s behavior for specific events. Similarly, it utilizes files like PythonScripts.txt to manage available Python node snippets. 
 
-In our case, we are taking advantage 
+These files allow users to streamline their workflows by centralizing custom scripts and making them accessible when needed from the snippets button which the arrow button located at the top right of editor Houdini parm. In our case, we are taking advantage of this as well to store our "Hou Databox" python snippets as well. 
+
+Using some custom code stored in our package we can override the way Houdini interpret specificly our "Hou Databox" snippets. When creating a custom "Hou Databox" node from the TAB menu, here is the steps that happens under the hood:
+- We create a regular Houdini TOP Python node
+- We override its default UI with our package Logic 
+- We set the code to the associated PythonScript.txt file snippet.
+
+"Hou Databox" will modify the UI in a way that create 2 new python editors. One to contains the code responsible to produce the UI, the other will contain the logic. In its simplier form, "Hou Databox" allows UI parms creation using  Houdini Vex syntax. The idea being that people familiar with vex could easily build UIs as well with Python nodes.
+
+
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img5.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
+
+Aside from the base UI parms you can create with the simplier VEX syntax, the package supports any Houdini Parm and there is a node that show how to build any of those with the more advanced python approach.
+
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img6.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
+
+
+
+
+
 
 
 To organize and manage Python snippets efficiently within Houdini, we utilize the Pythonscripts.txt file. This file serves as a centralized location for storing reusable scripts, making it easy to access and reference them during development. By maintaining our snippets in this format, we streamline workflows, enhance project organization, and ensure consistency across tasks. This approach is particularly useful for maintaining clarity and scalability when dealing with complex setups or frequent script iterations.
