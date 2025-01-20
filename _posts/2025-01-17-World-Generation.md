@@ -3,31 +3,20 @@ title: 'Simulating World Generation Through Tectonic Plate Dynamics'
 tags: Procedural Houdini Python
 ---
 
-In this article, I’ll share some results from my project of generating worlds through tectonic plate simulations that produce more realistic environnements. 
+In this article, I’ll share results from my workflow for generating worlds using tectonic plate simulations, designed to create more realistic and immersive environments.
+
+
+
 
 # Motivations
 
 The journey started as a simple idea of having fun with Houdini height field to make open-world. Over time, this concept evolved into a system inspired by real-world geology, designed to create dynamic and realistic terrains for procedurally generated landscapes. By simulating plate tectonics, fault lines, and geological deformations, this approach generates terrain formations that authentically reflect Earth's natural complexity, offering a powerful tool for realistic world-building in various applications.
 
 # Limitations
+
+
 # Final Thoughts
 
-
-# Why Is This Cool ?
-
-<div class="item">
-  <div class="item__image">
-    <img class="image image--lg" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/benoit_setup.gif?raw=true"/>
-  </div>
-  <div class="item__content">
-    <div class="item__header">
-      <h4>test</h4>
-    </div>
-    <div class="item__description">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-  </div>
-</div>
 
 ![world generation picture 1](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/benoit_setup3.gif?raw=true)
 
@@ -50,6 +39,9 @@ The journey started as a simple idea of having fun with Houdini height field to 
 ![world generation picture 10](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/sattelite.PNG?raw=true)
 
 ![world generation picture 11](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/side_env_karma.png?raw=true)
+
+![world generation picture 15](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/side_env_karma8.png?raw=true)
+
 
 ![world generation picture 12](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/side_env_karma3.png?raw=true)
 
@@ -77,6 +69,81 @@ The journey started as a simple idea of having fun with Houdini height field to 
   <div class="item__content">
     <div class="item__header">
       <h4>Temperature</h4>
+    </div>
+  </div>
+</div>
+
+<div class="item">
+  <div class="item__image">
+    <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_satellite.png?raw=true"/>
+  </div>
+  <div class="item__content">
+    <div class="item__header">
+      <h4>Satellite</h4>
+    </div>
+  </div>
+</div>
+<div class="item">
+  <div class="item__image">
+    <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_rivers.png?raw=true"/>
+  </div>
+  <div class="item__content">
+    <div class="item__header">
+      <h4>Rivers</h4>
+    </div>
+  </div>
+</div>
+
+<div class="item">
+  <div class="item__image">
+    <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_precipitation.png?raw=true"/>
+  </div>
+  <div class="item__content">
+    <div class="item__header">
+      <h4>Precipitation</h4>
+    </div>
+  </div>
+</div>
+<div class="item">
+  <div class="item__image">
+    <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_ocean.png?raw=true"/>
+  </div>
+  <div class="item__content">
+    <div class="item__header">
+      <h4>Ocean</h4>
+    </div>
+  </div>
+</div>
+
+<div class="item">
+  <div class="item__image">
+    <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_icecaps.png?raw=true"/>
+  </div>
+  <div class="item__content">
+    <div class="item__header">
+      <h4>Ice Cap</h4>
+    </div>
+  </div>
+</div>
+
+<div class="item">
+  <div class="item__image">
+    <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_grayscale.png?raw=true"/>
+  </div>
+  <div class="item__content">
+    <div class="item__header">
+      <h4>Elevation</h4>
+    </div>
+  </div>
+</div>
+
+<div class="item">
+  <div class="item__image">
+    <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_biome.png?raw=true"/>
+  </div>
+  <div class="item__content">
+    <div class="item__header">
+      <h4>Biomes</h4>
     </div>
   </div>
 </div>
