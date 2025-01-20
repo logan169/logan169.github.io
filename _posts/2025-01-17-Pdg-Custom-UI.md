@@ -96,7 +96,9 @@ When a custom node from a child package relying on "Hou Databox" is created from
 - The PythonScript.txt "Hou Databox" snippets, containing both UI and logic, are split so that each editor is populated with the corresponding code.
 - The UI editor is executed, and the node's custom UI is built within the node interface.
 
-As an exemple, I wanted to create some houdini package named "Hou Pandas" that would deal with pandas dataframe which is a standard format to handle tabular data in Python. In order to achieve this, I've created a child "Hou Databox" Houdini Package that adds supports to importing/remapping pdg attribute from upstream nodes so they could be interacted with from the logic editor of the node. In its most simple form, a vanilla node looks like this 
+To demonstrate the UI inheritance functionality behind "Hou Databox," I created a child Houdini package called "Hou Pandas" to handle dataframes, a standard format for working with tabular data in Python. This package inherits all the functionality and default UIs provided by "Hou Databox."
+
+In addition, "Hou Pandas" introduces support for importing and remapping PDG attributes from upstream nodes, allowing them to be interacted with from the node's logic editor. In its simplest form, a vanilla node looks like this:
 
 <div class="grid">
   <div class="cell cell--auto">
@@ -113,6 +115,9 @@ This package also enables the creation of custom nodes specialized in dataframe 
     <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img15.png?raw=true" alt="pdg custom UIs">
   </div>
 </div>
+
+Finally, using "Hou Pandas" as a base, I created another child package called "Hou Fin," which is specialized in financial analysis within PDG. Any "Hou Fin" nodes inherit the default "Hou Pandas" UI, which allows for importing and exporting dataframes. From there, they build upon the node's UI with specific code tailored to their financial analysis functionality.
+
 
 To follow up on my inheritance example, Using this workflow I created another child package named "Hou Fin" inheriting from "Hou Pandas" to do financial analysis for me in PDG.
 
