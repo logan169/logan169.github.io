@@ -12,21 +12,21 @@ Houdini's PDG (Procedural Dependency Graph) offers powerful tools for managing c
 
 However, the default workflow for creating custom Houdini UIs can be time-consuming and often lacks scalability for rapid prototyping Iterating quickly becomes a bottleneck when user-friendly, flexible interfaces are needed for frequent adjustments.
 
-While this might not be a concern for everyone, I spend a significant portion of my time building UIs in Houdini for both professional and personal projects. Having a streamlined solution to reduce the time spent on UI development allows me to focus more on prototyping and refining the core aspects of my ideas, enhancing productivity and creativity. This the reason why I created my Houdini package "Hou Databox".
+While this might not be a concern for everyone, I spend a significant portion of my time building UIs in Houdini for both professional and personal projects. Having a streamlined solution to reduce the time spent on UI development allows me to focus more on prototyping and refining the core aspects of my ideas, enhancing productivity and creativity. This the reason why I created my Houdini package "Hou Databox". Since the orignal idea was to bridge external python library with Houdini PDG to scale them up and create variation based on Houdini TOPs Wedge node, I've focus my dev on TOPs Python node.  
 
 # Implementation
 
 Houdini provides several utility files like 123.py and externaldragdrop.py, enabling users to customize the software’s behavior for specific events. Similarly, it utilizes files like PythonScripts.txt to manage available Python node snippets. 
 
-These files allow users to streamline their workflows by centralizing custom scripts and making them accessible when needed from the snippets button which the arrow button located at the top right of editor Houdini parm. In our case, we are taking advantage of this as well to store our "Hou Databox" python snippets as well. 
+These files enable users to streamline their workflows by centralizing custom scripts, making them easily accessible via the Snippets button, located at the top-right corner of the Houdini parameter editor (indicated by the arrow icon). Similarly, we leverage this functionality to store our "Hou Databox" Python snippets.
 
-Using some custom code stored in our package we can override the way Houdini interpret specificly our "Hou Databox" snippets. When creating a custom "Hou Databox" node from the TAB menu, here is the steps that happens under the hood:
-- We create a regular Houdini TOP Python node
-- We override its default UI with our package Logic 
-- We set the code to the associated PythonScript.txt file snippet.
+With custom code stored in our package, we can override how Houdini interprets our specific "Hou Databox" snippets. When a custom "Hou Databox" node is created from the TAB menu, the following steps occur behind the scenes:
 
-"Hou Databox" will modify the UI in a way that create 2 new python editors. One to contains the code responsible to produce the UI, the other will contain the logic. In its simplier form, "Hou Databox" allows UI parms creation using  Houdini Vex syntax. The idea being that people familiar with vex could easily build UIs as well with Python nodes.
+- A standard Houdini TOP Python node is created.
+- The node's default UI is overridden using the logic from our package to create 2 new python editors. One contains the code responsible to produce the UI, the other the logic.
+- The PythonScript.txt Hou Databox snippets containing both UI and logic is splitted, so we can populate each editor with the associated code.
 
+As seen below, in its simplier form, "Hou Databox" allows UI parms creation using Houdini Vex syntax. The idea being that people familiar with vex could easily build UIs as well with Python nodes.
 
 <div class="grid">
   <div class="cell cell--auto">
@@ -42,10 +42,21 @@ Aside from the base UI parms you can create with the simplier VEX syntax, the pa
   </div>
 </div>
 
+<br>
 
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img11.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
 
+<br>
 
-
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img12.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
 
 
 To organize and manage Python snippets efficiently within Houdini, we utilize the Pythonscripts.txt file. This file serves as a centralized location for storing reusable scripts, making it easy to access and reference them during development. By maintaining our snippets in this format, we streamline workflows, enhance project organization, and ensure consistency across tasks. This approach is particularly useful for maintaining clarity and scalability when dealing with complex setups or frequent script iterations.
