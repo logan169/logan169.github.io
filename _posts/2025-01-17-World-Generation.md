@@ -18,16 +18,75 @@ The base tectonic plate algorithm used in this project builds upon PlaTec, a 2D 
 
 {%- include extensions/youtube.html id='bi4b45tMEPE' -%}
 
-PlaTec has been integrated into numerous software solutions since its release in 2012. For this project, I utilized  [worldengine](https://github.com/Mindwerks/worldengine), which builds on PlaTec's capabilities by running additional simulations to generate various maps alongside the elevation map produced by PlaTec. Worldengine outputs a comprehensive set of maps, including climate, precipitation, temperature, and biome distributions, providing rich contextual data for world-building. Here’s a list of all the types of maps you can expect from Worldengine.
+PlaTec has been integrated into numerous software solutions since its release in 2012. For this project, I utilized  [worldengine](https://github.com/Mindwerks/worldengine), which builds on PlaTec's capabilities by running additional simulations to generate various maps alongside the elevation map produced by PlaTec. Worldengine outputs a comprehensive set of maps, including climate, precipitation, temperature, and biome distributions, providing rich contextual data for world-building that could then be reused within Houdini. Here’s a full list of maps you can expect from Worldengine.
 
+<div class="grid-container">
+  <div class="grid grid--py-3">
+    <div class="cell cell--3">
+        
+      <div class="item">
+        <div class="item__image">
+          <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_temperature.png?raw=true"/>
+        </div>
+        <div class="item__content">
+          <div class="item__header">
+            <h4>Temperature</h4>
+          </div>
+        </div>
+      </div>
 
-<div class="item">
-  <div class="item__image">
-    <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_temperature.png?raw=true"/>
-  </div>
-  <div class="item__content">
-    <div class="item__header">
-      <h4>Temperature</h4>
+    </div>
+        
+      <div class="item">
+        <div class="item__image">
+          <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_temperature.png?raw=true"/>
+        </div>
+        <div class="item__content">
+          <div class="item__header">
+            <h4>Temperature</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
+        
+      <div class="item">
+        <div class="item__image">
+          <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_temperature.png?raw=true"/>
+        </div>
+        <div class="item__content">
+          <div class="item__header">
+            <h4>Temperature</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
+        
+      <div class="item">
+        <div class="item__image">
+          <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_temperature.png?raw=true"/>
+        </div>
+        <div class="item__content">
+          <div class="item__header">
+            <h4>Temperature</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
+        
+      <div class="item">
+        <div class="item__image">
+          <img class="image" src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/seed_44579_temperature.png?raw=true"/>
+        </div>
+        <div class="item__content">
+          <div class="item__header">
+            <h4>Temperature</h4>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
