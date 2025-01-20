@@ -12,7 +12,7 @@ Houdini's PDG (Procedural Dependency Graph) offers powerful tools for managing c
 
 However, the default workflow for creating custom Houdini UIs can be time-consuming and often lacks scalability for rapid prototyping Iterating quickly becomes a bottleneck when user-friendly, flexible interfaces are needed for frequent adjustments.
 
-While this might not be a concern for everyone, I spend a significant portion of my time building Houdini UIs for both professional and personal projects. Having a streamlined solution to reduce the time spent on UI development allows me to focus more on prototyping and refining the core aspects of my ideas, enhancing productivity and creativity.
+While this might not be a concern for everyone, I spend a significant portion of my time building UIs in Houdini for both professional and personal projects. Having a streamlined solution to reduce the time spent on UI development allows me to focus more on prototyping and refining the core aspects of my ideas, enhancing productivity and creativity.
 
 # Implementation
 
@@ -22,6 +22,117 @@ In our case, we are taking advantage
 
 
 To organize and manage Python snippets efficiently within Houdini, we utilize the Pythonscripts.txt file. This file serves as a centralized location for storing reusable scripts, making it easy to access and reference them during development. By maintaining our snippets in this format, we streamline workflows, enhance project organization, and ensure consistency across tasks. This approach is particularly useful for maintaining clarity and scalability when dealing with complex setups or frequent script iterations.
+
+
+<div class="grid">
+  <div class="cell cell--2"></div>
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img1.png?raw=true" alt="pdg custom UIs">
+  </div>
+  <div class="cell cell--2"></div>
+</div>
+
+<br>
+
+<div class="grid">
+  <div class="cell cell--2"></div>
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img2.png?raw=true" alt="pdg custom UIs">
+  </div>
+  <div class="cell cell--2"></div>
+</div>
+
+<br>
+
+<div class="grid">
+  <div class="cell cell--2"></div>
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img3.png?raw=true" alt="pdg custom UIs">
+  </div>
+  <div class="cell cell--2"></div>
+</div>
+
+<br>
+
+<div class="grid">
+  <div class="cell cell--2"></div>
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img4.png?raw=true" alt="pdg custom UIs">
+  </div>
+  <div class="cell cell--2"></div>
+</div>
+
+<br>
+
+<div class="grid">
+  <div class="cell cell--2"></div>
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img5.png?raw=true" alt="pdg custom UIs">
+  </div>
+  <div class="cell cell--2"></div>
+</div>
+
+<br>
+
+<div class="grid">
+  <div class="cell cell--2"></div>
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img6.png?raw=true" alt="pdg custom UIs">
+  </div>
+  <div class="cell cell--2"></div>
+</div>
+
+<br>
+
+<div class="grid">
+  <div class="cell cell--2"></div>
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img7.png?raw=true" alt="pdg custom UIs">
+  </div>
+  <div class="cell cell--2"></div>
+</div>
+
+<br>
+
+<div class="grid">
+  <div class="cell cell--2"></div>
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img8.png?raw=true" alt="pdg custom UIs">
+  </div>
+  <div class="cell cell--2"></div>
+</div>
+
+<br>
+
+<div class="grid">
+  <div class="cell cell--2"></div>
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img1.png?raw=true" alt="pdg custom UIs">
+  </div>
+  <div class="cell cell--2"></div>
+</div>
+
+<br>
+
+<div class="grid">
+  <div class="cell cell--2"></div>
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img9.png?raw=true" alt="pdg custom UIs">
+  </div>
+  <div class="cell cell--2"></div>
+</div>
+
+<br>
+
+<div class="grid">
+  <div class="cell cell--2"></div>
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img10.png?raw=true" alt="pdg custom UIs">
+  </div>
+  <div class="cell cell--2"></div>
+</div>
+
+<br>
 
 ## Package Inheritance
 
