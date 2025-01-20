@@ -91,8 +91,20 @@ When a custom node from a child package relying on "Hou Databox" is created from
 - The PythonScript.txt "Hou Databox" snippets, containing both UI and logic, are split so that each editor is populated with the corresponding code.
 - The UI editor is executed, and the node's custom UI is built within the node interface.
 
-As an exemple, I wanted to create some houdini package that would deal with pandas dataframe which is a standard format to handle tabular data in Python.
-In order to achieve this, I've created a child "Hou Databox" Houdini Package that adds supports to importing/remapping pdg attribute from upstream nodes so they could be interacted with from the logic editor of the node. In its most simple form, a vanilla node looks like this 
+As an exemple, I wanted to create some houdini package named "Hou Pandas" that would deal with pandas dataframe which is a standard format to handle tabular data in Python. In order to achieve this, I've created a child "Hou Databox" Houdini Package that adds supports to importing/remapping pdg attribute from upstream nodes so they could be interacted with from the logic editor of the node. In its most simple form, a vanilla node looks like this 
+
+
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img14.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
+
+Notice the update in the top right UI, compared to the previous screenshot provided at the package level by the "Hou Pandas" package. This update allows me to specify if a node accepts dataframe inputs and which variable name should be assigned to them. Additionally, I can apply the same functionality at the export level to turn any variable containing a dataframe into a PDG attribute. For optimization purposes, this package also supports the functionality of loading or saving a dataframe from/to an Excel file.
+
+This package also enables the creation of custom nodes specialized in dataframe manipulation. This is extremely useful, as any child package from "Hou Pandas" can leverage these nodes to modify their data, without the need to recreate the same nodes in each child package.
+
+
 
 
 
