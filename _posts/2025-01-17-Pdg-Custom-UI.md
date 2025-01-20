@@ -91,6 +91,10 @@ When a custom node from a child package relying on "Hou Databox" is created from
 - The PythonScript.txt "Hou Databox" snippets, containing both UI and logic, are split so that each editor is populated with the corresponding code.
 - The UI editor is executed, and the node's custom UI is built within the node interface.
 
+As an exemple, I wanted to create some houdini package that would deal with pandas dataframe which is a standard format to handle tabular data in Python.
+In order to achieve this, I've created a child "Hou Databox" Houdini Package that adds supports to importing/remapping pdg attribute from upstream nodes so they could be interacted with from the logic editor of the node. In its most simple form, a vanilla node looks like this 
+
+
 
 
 One of the 
