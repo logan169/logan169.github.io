@@ -165,7 +165,7 @@ With this setup, I could decide the optimal moment to halt the simulation and co
   <div class="cell cell--2"></div>
 </div>
 
-# Sand Solver
+## Sand Solver
 
 One issue I encountered with the generated elevation maps was the spiky appearance of the highest points. Here are some screenshots showing up the looks of mountains out of the simulation
 
@@ -188,13 +188,9 @@ One issue I encountered with the generated elevation maps was the spiky appearan
   <div class="cell cell--2"></div>
 </div>
 
-Houdini's height field nodes support erosion based on slope, but since mountains were thin, the results were less than ideal as lot of details were lost in the process. Additionally, the process required manually inputting varying elevation values each time. 
+Houdini's height field nodes support erosion based on slope, but since mountains were thin, the results were less than ideal as lot of details were lost in the process. Additionally, the process required manually inputting varying elevation values each time. I needed a procedural approach to automate this process, which would eliminate the need for micromanaging erosion adjustments with each new generation. This would ensure consistent and reliable results without the need for manual fine-tuning after every map generation.
 
-I needed a procedural approach to automate this process, which would eliminate the need for micromanaging erosion adjustments with each new generation. This would ensure consistent and reliable results without the need for manual fine-tuning after every map generation.
-
-Part of the solution came from a [blog](https://pepefx.blogspot.com/2019/03/sand-without-grains-part-2-vex.html) that described how to implement a VEX sand solver in Houdini. After re-implementing this technique, I was able to achieve better erosion effects by simulating sand-like behavior. 
-
-This approach helped automate the erosion process, removing the need for manual adjustments based on elevation values, while maintaining consistency and more natural results across different generations of the terrain. Here's how it looked with the regular implementation and applied to the outputed height field.
+Part of the solution came from a [blog](https://pepefx.blogspot.com/2019/03/sand-without-grains-part-2-vex.html) that described how to implement a VEX sand solver in Houdini. After re-implementing this technique, I was able to achieve better erosion effects by simulating sand-like behavior. This approach helped automate the erosion process, removing the need for manual adjustments based on elevation values, while maintaining consistency and more natural results across different generations of the terrain. Here's how it looked with the regular implementation and applied to the outputed height field.
 
 <div class="grid">
   <div class="cell cell--2"></div>
@@ -214,9 +210,7 @@ This approach helped automate the erosion process, removing the need for manual 
   <div class="cell cell--2"></div>
 </div>
 
-While the sand solver approach was an improvement, and really helped making dune like environments, I wasn't entirely satisfied with the results. 
-
-To enhance the effect, I modified the solver's source code to simulate rocks rolling down cliffs, rather than sand slowly sliding. This adjustment brought a more dynamic and rugged feel to the erosion, better representing the erosion patterns I'd envisioned for the terrain. Here's a look at the updated results after the modification.
+While the sand solver approach was an improvement, and really helped making dune like environments, I wasn't entirely satisfied with the results. So to enhance the effect, I modified the solver's source code to simulate rocks rolling down cliffs, rather than sand slowly sliding. This adjustment brought a more dynamic and rugged feel to the erosion, better representing the erosion patterns I'd envisioned for the terrain. Here's a look at the updated results after the modification.
 
 <div class="grid">
   <div class="cell cell--2"></div>
