@@ -24,7 +24,10 @@ A final requirement was the ability to build child packages that could construct
 Houdini provides several utility files like 123.py and externaldragdrop.py, enabling users to customize the software’s behavior for specific events. Similarly, it utilizes files like PythonScripts.txt to manage available Python node snippets. 
 
 These files enable users to streamline their workflows by centralizing custom scripts, making them easily accessible via the Snippets button, located at the top-right corner of the Houdini parameter editor (indicated by the arrow icon). Similarly, we leverage this functionality to store our "Hou Databox" Python snippets.
-With custom code stored in our package, we can override how Houdini interprets specific "Hou Databox" snippets. When a custom "Hou Databox" node is created from the TAB menu, the following steps occur behind the scenes:
+
+With custom code stored in our package, we can override how Houdini interprets specific "Hou Databox" snippets. When Houdini starts, it converts these snippets into Houdini tools, making them easily accessible from the TAB menu. At that point, creating a "Hou Databox" node triggers the associated tool and executes the previously described chain of operations behind the scenes. 
+
+When a custom "Hou Databox" node is created, the following steps occur behind the scenes:
 
 - A standard Houdini TOP Python node is generated.
 - The node's default UI is replaced using the logic from our package, creating two new Python editors: one for the code that generates the UI, and the other for the underlying logic.
@@ -32,6 +35,7 @@ With custom code stored in our package, we can override how Houdini interprets s
 - (If this is being done from a child Hou Databox package), the current package's UI modifications are applied on top of the existing UI.
 - The PythonScript.txt "Hou Databox" snippets, containing both UI and logic, are split so that each editor is populated with the corresponding code.
 - The UI editor is executed, and the node's custom UI is built within the node interface.
+  
 
 ## UI Creation
 
@@ -82,6 +86,7 @@ To facilitate quick prototyping, "Hou Databox" also includes support for creatin
 
 A final feature was implemented to allow child packages to construct their UIs on top of the parent’s base UI. This functionality enables UI inheritance, eliminating the need to duplicate UI code across multiple packages using "Hou Databox."
 
+
 When a custom node from a child package relying on "Hou Databox" is created from the TAB menu, the following steps occur behind the scenes:
 
 - A standard Houdini TOP Python node is generated.
@@ -93,7 +98,6 @@ When a custom node from a child package relying on "Hou Databox" is created from
 
 As an exemple, I wanted to create some houdini package named "Hou Pandas" that would deal with pandas dataframe which is a standard format to handle tabular data in Python. In order to achieve this, I've created a child "Hou Databox" Houdini Package that adds supports to importing/remapping pdg attribute from upstream nodes so they could be interacted with from the logic editor of the node. In its most simple form, a vanilla node looks like this 
 
-
 <div class="grid">
   <div class="cell cell--auto">
     <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img14.png?raw=true" alt="pdg custom UIs">
@@ -102,10 +106,15 @@ As an exemple, I wanted to create some houdini package named "Hou Pandas" that w
 
 Notice the update in the top right UI, compared to the previous screenshot provided at the package level by the "Hou Pandas" package. This update allows me to specify if a node accepts dataframe inputs and which variable name should be assigned to them. Additionally, I can apply the same functionality at the export level to turn any variable containing a dataframe into a PDG attribute. For optimization purposes, this package also supports the functionality of loading or saving a dataframe from/to an Excel file.
 
-This package also enables the creation of custom nodes specialized in dataframe manipulation. This is extremely useful, as any child package from "Hou Pandas" can leverage these nodes to modify their data, without the need to recreate the same nodes in each child package.
+This package also enables the creation of custom nodes specialized in dataframe manipulation. This is extremely useful, as any child package from "Hou Pandas" can leverage these nodes to modify their dataframes, without the need to recreate similar nodes in each child packages.
 
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img15.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
 
-
+To follow up on my inheritance example, Using this workflow I created another child package named "Hou Fin" inheriting from "Hou Pandas" to do financial analysis for me in PDG.
 
 
 
