@@ -128,9 +128,32 @@ This package also enables the creation of custom nodes specialized in dataframe 
 Finally, using "Hou Pandas" as a base, I created another child package called "Hou Fin," which is specialized in financial analysis within PDG. Any "Hou Fin" nodes inherit the default "Hou Pandas" UI, which allows for importing and exporting dataframes. From there, they build upon the node's UI with specific code tailored to their financial analysis functionality.
 
 
+
 <div class="grid">
   <div class="cell cell--auto">
     <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img16.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
+
+<br>
+
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img17a.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
+
+
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img18.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
+
+
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/video1.mp4?raw=true" alt="pdg custom UIs">
   </div>
 </div>
 
