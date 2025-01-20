@@ -12,21 +12,30 @@ Houdini's PDG (Procedural Dependency Graph) offers powerful tools for managing c
 
 However, the default workflow for creating custom Houdini UIs can be time-consuming and often lacks scalability for rapid prototyping Iterating quickly becomes a bottleneck when user-friendly, flexible interfaces are needed for frequent adjustments.
 
-While this might not be a concern for everyone, I spend a significant portion of my time building UIs in Houdini for both professional and personal projects. Having a streamlined solution to reduce the time spent on UI development allows me to focus more on prototyping and refining the core aspects of my ideas, enhancing productivity and creativity. This the reason why I created my Houdini package "Hou Databox". Since the orignal idea was to bridge external python library with Houdini PDG to scale them up and create variation based on Houdini TOPs Wedge node, I've focus my dev on TOPs Python node.  
+Although this may not be a priority for everyone, I dedicate a significant amount of my time to building UIs in Houdini for both professional and personal projects. A streamlined solution that reduces the time spent on UI development enables me to focus more on prototyping and refining the core elements of my ideas, ultimately boosting productivity and creativity. This is the driving force behind the creation of my Houdini package, "Hou Databox."
+
+
+The motivation behind creating "Hou Databox" stemmed from the need to bridge external Python libraries with Houdini PDG, enabling the scaling of processes and the creation of variations based on the Houdini TOPs Wedge node. This led to a focus on the TOPs Python node as a core component. Additionally, there was a need to turn Python variables into PDG attributes, allowing them to flow seamlessly through the TOP graph and be reused in downstream nodes.
+
+A final requirement was the ability to build child packages that could construct their UIs on top of the parent's package base UI. This functionality would enable UI inheritance, eliminating the need to duplicate UI code across multiple packages using "Hou Databox."
 
 # Implementation
 
 Houdini provides several utility files like 123.py and externaldragdrop.py, enabling users to customize the software’s behavior for specific events. Similarly, it utilizes files like PythonScripts.txt to manage available Python node snippets. 
 
 These files enable users to streamline their workflows by centralizing custom scripts, making them easily accessible via the Snippets button, located at the top-right corner of the Houdini parameter editor (indicated by the arrow icon). Similarly, we leverage this functionality to store our "Hou Databox" Python snippets.
+With custom code stored in our package, we can override how Houdini interprets specific "Hou Databox" snippets. When a custom "Hou Databox" node is created from the TAB menu, the following steps occur behind the scenes:
 
-With custom code stored in our package, we can override how Houdini interprets our specific "Hou Databox" snippets. When a custom "Hou Databox" node is created from the TAB menu, the following steps occur behind the scenes:
+- A standard Houdini TOP Python node is generated.
+- The node's default UI is replaced using the logic from our package, creating two new Python editors: one for the code that generates the UI, and the other for the underlying logic.
+- (If this is being done from a child Hou Databox package), it checks whether there is a parent package's default UI associated with the current package and, if so, builds the default UI.
+- (If this is being done from a child Hou Databox package), the current package's UI modifications are applied on top of the existing UI.
+- The PythonScript.txt "Hou Databox" snippets, containing both UI and logic, are split so that each editor is populated with the corresponding code.
+- The UI editor is executed, and the node's custom UI is built within the node interface.
 
-- A standard Houdini TOP Python node is created.
-- The node's default UI is overridden using the logic from our package to create 2 new python editors. One contains the code responsible to produce the UI, the other the logic.
-- The PythonScript.txt Hou Databox snippets containing both UI and logic is splitted, so we can populate each editor with the associated code.
+## UI Creation
 
-As seen below, in its simplier form, "Hou Databox" allows UI parms creation using Houdini Vex syntax. The idea being that people familiar with vex could easily build UIs as well with Python nodes.
+As shown below, in its simpler form, "Hou Databox" enables the creation of UI parameters using Houdini's VEX syntax. The goal is to allow users already familiar with VEX to seamlessly build UIs within Python nodes as well.
 
 <div class="grid">
   <div class="cell cell--auto">
@@ -34,7 +43,7 @@ As seen below, in its simplier form, "Hou Databox" allows UI parms creation usin
   </div>
 </div>
 
-Aside from the base UI parms you can create with the simplier VEX syntax, the package supports any Houdini Parm and there is a node that show how to build any of those with the more advanced python approach.
+In addition to the basic UI parameters you can create using the simpler VEX syntax, the package supports all existing Houdini parameters. It even includes an example node that demonstrates how to construct any of these parameters using a more advanced Python-based approach.
 
 <div class="grid">
   <div class="cell cell--auto">
@@ -59,6 +68,32 @@ Aside from the base UI parms you can create with the simplier VEX syntax, the pa
 </div>
 
 
+## Virtual Env Creation
+
+To facilitate quick prototyping, "Hou Databox" also includes support for creating virtual environments with any package specified in a requirements.txt file, making them readily accessible from Houdini Python nodes.
+
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img13.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
+
+## UI Inheritance
+
+A final feature was implemented to allow child packages to construct their UIs on top of the parent’s base UI. This functionality enables UI inheritance, eliminating the need to duplicate UI code across multiple packages using "Hou Databox."
+
+When a custom node from a child package relying on "Hou Databox" is created from the TAB menu, the following steps occur behind the scenes:
+
+- A standard Houdini TOP Python node is generated.
+- The node's default UI is replaced using the logic from our package, creating two new Python editors: one for the code that generates the UI, and the other for the underlying logic.
+- Checks whether there is a parent package's default UI associated with the current package and, if so, builds the default UI.
+- The current package's UI modifications are applied on top of the existing UI.
+- The PythonScript.txt "Hou Databox" snippets, containing both UI and logic, are split so that each editor is populated with the corresponding code.
+- The UI editor is executed, and the node's custom UI is built within the node interface.
+
+
+
+One of the 
 To organize and manage Python snippets efficiently within Houdini, we utilize the Pythonscripts.txt file. This file serves as a centralized location for storing reusable scripts, making it easy to access and reference them during development. By maintaining our snippets in this format, we streamline workflows, enhance project organization, and ensure consistency across tasks. This approach is particularly useful for maintaining clarity and scalability when dealing with complex setups or frequent script iterations.
 
 
