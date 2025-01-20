@@ -23,6 +23,10 @@ In our case, we are taking advantage
 
 To organize and manage Python snippets efficiently within Houdini, we utilize the Pythonscripts.txt file. This file serves as a centralized location for storing reusable scripts, making it easy to access and reference them during development. By maintaining our snippets in this format, we streamline workflows, enhance project organization, and ensure consistency across tasks. This approach is particularly useful for maintaining clarity and scalability when dealing with complex setups or frequent script iterations.
 
+<div>{%- include extensions/slideshare.html id='u9L9zDsqEWNKE1' -%}</div>
+
+<div>{%- include extensions/slideshare.html id='269644409' -%}</div>
+
 
 <div class="grid">
   <div class="cell cell--2"></div>
