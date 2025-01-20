@@ -291,32 +291,9 @@ Using Unreal Engine, I could then import the generated heightmaps, apply vegetat
 </div>
 
 
------------------------
-----------------------
 
 
 
-
-# Challenges
-
-
-# Final Thoughts
-
- 
-![world generation picture 7](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/karm_render.PNG?raw=true)
-
-
-
-![world generation picture 11](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/side_env_karma.png?raw=true)
-
-![world generation picture 15](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/side_env_karma8.png?raw=true)
-
-
-
-
-![world generation picture 13](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/side_env_karma4.png?raw=true)
-
-![world generation picture 15](https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/procedural_world/side_env_karma6.png?raw=true)
 
 
 
