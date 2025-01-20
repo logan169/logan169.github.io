@@ -108,6 +108,15 @@ In addition, "Hou Pandas" introduces support for importing and remapping PDG att
 
 Notice the update in the top right UI, compared to the previous screenshot provided at the package level by the "Hou Pandas" package. This update allows me to specify if a node accepts dataframe inputs and which variable name should be assigned to them. Additionally, I can apply the same functionality at the export level to turn any variable containing a dataframe into a PDG attribute. For optimization purposes, this package also supports the functionality of loading or saving a dataframe from/to an Excel file.
 
+
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img10.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
+
+<br>
+
 This package also enables the creation of custom nodes specialized in dataframe manipulation. This is extremely useful, as any child package from "Hou Pandas" can leverage these nodes to modify their dataframes, without the need to recreate similar nodes in each child packages.
 
 <div class="grid">
@@ -117,6 +126,16 @@ This package also enables the creation of custom nodes specialized in dataframe 
 </div>
 
 Finally, using "Hou Pandas" as a base, I created another child package called "Hou Fin," which is specialized in financial analysis within PDG. Any "Hou Fin" nodes inherit the default "Hou Pandas" UI, which allows for importing and exporting dataframes. From there, they build upon the node's UI with specific code tailored to their financial analysis functionality.
+
+
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img16.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
+
+<br>
+----------------------
 
 
 To follow up on my inheritance example, Using this workflow I created another child package named "Hou Fin" inheriting from "Hou Pandas" to do financial analysis for me in PDG.
@@ -207,11 +226,6 @@ To organize and manage Python snippets efficiently within Houdini, we utilize th
 
 <br>
 
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img10.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
 
 <br>
 
