@@ -7,9 +7,7 @@ In this article, I’ll share insights into the development of a personal Houdin
 
 # Motivations
 
-Houdini's PDG offers powerful tools for managing complex tasks, enabling automation, scalability, and parallelism across workflows. It excels in areas like generating simulations, rendering, and processing data efficiently, making it invaluable for scaling up productions or iterative workflows. Due to these strengths, PDG is an ideal place to bridge Houdini with external Python libraries, providing an easy way to integrate the functionality of external Python packages into Houdini’s environment.
-
-Creating custom and complex Houdini UIs can be a time-consuming process, and the default workflow often lacks the scalability needed for rapid prototyping. This becomes a bottleneck when user-friendly and flexible interfaces are required for frequent adjustments, slowing down iteration and development. While UI development in Houdini may not be a priority for everyone, I dedicate significant time designing interfaces for both professional and personal projects. A more streamlined approach to UI development allows me to focus on quickly prototyping and refining the core aspects of my ideas, ultimately boosting both productivity and creativity. 
+Houdini's PDG is ideal for automating and scaling complex workflows, excelling in tasks like simulations and data processing. It integrates seamlessly with external Python libraries, enhancing workflows. However, creating custom UIs in Houdini can be time-consuming and challenging for rapid prototyping. A more streamlined approach to UI development allows for quicker iterations, boosting productivity and creativity, especially for those like myself who focus on designing custom interfaces for professional and personal projects.
 
 This drive for efficiency and innovation led to the creation of my Houdini package, "Hou Databox." At its core, "Hou Databox" was designed to bridge the gap between external Python libraries and Houdini's PDG, while also enabling the seamless transformation of Python snippets into TOP nodes. The package centers around the TOPs Python node as a fundamental component, addressing a key need: converting Python variables into PDG attributes. This capability ensures smooth data flow throughout the TOP graph, empowering users to efficiently reuse attributes in downstream nodes, further streamlining their workflows.
 
@@ -17,9 +15,7 @@ A final requirement was the ability to build child packages that could construct
 
 # Implementation
 
-Houdini provides several utility files like 123.py and externaldragdrop.py, enabling users to customize the software’s behavior for specific events. Similarly, it utilizes files like PythonScripts.txt to manage available Python node snippets. 
-
-These files enable users to streamline their workflows by centralizing custom scripts, making them easily accessible via the Snippets button, located at the top-right corner of the Houdini parameter editor (indicated by the arrow icon). Similarly, we leverage this functionality to store our "Hou Databox" Python snippets.
+Houdini offers utility files like 123.py and externaldragdrop.py to customize software behavior for specific events. Additionally, it uses PythonScripts.txt to manage Python node snippets. These files help centralize custom scripts for easy access, streamlining workflows. The Snippets button in the Houdini parameter editor (top-right corner) facilitates this process, and we use it to store the "Hou Databox" Python snippets, making them readily accessible for quicker iterations.
 
 With custom code stored in our package, we can override how Houdini interprets specific "Hou Databox" snippets. When Houdini starts, it converts these snippets into Houdini tools, making them easily accessible from the TAB menu. At that point, creating a "Hou Databox" node triggers the associated tool and executes the previously described chain of operations behind the scenes.
 
@@ -90,7 +86,6 @@ To facilitate quick prototyping, "Hou Databox" also includes the ability to popu
 
 An important feature from Hou Databox is to allow child packages to construct their UIs on top of the parent’s base UI. This functionality enables UI inheritance, eliminating the need to duplicate UI code across multiple packages using "Hou Databox".
 
-
 To demonstrate the UI inheritance functionality behind "Hou Databox," I created a child Houdini package called "Hou Pandas" to handle dataframes, a standard format for working with tabular data in Python. This package inherits all the functionality and default UIs provided by "Hou Databox."
 
 In addition, "Hou Pandas" introduces support for importing and remapping PDG attributes from upstream nodes, allowing them to be interacted with from the node's logic editor. In its simplest form, a vanilla node looks like this:
@@ -101,7 +96,7 @@ In addition, "Hou Pandas" introduces support for importing and remapping PDG att
   </div>
 </div>
 
-Notice the "Package parms" folder in the top right UI, compared to the previous screenshot provided at the package level by the "Hou Pandas" package. This update allows me to specify if a node accepts dataframe inputs and which variable name should be assigned to them. Additionally, I can apply the same functionality at the export level to turn any variable containing a dataframe into a PDG attribute. For optimization purposes, this package also supports the functionality of loading or saving a dataframe from/to an Excel file.
+Notice the new "Package parms" folder in the top right UI, compared to the previous screenshot provided at the package level by the "Hou Pandas" package. This update allows me to specify if a node accepts dataframe inputs and which variable name should be assigned to them. Additionally, I can apply the same functionality at the export level to turn any variable containing a dataframe into a PDG attribute. For optimization purposes, this package also supports the functionality of loading or saving a dataframe from/to an Excel file.
 
 
 <div class="grid">
@@ -122,11 +117,11 @@ This package also enables the creation of custom nodes specialized in dataframe 
 
 <br>
 
-# Making The 1st Finance Houdini Package
+# Showcasing the Power of Hou Databox
 
 Using "Hou Pandas" as a foundation, I developed a child package called "Hou Fin," which is specialized in financial analysis within PDG. All "Hou Fin" nodes inherit the default "Hou Pandas" UI, which includes functionality for importing and exporting dataframes, as mentioned previously. From there, the nodes build upon the UI with specific code tailored to their financial analysis features, enabling the rapid design of workflows that leverage external financial Python packages directly within Houdini. 
 
-To keep things concise, I won’t delve more than I did into Hou Fin in this article, as I’ve written another article showcasing its use cases in detail. You can read it [here](insert link) if this might be of interest for you.
+To keep things concise, I won’t delve more than I did into Hou Fin in this article, as I’ve written another article showcasing its use cases in detail. You can read it [here](https://logan169.github.io/2025/01/17/building-a-finance-library-in-houdini.html) if this might be of interest for you.
 
 to explore how Hou Fin works and the scenarios where it shines. This being said, by adopting the workflow provided by "Hou Databox," I was able to significantly scale up my node's UI capabilities, enabling the creation of nodes that would have otherwise been impractical within a reasonable timeframe.
 
@@ -150,10 +145,15 @@ Accomplishing this level of complexity manually with a standard HDA would have b
   </div>
 </div>
 
+# Limitations
+
+While integrating multithreaded Python packages, I encountered crashes during PDG work item processing. To address this, I executed the PDG graph from Houdini's main thread, leading to sequential work item execution, which removed parallelization. Although this didn't affect my use case, it could be an issue in other scenarios. Additionally, since Hou Databox doesn’t currently convert UI parameters into JSON, it limits the ability to run out-of-process. However, this wasn’t problematic in my case, as I could still use Houdini headlessly via the command line.
+
 # Final Thoughts
 
 In this article, I’ve shared how I leverage my "Hou Databox" package to efficiently design UI that facilitate external Python libraries integration within Houdini. I demonstrated how the package enables users to save nodes as Python snippets, which can later be recreated directly from the TAB menu, streamlining the workflow for both prototyping and reuse.
 
-Additionally, I showcased how UI inheritance allows for the creation of topic-specific packages that benefit from the default UI and behavior of their parent packages without the need to have redundant code. This approach fosters consistency while reducing the effort required to build specialized tools.
+Additionally, I showcased how UI inheritance allows for the creation of topic-specific packages that benefit from the default UI and behavior of their parent packages without the need to have redundant code. This approach fosters consistency while reducing the effort required to build specialized tools. Finally, I highlighted how the package simplifies rapid iteration during UI design opening scaling up in complexity the UI when needed, "Hou Databox" significantly accelerates the process, making it a powerful tool for enhancing productivity and creativity.
 
-Finally, I highlighted how the package simplifies rapid iteration during UI design opening scaling up in complexity the UI when needed, "Hou Databox" significantly accelerates the process, making it a powerful tool for enhancing productivity and creativity.
+
+If you're interested in exploring what I’ve built on top of "Hou Databox" and "Hou Pandas", feel free to read the dedicated article on Hou Fin [here](https://logan169.github.io/2025/01/17/building-a-finance-library-in-houdini.html) for more details.
