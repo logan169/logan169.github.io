@@ -1,5 +1,5 @@
 ---
-title: 'Simplifying Houdini Custom UI Creation' 
+title: 'Hou DataBox: Simplifying Houdini UI Creation' 
 tags: PDG Houdini Python Financial
 ---
 
@@ -147,7 +147,9 @@ Accomplishing this level of complexity manually with a standard HDA would have b
 
 # Limitations
 
-While integrating multithreaded Python packages, I encountered crashes during PDG work item processing. To address this, I executed the PDG graph from Houdini's main thread, leading to sequential work item execution, which removed parallelization. Although this didn't affect my use case, it could be an issue in other scenarios. Additionally, since Hou Databox doesn’t currently convert UI parameters into JSON, it limits the ability to run out-of-process. However, this wasn’t problematic in my case, as I could still use Houdini headlessly via the command line.
+The first I'll mention isn't directly related to Hou Databox but is still something to have in mind when working with it. While integrating multithreaded Python packages, I encountered crashes during PDG work item processing. To address this, I executed the PDG graph from Houdini's main thread, leading to sequential work item execution, which removed parallelization. Although this didn't affect my use case, it could be an issue in other scenarios. 
+
+Additionally, since Hou Databox doesn’t currently convert UI parameters into JSON, it limits the ability to run out-of-process. However, this wasn’t problematic in my case, as I could still use Houdini headlessly via the command line.
 
 # Final Thoughts
 
