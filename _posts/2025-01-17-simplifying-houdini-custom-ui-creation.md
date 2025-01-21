@@ -3,8 +3,7 @@ title: 'Simplifying Houdini Custom UI Creation'
 tags: PDG Houdini Python Financial
 ---
 
-In this article, I’ll share insights into the development of a personal Houdini package designed to simplify the creation of custom UIs on PDG nodes. This package streamlines the process, enabling rapid prototyping, efficient UI design, and seamless integration of external Python libraries to enhance workflows within Houdini's Procedural Dependency Graph (PDG). I’ll also demonstrate how this workflow can serve as a foundation for developing more complex packages, such as a financial tool that queries and processes data from external sources, showcasing the versatility and scalability of this approach.
-<!--more--> 
+In this article, I’ll share insights into the development of a personal Houdini package aimed at simplifying the creation of custom UIs on PDG nodes. This package enhances workflows by enabling rapid prototyping, efficient UI design, and seamless integration of external Python libraries within Houdini's Procedural Dependency Graph (PDG). <!--more--> I’ll also demonstrate how this workflow provides a robust foundation for building more complex UIs that would have been impractical to achieve using the standard HDA workflow.
 
 # Motivations
 
@@ -22,14 +21,15 @@ Houdini provides several utility files like 123.py and externaldragdrop.py, enab
 
 These files enable users to streamline their workflows by centralizing custom scripts, making them easily accessible via the Snippets button, located at the top-right corner of the Houdini parameter editor (indicated by the arrow icon). Similarly, we leverage this functionality to store our "Hou Databox" Python snippets.
 
-With custom code stored in our package, we can override how Houdini interprets specific "Hou Databox" snippets. When Houdini starts, it converts these snippets into Houdini tools, making them easily accessible from the TAB menu. At that point, creating a "Hou Databox" node triggers the associated tool and executes the previously described chain of operations behind the scenes. 
+With custom code stored in our package, we can override how Houdini interprets specific "Hou Databox" snippets. When Houdini starts, it converts these snippets into Houdini tools, making them easily accessible from the TAB menu. At that point, creating a "Hou Databox" node triggers the associated tool and executes the previously described chain of operations behind the scenes.
 
-When a custom "Hou Databox" node is created, the following steps occur behind the scenes:
+When a custom node created with Hou Databox is selected from the TAB menu, the Houdini node's tool (generating during Houdini start up) runs the following steps:
 
-- A standard Houdini TOP Python node is generated.
-- The node's default UI is replaced using the logic from our package, creating two new Python editors: one for the code that generates the UI, and the other for the logic.
-- The PythonScript.txt "Hou Databox" snippets, containing both UI and logic, are split so that each editor is populated with the corresponding code.
-- The UI editor is executed, and the node's custom UI is built within the node interface.
+- Create a TOP Python node.
+- Hou Databox overrides the TOP Python node UI, adding Python editors for UI and logic code, and populates these with the relevant snippets.
+- Parent package (if existing) overrides are applied, enabling UI/Behaviour inheritance (more on this in a later dedicated section).
+- Package-specific UI/Behaviour modifications are layered on top of the current node.
+- Finally, the current node's UI code is executed and added over the node interface.
 
 ## UI Creation
 
@@ -41,7 +41,7 @@ As shown below, in its simpler form, "Hou Databox" enables the creation of UI pa
   </div>
 </div>
 
-
+<br>
 In addition to the basic UI parameters that can be created using the simpler VEX syntax, the "Hou Databox" package supports all existing Houdini parameters. It even includes an example node that demonstrates how to construct any of these parameters using a more advanced Python-based approach. Due to the large number of parameters, I’ve included a couple of screenshots to provide a clearer view, as it was not possible to capture all of them in a single image.
 
 <div class="grid">
@@ -88,14 +88,8 @@ To facilitate quick prototyping, "Hou Databox" also includes the ability to popu
 
 ## UI Inheritance
 
-A final feature was implemented to allow child packages to construct their UIs on top of the parent’s base UI. This functionality enables UI inheritance, eliminating the need to duplicate UI code across multiple packages using "Hou Databox". When a custom node from a child package relying on "Hou Databox" is created from the TAB menu, the following steps occur behind the scenes:
+An important feature from Hou Databox is to allow child packages to construct their UIs on top of the parent’s base UI. This functionality enables UI inheritance, eliminating the need to duplicate UI code across multiple packages using "Hou Databox".
 
-- A standard Houdini TOP Python node is generated.
-- The node's default UI is replaced using the logic from our package, creating two new Python editors: one for the code that generates the UI, and the other for the underlying logic.
-- Checks whether there is a parent package's default UI associated with the current package and, if so, builds the default UI.
-- The current package's UI modifications are applied on top of the existing UI.
-- The PythonScript.txt "Hou Databox" snippets, containing both UI and logic, are split so that each editor is populated with the corresponding code.
-- The UI editor is executed, and the node's custom UI is built within the node interface.
 
 To demonstrate the UI inheritance functionality behind "Hou Databox," I created a child Houdini package called "Hou Pandas" to handle dataframes, a standard format for working with tabular data in Python. This package inherits all the functionality and default UIs provided by "Hou Databox."
 
@@ -128,74 +122,15 @@ This package also enables the creation of custom nodes specialized in dataframe 
 
 <br>
 
-# Making The 1st Financial Houdini Package
+# Making The 1st Finance Houdini Package
 
 Using "Hou Pandas" as a foundation, I developed a child package called "Hou Fin," which is specialized in financial analysis within PDG. All "Hou Fin" nodes inherit the default "Hou Pandas" UI, which includes functionality for importing and exporting dataframes, as mentioned previously. From there, the nodes build upon the UI with specific code tailored to their financial analysis features, enabling the rapid design of workflows that leverage external financial Python packages directly within Houdini. 
 
-Now, I’ll use "Hou Fin" as a test case to demonstrate the advantages of using "Hou Databox" to design and streamline this type of project, showcasing how it facilitates the development of custom tools and workflows in financial analysis.
+To keep things concise, I won’t delve more than I did into Hou Fin in this article, as I’ve written another article showcasing its use cases in detail. You can read it [here](insert link) if this might be of interest for you.
 
-## Unlocking External Python Packages For Non-Coders
+to explore how Hou Fin works and the scenarios where it shines. This being said, by adopting the workflow provided by "Hou Databox," I was able to significantly scale up my node's UI capabilities, enabling the creation of nodes that would have otherwise been impractical within a reasonable timeframe.
 
-Here are several financial setups that rely on "Hou Pandas" and "Hou Fin" to query cryptocurrency and stock data, compute returns, find outliners and run Monte Carlo simulations on previous returns to approximate potential future ones. 
-
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img18.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
-
-These setups were completed quickly because the UI creation process is now much faster, and you can easily copy and paste demo code from external Python documentation as a base for your node setup. The ability to iterate more quickly while working on such workflows offers several advantages. One key benefit is that non-coder end users can test the tools more frequently and provide valuable feedback, ultimately leading to more refined and effective tools in the end.
-
-## Scalability
-
-In financial analysis, the goal is often to identify a signal you can exploit amidst the noise. Scaling your analysis is crucial to increasing the chances of uncovering something relevant. This is where the workflow, when combined with Wedger, becomes incredibly powerful. By leveraging Wedger’s ability to manage and process a large number of stock tickers, the workflow enables you to efficiently scale your analysis and better pinpoint actionable insights.
-
-Below is a series of screenshots showing the step-by-step setup, node by node, where I am backtesting a trading strategy (using backtrader) for each wedge stock tickers after retrieving the stock price (using yfinance) and outputting a comprehensive report at the end.
-
-
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img2.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
-
-<br>
-
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img3.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
-
-<br>
-
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img4.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
-
-<br>
-
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img1.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
-
-When running the above we do get the associated ticker price data baked into Excel files, and for each backtrading reports as well as you can see below.
-
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img8.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
-
-<br>
-
-## Building More Advanced UIs
-
-As well, by adopting the workflow provided by "Hou Databox," I was able to significantly scale up my node's UI capabilities, enabling the creation of nodes that would have otherwise been impractical within a reasonable timeframe. A prime example is a node I developed to query data from the financial website finviz.com. To put it into perspective, replicating the filter interface from the site required building a UI that accommodates approximately 70 menus, each containing between 10 to 20 options.
+An excellent example is a node I created to query data from the financial website [finviz](https://finviz.com/screener.ashx?v=111&ft=4). To replicate the site’s filter interface, the UI had to support around 70 menus, each containing several dozen options. Below, you’ll find the original webpage showcasing the filter list, along with a video demonstrating how this UI was implemented within a Python TOP node using "Hou Databox" and "Hou Pandas".
 
 <div class="grid">
   <div class="cell cell--auto">
@@ -217,8 +152,8 @@ Accomplishing this level of complexity manually with a standard HDA would have b
 
 # Final Thoughts
 
-In this article, I’ve shared how I leverage my "Hou Databox" package to efficiently design setups that integrate external Python libraries. I demonstrated how the package enables users to save nodes as Python snippets, which can later be recreated directly from the TAB menu, streamlining the workflow for both prototyping and reuse.
+In this article, I’ve shared how I leverage my "Hou Databox" package to efficiently design UI that facilitate external Python libraries integration within Houdini. I demonstrated how the package enables users to save nodes as Python snippets, which can later be recreated directly from the TAB menu, streamlining the workflow for both prototyping and reuse.
 
-Additionally, I showcased how UI inheritance allows for the creation of topic-specific packages that benefit from the default UI and behavior of their parent packages. This approach fosters consistency while reducing the effort required to build specialized tools.
+Additionally, I showcased how UI inheritance allows for the creation of topic-specific packages that benefit from the default UI and behavior of their parent packages without the need to have redundant code. This approach fosters consistency while reducing the effort required to build specialized tools.
 
-Finally, I highlighted how the package simplifies rapid iteration during UI design. By allowing on-the-fly tweaks to UI code and regenerating the interface without delving into the node’s parameter menu for each modification, "Hou Databox" significantly accelerates the process, making it a powerful tool for enhancing productivity and creativity.
+Finally, I highlighted how the package simplifies rapid iteration during UI design opening scaling up in complexity the UI when needed, "Hou Databox" significantly accelerates the process, making it a powerful tool for enhancing productivity and creativity.
