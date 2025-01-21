@@ -3,20 +3,17 @@ title: 'PDG Custom UI And Financial Package'
 tags: PDG Houdini Python Financial
 ---
 
-In this article, I’ll share insights into the development of a personal Houdini package designed to simplify the creation of custom UIs on PDG nodes. This package streamlines the process, enabling rapid prototyping, efficient UI design, and seamless integration of external Python libraries to enhance workflows within Houdini's Procedural Dependency Graph (PDG).
-
-I’ll also demonstrate how this workflow can serve as a foundation for developing more complex packages, such as a financial tool that queries and processes data from external sources, showcasing the versatility and scalability of this approach.
+In this article, I’ll share insights into the development of a personal Houdini package designed to simplify the creation of custom UIs on PDG nodes. This package streamlines the process, enabling rapid prototyping, efficient UI design, and seamless integration of external Python libraries to enhance workflows within Houdini's Procedural Dependency Graph (PDG). I’ll also demonstrate how this workflow can serve as a foundation for developing more complex packages, such as a financial tool that queries and processes data from external sources, showcasing the versatility and scalability of this approach.
 <!--more--> 
 
 # Motivations
 
 Houdini's PDG offers powerful tools for managing complex tasks, enabling automation, scalability, and parallelism across workflows. It excels in areas like generating simulations, rendering, and processing data efficiently, making it invaluable for scaling up productions or iterative workflows. Due to these strengths, PDG is an ideal place to bridge Houdini with external Python libraries, providing an easy way to integrate the functionality of external Python packages into Houdini’s environment.
 
-Creating custom and complex Houdini UIs can be a time-consuming process, and the default workflow often lacks the scalability needed for rapid prototyping. This becomes a bottleneck when user-friendly and flexible interfaces are required for frequent adjustments, slowing down iteration and development.
+Creating custom and complex Houdini UIs can be a time-consuming process, and the default workflow often lacks the scalability needed for rapid prototyping. This becomes a bottleneck when user-friendly and flexible interfaces are required for frequent adjustments, slowing down iteration and development. While UI development in Houdini may not be a priority for everyone, I dedicate significant time designing interfaces for both professional and personal projects. A more streamlined approach to UI development allows me to focus on quickly prototyping and refining the core aspects of my ideas, ultimately boosting both productivity and creativity. 
 
-While UI development in Houdini may not be a priority for everyone, I dedicate significant time designing interfaces for both professional and personal projects. A more streamlined approach to UI development allows me to focus on quickly prototyping and refining the core aspects of my ideas, ultimately boosting both productivity and creativity. This drive for efficiency and innovation led to the creation of my Houdini package, "Hou Databox."
+This drive for efficiency and innovation led to the creation of my Houdini package, "Hou Databox." At its core, "Hou Databox" was designed to bridge the gap between external Python libraries and Houdini's PDG, while also enabling the seamless transformation of Python snippets into TOP nodes. The package centers around the TOPs Python node as a fundamental component, addressing a key need: converting Python variables into PDG attributes. This capability ensures smooth data flow throughout the TOP graph, empowering users to efficiently reuse attributes in downstream nodes, further streamlining their workflows.
 
-At its core, "Hou Databox" was designed to bridge the gap between external Python libraries and Houdini's PDG, while also enabling the seamless transformation of Python snippets into TOP nodes. The package centers around the TOPs Python node as a fundamental component, addressing a key need: converting Python variables into PDG attributes. This capability ensures smooth data flow throughout the TOP graph, empowering users to efficiently reuse attributes in downstream nodes, further streamlining their workflows.
 A final requirement was the ability to build child packages that could construct their UIs on top of the parent's package base UI. This functionality would enable UI inheritance, eliminating the need to duplicate UI code across multiple packages using "Hou Databox."
 
 # Implementation
@@ -44,7 +41,6 @@ As shown below, in its simpler form, "Hou Databox" enables the creation of UI pa
   </div>
 </div>
 
-<br>
 
 In addition to the basic UI parameters that can be created using the simpler VEX syntax, the "Hou Databox" package supports all existing Houdini parameters. It even includes an example node that demonstrates how to construct any of these parameters using a more advanced Python-based approach. Due to the large number of parameters, I’ve included a couple of screenshots to provide a clearer view, as it was not possible to capture all of them in a single image.
 
@@ -80,7 +76,7 @@ In addition to the basic UI parameters that can be created using the simpler VEX
   </div>
 </div>
 
-## Virtual Env Creation
+## Simplifying Environment Setup 
 
 To facilitate quick prototyping, "Hou Databox" also includes the ability to populate a create environment node with the selected Houdini package's requirements.txt file. This feature makes the necessary dependencies readily accessible from Houdini's Python nodes, streamlining the integration of external libraries and enhancing the overall workflow.
 
@@ -111,7 +107,7 @@ In addition, "Hou Pandas" introduces support for importing and remapping PDG att
   </div>
 </div>
 
-Notice the update in the top right UI, compared to the previous screenshot provided at the package level by the "Hou Pandas" package. This update allows me to specify if a node accepts dataframe inputs and which variable name should be assigned to them. Additionally, I can apply the same functionality at the export level to turn any variable containing a dataframe into a PDG attribute. For optimization purposes, this package also supports the functionality of loading or saving a dataframe from/to an Excel file.
+Notice the "Package parms" folder in the top right UI, compared to the previous screenshot provided at the package level by the "Hou Pandas" package. This update allows me to specify if a node accepts dataframe inputs and which variable name should be assigned to them. Additionally, I can apply the same functionality at the export level to turn any variable containing a dataframe into a PDG attribute. For optimization purposes, this package also supports the functionality of loading or saving a dataframe from/to an Excel file.
 
 
 <div class="grid">
@@ -132,7 +128,7 @@ This package also enables the creation of custom nodes specialized in dataframe 
 
 <br>
 
-# Financial Analysis In Houdini
+# Making The 1st Financial Houdini Package
 
 Using "Hou Pandas" as a foundation, I developed a child package called "Hou Fin," which is specialized in financial analysis within PDG. All "Hou Fin" nodes inherit the default "Hou Pandas" UI, which includes functionality for importing and exporting dataframes, as mentioned previously. From there, the nodes build upon the UI with specific code tailored to their financial analysis features, enabling the rapid design of workflows that leverage external financial Python packages directly within Houdini. 
 
@@ -141,7 +137,6 @@ Now, I’ll use "Hou Fin" as a test case to demonstrate the advantages of using 
 ## Unlocking External Python Packages For Non-Coders
 
 Here are several financial setups that rely on "Hou Pandas" and "Hou Fin" to query cryptocurrency and stock data, compute returns, and run Monte Carlo simulations on previous returns to approximate potential future ones. 
-
 
 <div class="grid">
   <div class="cell cell--auto">
@@ -153,9 +148,7 @@ Here are several financial setups that rely on "Hou Pandas" and "Hou Fin" to que
 
 These setups were completed quickly because the UI creation process is now much faster, and you can easily copy and paste demo code from external Python documentation as a base for your node setup. The ability to iterate more quickly while working on such workflows offers several advantages. One key benefit is that non-coder end users can test the tools more frequently and provide valuable feedback, ultimately leading to more refined and effective tools in the end.
 
-
 ## Scalability
-
 
 In financial analysis, the goal is often to identify a signal you can exploit amidst the noise. Scaling your analysis is crucial to increasing the chances of uncovering something relevant. 
 
