@@ -26,7 +26,7 @@ These setups were completed quickly because the UI creation process is now much 
 
 ## Scalability
 
-In financial analysis, the goal is often to identify a signal you can exploit amidst the noise. Scaling your analysis is crucial to increasing the chances of uncovering something relevant. This is where the workflow, when combined with Wedger, becomes incredibly powerful. By leveraging Wedger’s ability to manage and process a large number of stock tickers, the workflow enables you to efficiently scale your analysis and better pinpoint actionable insights.
+In financial analysis, the goal is often to identify a signal you can exploit amidst the noise. Scaling your analysis is crucial to increasing the chances of uncovering something relevant. This is where the workflow, when combined with wedger, becomes incredibly powerful. By leveraging wedger’s ability to manage and process a large number of stock tickers, the workflow enables you to efficiently scale your analysis and better pinpoint actionable insights.
 
 Below is a series of screenshots showing the step-by-step setup, node by node, where I am backtesting a trading strategy (using backtrader) for each wedge stock tickers after retrieving the stock price (using yfinance) and outputting a comprehensive report at the end.
 
