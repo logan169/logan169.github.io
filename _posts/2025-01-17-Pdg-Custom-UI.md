@@ -12,10 +12,9 @@ Houdini's PDG (Procedural Dependency Graph) offers powerful tools for managing c
 
 However, the default workflow for creating custom Houdini UIs can be time-consuming and often lacks scalability for rapid prototyping Iterating quickly becomes a bottleneck when user-friendly, flexible interfaces are needed for frequent adjustments.
 
-Although this may not be a priority for everyone, I dedicate a significant amount of my time to building UIs in Houdini for both professional and personal projects. A streamlined solution that reduces the time spent on UI development enables me to focus more on prototyping and refining the core elements of my ideas, ultimately boosting productivity and creativity. This is the driving force behind the creation of my Houdini package, "Hou Databox."
+Although UI development in Houdini may not be a priority for everyone, I invest a considerable amount of time in creating interfaces for both professional and personal projects. A streamlined approach to UI development allows me to allocate more energy toward prototyping and refining the core aspects of my ideas, ultimately enhancing both productivity and creativity. This focus on efficiency and innovation was the driving force behind the creation of my Houdini package, "Hou Databox."
 
-
-The motivation behind creating "Hou Databox" stemmed from the need to bridge external Python libraries with Houdini PDG, enabling the scaling of processes and the creation of variations based on the Houdini TOPs Wedge node. This led to a focus on the TOPs Python node as a core component. Additionally, there was a need to turn Python variables into PDG attributes, allowing them to flow seamlessly through the TOP graph and be reused in downstream nodes.
+At its core, "Hou Databox" was designed to bridge the gap between external Python libraries and Houdini's Procedural Dependency Graph (PDG), while also enabling the seamless transformation of Python snippets into TOP nodes. The package centers around the TOPs Python node as a fundamental component, addressing a key need: converting Python variables into PDG attributes. This capability ensures smooth data flow throughout the TOP graph, empowering users to efficiently reuse attributes in downstream nodes, further streamlining their workflows.
 
 A final requirement was the ability to build child packages that could construct their UIs on top of the parent's package base UI. This functionality would enable UI inheritance, eliminating the need to duplicate UI code across multiple packages using "Hou Databox."
 
@@ -35,7 +34,6 @@ When a custom "Hou Databox" node is created, the following steps occur behind th
 - (If this is being done from a child Hou Databox package), the current package's UI modifications are applied on top of the existing UI.
 - The PythonScript.txt "Hou Databox" snippets, containing both UI and logic, are split so that each editor is populated with the corresponding code.
 - The UI editor is executed, and the node's custom UI is built within the node interface.
-  
 
 ## UI Creation
 
@@ -71,6 +69,15 @@ In addition to the basic UI parameters you can create using the simpler VEX synt
   </div>
 </div>
 
+## Turning Snippets Into Nodes
+
+"Hou Databox" accelerates prototyping by enabling quick iteration and seamless transformation of Python snippets into functional nodes. A key feature is the ability to save the node's state directly back into the PythonScripts.txt file of the designated package. This allows the node to be recreated later, ensuring a smooth and efficient workflow while preserving custom scripts for future use.
+
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img19.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
 
 ## Virtual Env Creation
 
@@ -164,13 +171,6 @@ Finally, using "Hou Pandas" as a base, I created another child package called "H
 <br>
 ----------------------
 
-
-To follow up on my inheritance example, Using this workflow I created another child package named "Hou Fin" inheriting from "Hou Pandas" to do financial analysis for me in PDG.
-
-
-
-One of the 
-To organize and manage Python snippets efficiently within Houdini, we utilize the Pythonscripts.txt file. This file serves as a centralized location for storing reusable scripts, making it easy to access and reference them during development. By maintaining our snippets in this format, we streamline workflows, enhance project organization, and ensure consistency across tasks. This approach is particularly useful for maintaining clarity and scalability when dealing with complex setups or frequent script iterations.
 
 
 <div class="grid">
