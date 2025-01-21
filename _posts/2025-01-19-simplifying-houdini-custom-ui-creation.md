@@ -158,4 +158,4 @@ In this article, I’ve shared how I leverage my "Hou Databox" package to effici
 Additionally, I showcased how UI inheritance allows for the creation of topic-specific packages that benefit from the default UI and behavior of their parent packages without the need to have redundant code. This approach fosters consistency while reducing the effort required to build specialized tools. Finally, I highlighted how the package simplifies rapid iteration during UI design opening scaling up in complexity the UI when needed, "Hou Databox" significantly accelerates the process, making it a powerful tool for enhancing productivity and creativity.
 
 
-If you're interested in exploring what I’ve built on top of "Hou Databox" and "Hou Pandas", feel free to read the dedicated article on Hou Fin [here](https://logan169.github.io/2025/01/17/building-a-finance-library-in-houdini.html) for more details.
+If you're interested in exploring what I’ve built on top of "Hou Databox" and "Hou Pandas", feel free to read the dedicated article on Hou Fin [here](https://logan169.github.io/2025/01/20/building-a-finance-library-in-houdini.html) for more details.
