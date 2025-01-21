@@ -136,7 +136,7 @@ Now, I’ll use "Hou Fin" as a test case to demonstrate the advantages of using 
 
 ## Unlocking External Python Packages For Non-Coders
 
-Here are several financial setups that rely on "Hou Pandas" and "Hou Fin" to query cryptocurrency and stock data, compute returns, and run Monte Carlo simulations on previous returns to approximate potential future ones. 
+Here are several financial setups that rely on "Hou Pandas" and "Hou Fin" to query cryptocurrency and stock data, compute returns, find outliners and run Monte Carlo simulations on previous returns to approximate potential future ones. 
 
 <div class="grid">
   <div class="cell cell--auto">
@@ -144,15 +144,11 @@ Here are several financial setups that rely on "Hou Pandas" and "Hou Fin" to que
   </div>
 </div>
 
-<br>
-
 These setups were completed quickly because the UI creation process is now much faster, and you can easily copy and paste demo code from external Python documentation as a base for your node setup. The ability to iterate more quickly while working on such workflows offers several advantages. One key benefit is that non-coder end users can test the tools more frequently and provide valuable feedback, ultimately leading to more refined and effective tools in the end.
 
 ## Scalability
 
-In financial analysis, the goal is often to identify a signal you can exploit amidst the noise. Scaling your analysis is crucial to increasing the chances of uncovering something relevant. 
-
-This is where the workflow, when combined with Wedger, becomes incredibly powerful. By leveraging Wedger’s ability to manage and process a large number of stock tickers, the workflow enables you to efficiently scale your analysis and better pinpoint actionable insights.
+In financial analysis, the goal is often to identify a signal you can exploit amidst the noise. Scaling your analysis is crucial to increasing the chances of uncovering something relevant. This is where the workflow, when combined with Wedger, becomes incredibly powerful. By leveraging Wedger’s ability to manage and process a large number of stock tickers, the workflow enables you to efficiently scale your analysis and better pinpoint actionable insights.
 
 Below is a series of screenshots showing the step-by-step setup, node by node, where I am backtesting a trading strategy for each wedge stock ticker and outputting a comprehensive report at the end.
 
@@ -187,9 +183,7 @@ Below is a series of screenshots showing the step-by-step setup, node by node, w
   </div>
 </div>
 
-<br>
-
-Finally when running the above we do get the associated ticker price data baked into Excel files, and for each backtrading reports as well as you can see below.
+When running the above we do get the associated ticker price data baked into Excel files, and for each backtrading reports as well as you can see below.
 
 <div class="grid">
   <div class="cell cell--auto">
@@ -201,7 +195,7 @@ Finally when running the above we do get the associated ticker price data baked 
 
 ## Building More Advanced UIs
 
-As well, by adopting the workflow provided by "Hou Databox," I was able to significantly scale up my node's UI capabilities, enabling the creation of nodes that would have otherwise been impractical within a reasonable timeframe. A prime example is a node I developed to query data from the financial website finviz.com. To put it into perspective, replicating the filter interface from the site required building a UI that accommodates approximately 70 menus or combo boxes, each containing between 10 and 20 options.
+As well, by adopting the workflow provided by "Hou Databox," I was able to significantly scale up my node's UI capabilities, enabling the creation of nodes that would have otherwise been impractical within a reasonable timeframe. A prime example is a node I developed to query data from the financial website finviz.com. To put it into perspective, replicating the filter interface from the site required building a UI that accommodates approximately 70 menus, each containing between 10 to 20 options.
 
 <div class="grid">
   <div class="cell cell--auto">
@@ -209,9 +203,8 @@ As well, by adopting the workflow provided by "Hou Databox," I was able to signi
   </div>
 </div>
 
-<br>
 
-Accomplishing this level of complexity manually with a standard HDA would have been highly time-consuming. However, with "Hou Databox," the streamlined process made it feasible to develop such intricate interfaces efficiently and effectively.
+Accomplishing this level of complexity manually with a standard HDA would have been incredibly time-consuming, to the point where it would no longer be practical. However, with "Hou Databox," the streamlined process makes it possible to develop such intricate interfaces both efficiently and effectively.
 
 <div class="grid">
   <div class="cell cell--auto">
@@ -221,8 +214,6 @@ Accomplishing this level of complexity manually with a standard HDA would have b
   </video>
   </div>
 </div>
-
-<br>
 
 # Final Thoughts
 
