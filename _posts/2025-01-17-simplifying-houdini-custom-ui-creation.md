@@ -3,7 +3,6 @@ title: 'Simplifying Houdini Custom UI Creation'
 tags: PDG Houdini Python Financial
 ---
 
-# Motivations
 In this article, I’ll share insights into the development of a personal Houdini package designed to simplify the creation of custom UIs on PDG nodes. This package streamlines the process, enabling rapid prototyping, efficient UI design, and seamless integration of external Python libraries to enhance workflows within Houdini's Procedural Dependency Graph (PDG). I’ll also demonstrate how this workflow can serve as a foundation for developing more complex packages, such as a financial tool that queries and processes data from external sources, showcasing the versatility and scalability of this approach.
 <!--more--> 
 
@@ -151,7 +150,7 @@ These setups were completed quickly because the UI creation process is now much 
 
 In financial analysis, the goal is often to identify a signal you can exploit amidst the noise. Scaling your analysis is crucial to increasing the chances of uncovering something relevant. This is where the workflow, when combined with Wedger, becomes incredibly powerful. By leveraging Wedger’s ability to manage and process a large number of stock tickers, the workflow enables you to efficiently scale your analysis and better pinpoint actionable insights.
 
-Below is a series of screenshots showing the step-by-step setup, node by node, where I am backtesting a trading strategy for each wedge stock ticker and outputting a comprehensive report at the end.
+Below is a series of screenshots showing the step-by-step setup, node by node, where I am backtesting a trading strategy (using backtrader) for each wedge stock tickers after retrieving the stock price (using yfinance) and outputting a comprehensive report at the end.
 
 
 <div class="grid">
