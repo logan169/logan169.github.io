@@ -150,10 +150,16 @@ Finally, using "Hou Pandas" as a base, I created another child package called "H
   </div>
 </div>
 
+<br>
 
 <div class="grid">
   <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/video1.mp4?raw=true" alt="pdg custom UIs">
+  <video width="100%" controls>
+    <source src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/video1.mp4" type="video/mp4">
+    <source src="movie.ogg" type="video/ogg">
+    Your browser does not support the video tag.
+  </video>
+  
   </div>
 </div>
 
