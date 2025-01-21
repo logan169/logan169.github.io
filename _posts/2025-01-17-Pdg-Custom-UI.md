@@ -10,14 +10,13 @@ I’ll also demonstrate how this workflow can serve as a foundation for developi
 
 # Motivations
 
-Houdini's PDG (Procedural Dependency Graph) offers powerful tools for managing complex tasks, enabling automation, scalability, and parallelism across workflows. It shines in areas like generating simulations, rendering, and processing data efficiently, making it invaluable for scaling up productions or iterative workflows.
+Houdini's PDG offers powerful tools for managing complex tasks, enabling automation, scalability, and parallelism across workflows. It excels in areas like generating simulations, rendering, and processing data efficiently, making it invaluable for scaling up productions or iterative workflows. Due to these strengths, PDG is an ideal place to bridge Houdini with external Python libraries, providing an easy way to integrate the functionality of external Python packages into Houdini’s environment.
 
-However, the default workflow for creating custom/complex Houdini UIs can be time-consuming and often lacks scalability for rapid prototyping Iterating quickly becomes a bottleneck when user-friendly, flexible interfaces are needed for frequent adjustments.
+Creating custom and complex Houdini UIs can be a time-consuming process, and the default workflow often lacks the scalability needed for rapid prototyping. This becomes a bottleneck when user-friendly and flexible interfaces are required for frequent adjustments, slowing down iteration and development.
 
-Although UI development in Houdini may not be a priority for everyone, I invest a considerable amount of time in creating interfaces for both professional and personal projects. A streamlined approach to UI development allows me to allocate more energy toward prototyping and refining the core aspects of my ideas, ultimately enhancing both productivity and creativity. This focus on efficiency and innovation was the driving force behind the creation of my Houdini package, "Hou Databox."
+While UI development in Houdini may not be a priority for everyone, I dedicate significant time designing interfaces for both professional and personal projects. A more streamlined approach to UI development allows me to focus on quickly prototyping and refining the core aspects of my ideas, ultimately boosting both productivity and creativity. This drive for efficiency and innovation led to the creation of my Houdini package, "Hou Databox."
 
-At its core, "Hou Databox" was designed to bridge the gap between external Python libraries and Houdini's Procedural Dependency Graph (PDG), while also enabling the seamless transformation of Python snippets into TOP nodes. The package centers around the TOPs Python node as a fundamental component, addressing a key need: converting Python variables into PDG attributes. This capability ensures smooth data flow throughout the TOP graph, empowering users to efficiently reuse attributes in downstream nodes, further streamlining their workflows.
-
+At its core, "Hou Databox" was designed to bridge the gap between external Python libraries and Houdini's PDG, while also enabling the seamless transformation of Python snippets into TOP nodes. The package centers around the TOPs Python node as a fundamental component, addressing a key need: converting Python variables into PDG attributes. This capability ensures smooth data flow throughout the TOP graph, empowering users to efficiently reuse attributes in downstream nodes, further streamlining their workflows.
 A final requirement was the ability to build child packages that could construct their UIs on top of the parent's package base UI. This functionality would enable UI inheritance, eliminating the need to duplicate UI code across multiple packages using "Hou Databox."
 
 # Implementation
@@ -31,9 +30,7 @@ With custom code stored in our package, we can override how Houdini interprets s
 When a custom "Hou Databox" node is created, the following steps occur behind the scenes:
 
 - A standard Houdini TOP Python node is generated.
-- The node's default UI is replaced using the logic from our package, creating two new Python editors: one for the code that generates the UI, and the other for the underlying logic.
-- (If this is being done from a child Hou Databox package), it checks whether there is a parent package's default UI associated with the current package and, if so, builds the default UI.
-- (If this is being done from a child Hou Databox package), the current package's UI modifications are applied on top of the existing UI.
+- The node's default UI is replaced using the logic from our package, creating two new Python editors: one for the code that generates the UI, and the other for the logic.
 - The PythonScript.txt "Hou Databox" snippets, containing both UI and logic, are split so that each editor is populated with the corresponding code.
 - The UI editor is executed, and the node's custom UI is built within the node interface.
 
