@@ -154,7 +154,7 @@ Here are several financial setups that rely on "Hou Pandas" and "Hou Fin" to que
 These setups were completed quickly because the UI creation process is now much faster, and you can easily copy and paste demo code from external Python documentation as a base for your node setup. The ability to iterate more quickly while working on such workflows offers several advantages. One key benefit is that non-coder end users can test the tools more frequently and provide valuable feedback, ultimately leading to more refined and effective tools in the end.
 
 
-## Scalabily
+## Scalability
 
 
 In financial analysis, the goal is often to identify a signal you can exploit amidst the noise. Scaling your analysis is crucial to increasing the chances of uncovering something relevant. 
@@ -164,7 +164,49 @@ This is where the workflow, when combined with Wedger, becomes incredibly powerf
 Below is a series of screenshots showing the step-by-step setup, node by node, where I am backtesting a trading strategy for each wedge stock ticker and outputting a comprehensive report at the end.
 
 
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img2.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
 
+<br>
+
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img3.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
+
+<br>
+
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img4.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
+
+<br>
+
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img1.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
+
+<br>
+
+Finally when running the above we do get the associated ticker price data baked into Excel files, and for each backtrading reports as well as you can see below.
+
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img8.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
+
+<br>
+
+## Building More Advanced UIs
 
 As well, by adopting the workflow provided by "Hou Databox," I was able to significantly scale up my node's UI capabilities, enabling the creation of nodes that would have otherwise been impractical within a reasonable timeframe. A prime example is a node I developed to query data from the financial website finviz.com. To put it into perspective, replicating the filter interface from the site required building a UI that accommodates approximately 70 menus or combo boxes, each containing between 10 and 20 options.
 
@@ -196,123 +238,5 @@ In this article, I’ve shared how I leverage my "Hou Databox" package to effici
 Additionally, I showcased how UI inheritance allows for the creation of topic-specific packages that benefit from the default UI and behavior of their parent packages. This approach fosters consistency while reducing the effort required to build specialized tools.
 
 Finally, I highlighted how the package simplifies rapid iteration during UI design. By allowing on-the-fly tweaks to UI code and regenerating the interface without delving into the node’s parameter menu for each modification, "Hou Databox" significantly accelerates the process, making it a powerful tool for enhancing productivity and creativity.
-
-
-
-
-
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img17.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
-
-
-<br>
-----------------------
-
-
-
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img1.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
-
-<br>
-
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img2.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
-
-<br>
-
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img3.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
-
-<br>
-
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img4.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
-
-<br>
-
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img5.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
-
-<br>
-
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img6.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
-
-<br>
-
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img7.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
-
-<br>
-
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img8.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
-
-<br>
-
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img1.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
-
-<br>
-
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img9.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
-
-<br>
-
-
-<br>
-
-## Package Inheritance
-
-## Using It To Make A Houdini Finance Package
-
-## Integration In Houdini
-
-## Sand Solver
-
-## Exporting To Unreal
-
-# Final Thoughts
-
-In this article, I have shown my workflow for generating custom pdg ui. I've also shared some information about how you can worlds using tectonic plate simulations. This project is still ongoing, and I plan to use the data maps (precipitation, temperature, biome) from WorldEngine to instance Megascans assets for vegetation and cliff coverage. 
-
-Additionally, I’m considering incorporating a [Graph-Based Wave Function Collapse (GBWFC)](https://logan169.github.io/2025/01/17/Graph-Based-WFC.html) to automatically place Megascans assets in a way that ensures a more realistic and cohesive look, but this will be for another article.
-
-
-
 
 
