@@ -1,5 +1,5 @@
 ---
-title: 'PDG Custom UI And Financial Package' 
+title: 'Simplifying Houdini Custom UI Creation' 
 tags: PDG Houdini Python Financial
 ---
 
