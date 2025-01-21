@@ -44,7 +44,9 @@ As shown below, in its simpler form, "Hou Databox" enables the creation of UI pa
   </div>
 </div>
 
-In addition to the basic UI parameters you can create using the simpler VEX syntax, the package supports all existing Houdini parameters. It even includes an example node that demonstrates how to construct any of these parameters using a more advanced Python-based approach.
+<br>
+
+In addition to the basic UI parameters that can be created using the simpler VEX syntax, the "Hou Databox" package supports all existing Houdini parameters. It even includes an example node that demonstrates how to construct any of these parameters using a more advanced Python-based approach. Due to the large number of parameters, I’ve included a couple of screenshots to provide a clearer view, as it was not possible to capture all of them in a single image.
 
 <div class="grid">
   <div class="cell cell--auto">
@@ -70,7 +72,7 @@ In addition to the basic UI parameters you can create using the simpler VEX synt
 
 ## Turning Snippets Into Nodes
 
-"Hou Databox" accelerates prototyping by enabling quick iteration and seamless transformation of Python snippets into functional nodes. A key feature is the ability to save the node's state directly back into the PythonScripts.txt file of the designated package. This allows the node to be recreated later, ensuring a smooth and efficient workflow while preserving custom scripts for future use.
+"Hou Databox" accelerates prototyping by enabling quick iteration and the seamless transformation of Python snippets into functional nodes. Additionally, it allows the reverse operation once the user is satisfied with the custom node snippets they've created. At this point, the user can save the node's state directly back into the PythonScripts.txt file of the designated package via the menu. This functionality ensures that the node can be easily recreated later, preserving custom scripts and allowing for a smooth, efficient workflow that supports future use and modifications.
 
 <div class="grid">
   <div class="cell cell--auto">
@@ -80,7 +82,7 @@ In addition to the basic UI parameters you can create using the simpler VEX synt
 
 ## Virtual Env Creation
 
-To facilitate quick prototyping, "Hou Databox" also includes support for creating virtual environments with any package specified in a requirements.txt file, making them readily accessible from Houdini Python nodes.
+To facilitate quick prototyping, "Hou Databox" also includes the ability to populate a create environment node with the selected Houdini package's requirements.txt file. This feature makes the necessary dependencies readily accessible from Houdini's Python nodes, streamlining the integration of external libraries and enhancing the overall workflow.
 
 <div class="grid">
   <div class="cell cell--auto">
@@ -90,10 +92,7 @@ To facilitate quick prototyping, "Hou Databox" also includes support for creatin
 
 ## UI Inheritance
 
-A final feature was implemented to allow child packages to construct their UIs on top of the parent’s base UI. This functionality enables UI inheritance, eliminating the need to duplicate UI code across multiple packages using "Hou Databox."
-
-
-When a custom node from a child package relying on "Hou Databox" is created from the TAB menu, the following steps occur behind the scenes:
+A final feature was implemented to allow child packages to construct their UIs on top of the parent’s base UI. This functionality enables UI inheritance, eliminating the need to duplicate UI code across multiple packages using "Hou Databox". When a custom node from a child package relying on "Hou Databox" is created from the TAB menu, the following steps occur behind the scenes:
 
 - A standard Houdini TOP Python node is generated.
 - The node's default UI is replaced using the logic from our package, creating two new Python editors: one for the code that generates the UI, and the other for the underlying logic.
@@ -131,9 +130,43 @@ This package also enables the creation of custom nodes specialized in dataframe 
   </div>
 </div>
 
-Finally, using "Hou Pandas" as a base, I created another child package called "Hou Fin," which is specialized in financial analysis within PDG. Any "Hou Fin" nodes inherit the default "Hou Pandas" UI, which allows for importing and exporting dataframes. From there, they build upon the node's UI with specific code tailored to their financial analysis functionality.
+<br>
 
-By adopting the workflow provided by "Hou Databox," I was able to significantly scale up my node's UI capabilities, enabling the creation of nodes that would have otherwise been impractical within a reasonable timeframe. A prime example is a node I developed to query data from the financial website finviz.com. To put it into perspective, replicating the filter interface from the site required building a UI that accommodates approximately 70 menus or combo boxes, each containing between 10 and 20 options.
+# Financial Analysis In Houdini
+
+Using "Hou Pandas" as a foundation, I developed a child package called "Hou Fin," which is specialized in financial analysis within PDG. All "Hou Fin" nodes inherit the default "Hou Pandas" UI, which includes functionality for importing and exporting dataframes, as mentioned previously. From there, the nodes build upon the UI with specific code tailored to their financial analysis features, enabling the rapid design of workflows that leverage external financial Python packages directly within Houdini. 
+
+Now, I’ll use "Hou Fin" as a test case to demonstrate the advantages of using "Hou Databox" to design and streamline this type of project, showcasing how it facilitates the development of custom tools and workflows in financial analysis.
+
+## Unlocking External Python Packages For Non-Coders
+
+Here are several financial setups that rely on "Hou Pandas" and "Hou Fin" to query cryptocurrency and stock data, compute returns, and run Monte Carlo simulations on previous returns to approximate potential future ones. 
+
+
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img18.png?raw=true" alt="pdg custom UIs">
+  </div>
+</div>
+
+<br>
+
+These setups were completed quickly because the UI creation process is now much faster, and you can easily copy and paste demo code from external Python documentation as a base for your node setup. The ability to iterate more quickly while working on such workflows offers several advantages. One key benefit is that non-coder end users can test the tools more frequently and provide valuable feedback, ultimately leading to more refined and effective tools in the end.
+
+
+## Scalabily
+
+
+In financial analysis, the goal is often to identify a signal you can exploit amidst the noise. Scaling your analysis is crucial to increasing the chances of uncovering something relevant. 
+
+This is where the workflow, when combined with Wedger, becomes incredibly powerful. By leveraging Wedger’s ability to manage and process a large number of stock tickers, the workflow enables you to efficiently scale your analysis and better pinpoint actionable insights.
+
+Below is a series of screenshots showing the step-by-step setup, node by node, where I am backtesting a trading strategy for each wedge stock ticker and outputting a comprehensive report at the end.
+
+
+
+
+As well, by adopting the workflow provided by "Hou Databox," I was able to significantly scale up my node's UI capabilities, enabling the creation of nodes that would have otherwise been impractical within a reasonable timeframe. A prime example is a node I developed to query data from the financial website finviz.com. To put it into perspective, replicating the filter interface from the site required building a UI that accommodates approximately 70 menus or combo boxes, each containing between 10 and 20 options.
 
 <div class="grid">
   <div class="cell cell--auto">
@@ -167,14 +200,6 @@ Finally, I highlighted how the package simplifies rapid iteration during UI desi
 
 
 
-
-<div class="grid">
-  <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img18.png?raw=true" alt="pdg custom UIs">
-  </div>
-</div>
-
-<br>
 
 <div class="grid">
   <div class="cell cell--auto">
