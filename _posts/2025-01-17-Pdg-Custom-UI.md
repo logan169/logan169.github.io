@@ -3,6 +3,7 @@ title: 'PDG Custom UI And Financial Package'
 tags: PDG Houdini Python Financial
 ---
 
+# Motivations
 In this article, I’ll share insights into the development of a personal Houdini package designed to simplify the creation of custom UIs on PDG nodes. This package streamlines the process, enabling rapid prototyping, efficient UI design, and seamless integration of external Python libraries to enhance workflows within Houdini's Procedural Dependency Graph (PDG). I’ll also demonstrate how this workflow can serve as a foundation for developing more complex packages, such as a financial tool that queries and processes data from external sources, showcasing the versatility and scalability of this approach.
 <!--more--> 
 
@@ -222,5 +223,3 @@ In this article, I’ve shared how I leverage my "Hou Databox" package to effici
 Additionally, I showcased how UI inheritance allows for the creation of topic-specific packages that benefit from the default UI and behavior of their parent packages. This approach fosters consistency while reducing the effort required to build specialized tools.
 
 Finally, I highlighted how the package simplifies rapid iteration during UI design. By allowing on-the-fly tweaks to UI code and regenerating the interface without delving into the node’s parameter menu for each modification, "Hou Databox" significantly accelerates the process, making it a powerful tool for enhancing productivity and creativity.
-
-
