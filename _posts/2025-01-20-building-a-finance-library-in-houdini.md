@@ -6,7 +6,7 @@ tags: PDG Houdini Python Finance
 Leveraging the power of Hou Databox, I developed a specialized financial package that integrates seamlessly with Houdini's PDG. This library facilitates querying and processing financial data from external sources, such as stock or cryptocurrency APIs, and builds upon custom UIs to manage large datasets effectively. The streamlined workflow simplifies creating tools for financial analysis, such as nodes for data visualization, Monte Carlo simulations, or backtesting strategies. This demonstrates how the versatility of Hou Databox can scale to meet the demands of highly specialized domains like finance.
 <!--more--> 
 
-Note: "Hou Fin" is closely integrated with the "Hou Databox" and "Hou Pandas" Houdini plugins, which were described in detail in this [previous article](https://logan169.github.io/2025/01/17/simplifying-houdini-custom-ui-creation.html). If you’re interested in understanding the implementation, I recommend checking it out first for more context as I won't cover this here
+Note: "Hou Fin" is closely integrated with the "Hou Databox" and "Hou Pandas" Houdini plugins, which were described in detail in this [previous article](https://logan169.github.io/2025/01/19/simplifying-houdini-custom-ui-creation.html). If you’re interested in understanding the implementation, I recommend checking it out first for more context as I won't cover this here
 
 # Implementation
 
