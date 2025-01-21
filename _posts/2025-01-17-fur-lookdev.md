@@ -9,7 +9,7 @@ In this article, I’ll share some results of some Houdini look dev I've done wh
 <div class="grid">
   <div class="cell cell--auto">
   <video width="100%" autoplay muted>
-    <source src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/fur_lookdev/video1.mp4?raw=true" type="video/mp4">
+    <source src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/fur_lookdev/fur_lookdev_video.mp4?raw=true" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   </div>
@@ -55,4 +55,12 @@ In this article, I’ll share some results of some Houdini look dev I've done wh
   </div>
 </div>
 
+
+<br>
+
+<div class="grid">
+  <div class="cell cell--auto">
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/fur_lookdev/img6.png?raw=true" alt="fur lookdev">
+  </div>
+</div>
 
