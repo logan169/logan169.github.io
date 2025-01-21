@@ -1,16 +1,18 @@
 ---
-title: 'PDG Custom UI' 
-tags: PDG Houdini Python
+title: 'PDG Custom UI And Financial Package' 
+tags: PDG Houdini Python Financial
 ---
 
-In this article, I’ll share some development on some personal Houdini package to easily create custom UI on pdg nodes.
+In this article, I’ll share insights into the development of a personal Houdini package designed to simplify the creation of custom UIs on PDG nodes. This package streamlines the process, enabling rapid prototyping, efficient UI design, and seamless integration of external Python libraries to enhance workflows within Houdini's Procedural Dependency Graph (PDG).
+
+I’ll also demonstrate how this workflow can serve as a foundation for developing more complex packages, such as a financial tool that queries and processes data from external sources, showcasing the versatility and scalability of this approach.
 <!--more--> 
 
 # Motivations
 
 Houdini's PDG (Procedural Dependency Graph) offers powerful tools for managing complex tasks, enabling automation, scalability, and parallelism across workflows. It shines in areas like generating simulations, rendering, and processing data efficiently, making it invaluable for scaling up productions or iterative workflows.
 
-However, the default workflow for creating custom Houdini UIs can be time-consuming and often lacks scalability for rapid prototyping Iterating quickly becomes a bottleneck when user-friendly, flexible interfaces are needed for frequent adjustments.
+However, the default workflow for creating custom/complex Houdini UIs can be time-consuming and often lacks scalability for rapid prototyping Iterating quickly becomes a bottleneck when user-friendly, flexible interfaces are needed for frequent adjustments.
 
 Although UI development in Houdini may not be a priority for everyone, I invest a considerable amount of time in creating interfaces for both professional and personal projects. A streamlined approach to UI development allows me to allocate more energy toward prototyping and refining the core aspects of my ideas, ultimately enhancing both productivity and creativity. This focus on efficiency and innovation was the driving force behind the creation of my Houdini package, "Hou Databox."
 
@@ -134,7 +136,7 @@ This package also enables the creation of custom nodes specialized in dataframe 
 
 Finally, using "Hou Pandas" as a base, I created another child package called "Hou Fin," which is specialized in financial analysis within PDG. Any "Hou Fin" nodes inherit the default "Hou Pandas" UI, which allows for importing and exporting dataframes. From there, they build upon the node's UI with specific code tailored to their financial analysis functionality.
 
-
+By adopting the workflow provided by "Hou Databox," I was able to significantly scale up my node's UI capabilities, enabling the creation of nodes that would have otherwise been impractical within a reasonable timeframe. A prime example is a node I developed to query data from the financial website finviz.com. To put it into perspective, replicating the filter interface from the site required building a UI that accommodates approximately 70 menus or combo boxes, each containing between 10 and 20 options.
 
 <div class="grid">
   <div class="cell cell--auto">
@@ -144,11 +146,29 @@ Finally, using "Hou Pandas" as a base, I created another child package called "H
 
 <br>
 
+Accomplishing this level of complexity manually with a standard HDA would have been highly time-consuming. However, with "Hou Databox," the streamlined process made it feasible to develop such intricate interfaces efficiently and effectively.
+
 <div class="grid">
   <div class="cell cell--auto">
-    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img17a.png?raw=true" alt="pdg custom UIs">
+  <video width="100%" controls>
+    <source src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/video1.mp4?raw=true" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
   </div>
 </div>
+
+<br>
+
+# Final Thoughts
+
+In this article, I’ve shared how I leverage my "Hou Databox" package to efficiently design setups that integrate external Python libraries. I demonstrated how the package enables users to save nodes as Python snippets, which can later be recreated directly from the TAB menu, streamlining the workflow for both prototyping and reuse.
+
+Additionally, I showcased how UI inheritance allows for the creation of topic-specific packages that benefit from the default UI and behavior of their parent packages. This approach fosters consistency while reducing the effort required to build specialized tools.
+
+Finally, I highlighted how the package simplifies rapid iteration during UI design. By allowing on-the-fly tweaks to UI code and regenerating the interface without delving into the node’s parameter menu for each modification, "Hou Databox" significantly accelerates the process, making it a powerful tool for enhancing productivity and creativity.
+
+
+
 
 
 <div class="grid">
@@ -161,12 +181,10 @@ Finally, using "Hou Pandas" as a base, I created another child package called "H
 
 <div class="grid">
   <div class="cell cell--auto">
-  <video width="100%" controls>
-    <source src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/video1.mp4?raw=true" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+    <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/pdg_ui/img17.png?raw=true" alt="pdg custom UIs">
   </div>
 </div>
+
 
 <br>
 ----------------------
