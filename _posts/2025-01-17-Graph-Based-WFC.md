@@ -19,6 +19,7 @@ The GBWFC is a variation of the Wave Function (WFC) Collapse algorithm developed
 The original WFC implementation process starts with a grid or a defined space where each cell is in a superposition of all possible states (or patterns). The algorithm progresses by collapsing these possibilities, one cell at a time, based on predefined constraints that dictate how patterns can adjacently align. This process continues until the entire grid is resolved into a coherent output that adheres to the specified rules. Since its introduction, alternative implementations of the WFC algorithm have emerged, enabling its use in generating procedural 3D voxel-based worlds and even in crafting poetry.
 
 # Limitations
+
 While the Wave Function Collapse (WFC) algorithm is powerful, it has notable limitations. A primary challenge is ensuring global coherence in the generated output. The algorithm prioritizes local constraints, which can occasionally result in inconsistencies at a larger scale. For example, when generating expansive structures such as cities, the local arrangements might be logical and consistent, but the overall layout could lack cohesion. Additionally, if the constraints are too loose, some visible tile redundancy may occur, reducing the uniqueness of the output.
 
 ![city generator](https://camo.githubusercontent.com/8016d071f236aa7d1f00572740069b57360b5100f55598a517b766f67526b2a8/68747470733a2f2f692e696d6775722e636f6d2f764c3830697a762e6a7067) [source](https://github.com/marian42/wavefunctioncollapse)
