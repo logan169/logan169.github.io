@@ -1,5 +1,5 @@
 ---
-title: 'Building a Finance Library in Houdini' 
+title: 'Building the 1st Houdini Finance Library' 
 tags: PDG Houdini Python Finance
 ---
 
@@ -8,13 +8,9 @@ Leveraging the power of Hou Databox, I developed a specialized financial package
 
 # Implementation
 
-"Hou Fin" is closely integrated with the "Hou Databox" and "Hou Pandas" Houdini plugins, which were described in detail in this [previous article]. If you’re interested in understanding the implementation, I recommend checking it out first for more context as I won't cover this here.
-
-# Making The 1st Financial Houdini Package
+"Hou Fin" is closely integrated with the "Hou Databox" and "Hou Pandas" Houdini plugins, which were described in detail in this [previous article](https://logan169.github.io/2025/01/17/simplifying-houdini-custom-ui-creation.html). If you’re interested in understanding the implementation, I recommend checking it out first for more context as I won't cover this here.
 
 Using my "Hou Pandas" Houdini package as a foundation, I developed a child package called "Hou Fin," which is specialized in financial analysis within PDG. All "Hou Fin" nodes inherit the default "Hou Pandas" UI, which includes functionality for importing and exporting dataframes, as mentioned previously. From there, the nodes build upon the UI with specific code tailored to their financial analysis features, enabling the rapid design of workflows that leverage external financial Python packages directly within Houdini. 
-
-Now, I’ll use "Hou Fin" as a test case to demonstrate the advantages of using "Hou Databox" to design and streamline this type of project, showcasing how it facilitates the development of custom tools and workflows in financial analysis.
 
 ## Unlocking External Python Packages For Non-Coders
 
