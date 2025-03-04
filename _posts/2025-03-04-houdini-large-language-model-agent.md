@@ -224,8 +224,6 @@ Together, these strategies improve the reliability and effectiveness of LLMs wit
 
 Integrating Large Language Models (LLMs) into Houdini workflows offers promising avenues for automating complex tasks and enhancing creative processes. 
 
-During the sequential runs of this experience. The specific models capable of generating executable code using a zero-shot approach was Llama 3.3 (70B).
+The most reliable and capable model for generating executable code using a zero-shot approach was Llama 3.3 (70B) by far. While smaller LLMs like CodeLlama (34B) and Codestral (22B) occasionally produced working outputs, my experiments showed that, despite potential speed advantages, they consistently required more iterations than Llama 3.3 to generate code within a reasonable timeframe, making them less effective as a useful agent assistant.
 
-While smaller LLMs like CodeLlama (34B) and Codestral (22B) produced some working output on some runs, our experience indicates that Llama 3.3 has been the most reliable in producing runnable code with fewer iterations. 
-
-In conclusion, selecting the appropriate LLM for Houdini workflows requires balancing model size, performance, and resource availability. Llama 3.3 (70B) stands out for its reliability, while models like CodeLlama and Codestral offer viable alternatives, especially when computational resources are limited. 
+In conclusion, selecting the ideal LLM for Houdini workflows requires balancing model size, performance, and available resources. Llama 3.3 (70B) stands out for its reliability and effectiveness in a zero-shot approach. When computational resources are limited, models such as CodeLlama and Codestral might offer viable alternatives when combined with optimizations discussed earlier. 
