@@ -121,7 +121,7 @@ This package also enables the creation of custom nodes specialized in dataframe 
 
 Using "Hou Pandas" as a foundation, I developed a child package called "Hou Fin," which is specialized in financial analysis within PDG. All "Hou Fin" nodes inherit the default "Hou Pandas" UI, which includes functionality for importing and exporting dataframes, as mentioned previously. From there, the nodes build upon the UI with specific code tailored to their financial analysis features, enabling the rapid design of workflows that leverage external financial Python packages directly within Houdini. 
 
-To keep things concise, I won’t delve more than I did into Hou Fin in this article, as I’ve written another article showcasing its use cases in detail. You can read it [here](https://logan169.github.io/2025/01/17/building-a-finance-library-in-houdini.html) if this might be of interest for you.
+To keep things concise, I won’t delve more than I did into Hou Fin in this article, as I’ve written another article showcasing its use cases in detail. You can read it [here](https://logan169.github.io/2025/01/20/building-a-finance-library-in-houdini.html) if this might be of interest for you.
 
 to explore how Hou Fin works and the scenarios where it shines. This being said, by adopting the workflow provided by "Hou Databox," I was able to significantly scale up my node's UI capabilities, enabling the creation of nodes that would have otherwise been impractical within a reasonable timeframe.
 
