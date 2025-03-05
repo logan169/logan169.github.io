@@ -55,6 +55,8 @@ compared to their cloud-based counterparts depending on the available hardware. 
 AI infrastructure also requires dedicated technical resources to manage hardware, optimize inference, 
 and update models as advancements emerge.
 
+In this blog, we will deploy a local LLM server to develop our AI agent, experimenting with different LLM models and weight configurations to evaluate their impact on the agent’s generative performance.
+
 # Implementation
 To implement this setup, we will rely on the following technology stack:
 
@@ -150,9 +152,9 @@ However, at a high level, the agent logic pseudo code key steps:
 - Executes the generated code in a headless Houdini session:
   - If the 25 iteration threshold is reached without finding a solution, abort the process. This protect us from infinite loops in which the LLM models might get trapped if it isn't able to generate working python code as requested in our prompt. 
   - If execution fails, the agent re-queries the LLM, providing:
-   - The initial prompt
-   - The previously generated code
-   - The exception raised during execution.   This allows the model to refine and update the code accordingly.
+      - The initial prompt
+      - The previously generated code
+      - The exception raised during execution.   This allows the model to refine and update the code accordingly.
   - If execution succeeds, the final code is returned and stored as a new code_generated PDG attribute for the current work item.
 
 This approach enables a dynamic and iterative refinement process, improving the quality of generated code while leveraging Houdini’s procedural capabilities.
