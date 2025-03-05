@@ -5,7 +5,7 @@ tags: AI Machine_Learning PDG Houdini Python
 
 The integration of Large Language Models (LLMs) into professional creative software is rapidly transforming various industries. 
 Recently, I explored agent-based LLM workflows and investigated how similar architectures could be applied within Houdini. 
-This article introduces a proof of concept for setting up basic LLM agents setups in SideFX Houdini. 
+This article introduces a proof of concept for setting up basic LLM agent setups in SideFX Houdini. 
 Additionally, we will compare different LLM models, examine the challenges associated with such projects, 
 and discuss strategies to address them.<!--more--> 
 
@@ -20,8 +20,7 @@ and can generate functional Python code opens exciting possibilities:
 - Workflow Acceleration: Eliminate repetitive tasks through context-aware code generation
 
 Over the past decade, generative large language models (LLMs) have emerged and gained prominence. 
-Aside the hype surrounding those new tools, you've probably already experienced the frustration of 
-copy-pasting AI-generated code, only to find it doesn't work/behave as expected. The Houdini LLM agent 
+Amid the hype surrounding these new tools, you’ve probably experienced the frustration of copying and pasting AI-generated code, only to find it doesn’t work or behave as expected. The Houdini LLM agent 
 represents a more sophisticated solution that doesn't just generate code, 
 but would also validates and self-corrects it within the Houdini environment. 
 
@@ -34,8 +33,7 @@ By embedding the LLM agent directly into your Houdini session, we're transformin
 # Local vs. Hosted LLMs Agents
 
 As AI-driven automation becomes more prevalent, businesses are increasingly dedicating resources to functional 
-AI departments. The goal isn’t to replace workers but to delegate repetitive tasks to AI, 
-allowing employees to focus on more complex, value-driven work. When implementing LLM-powered automation, 
+AI departments. The goal isn’t to replace workers but to delegate repetitive tasks to AI, allowing them to focus on more complex, value-driven work. When implementing LLM-powered automation, 
 one of the key decisions is whether to rely on a hosted service or deploy models locally.
 
 ## Hosted LLM Services
@@ -49,16 +47,14 @@ property or operating under strict regulatory requirements.
 ## Local LLM Deployment
 Running an LLM locally provides complete control over data security and long-term cost predictability. 
 Studios and enterprises handling confidential data or intellectual property often prefer this approach 
-to avoid external data exposure. However, the trade-off is performance—models that can run efficiently 
-on commercial-level GPUs tend to be smaller, leading to a decrease in generative quality and efficiency 
-compared to their cloud-based counterparts depending on the available hardware. Maintaining an internal 
+to avoid external data exposure. However, the trade-off is performance models that can run efficiently on commercial-level GPUs tend to be smaller, leading to a decrease in generative quality and efficiency compared to their cloud-based counterparts, depending on the available hardware. Maintaining an internal 
 AI infrastructure also requires dedicated technical resources to manage hardware, optimize inference, 
 and update models as advancements emerge.
 
 In this blog, we will deploy a local LLM server to develop our AI agent, experimenting with different LLM models and weight configurations to evaluate their impact on the agent’s generative performance.
 
 # Implementation
-To implement this setup, we will rely on the following technology stack:
+To implement this setup, we will use the following technology stack:
 
 - Ollama: Facilitates the retrieval of LLM models and serves them on our local server.
 - LangChain & LangGraph: Enables the creation of our ReAct graph-based agent workflow.
