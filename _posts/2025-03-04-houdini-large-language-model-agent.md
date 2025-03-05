@@ -1,35 +1,59 @@
 ---
-title: 'LLM Agents in Houdini: Rethinking VFX Workflows' 
+title: 'LLM Agents in Houdini' 
 tags: AI Machine_Learning PDG Houdini Python
 ---
 
-The integration of Large Language Models (LLMs) into professional creative software has emerged as a transformative trend across various industries. Building on the success of AI-driven projection mapping systems, I’ve been investigating how to incorporate similar agent-based architectures into Houdini workflows. This article outlines a proof of concept for implementing LLM agents within SideFX Houdini.
-<!--more--> 
+The integration of Large Language Models (LLMs) into professional creative software is rapidly transforming various industries. 
+Recently, I explored agent-based LLM workflows and investigated how similar architectures could be applied within Houdini. 
+This article introduces a proof of concept for setting up basic LLM agents setups in SideFX Houdini. 
+Additionally, we will compare different LLM models, examine the challenges associated with such projects, 
+and discuss strategies to address them.<!--more--> 
 
 # Why Integrate LLM Agents In Houdini?
-Houdini's node-based paradigm and Python API make it an ideal candidate for LLM integration. While Houdini offers unprecedented control and flexibility, its complexity can create steep learning curves and workflow bottlenecks. An intelligent agent that understands Houdini's architecture and can generate functional Python code opens exciting possibilities:
+
+While Houdini offers unprecedented control and flexibility, its complexity can create steep 
+learning curves and workflow bottlenecks. An intelligent agent that understands Houdini's architecture 
+and can generate functional Python code opens exciting possibilities:
 
 - Layout Automation: Rapidly prototype complex node networks based on natural language descriptions
 - Technical Assistance: Generate specialized solvers and optimize existing networks
-- Knowledge Transfer: Bridge knowledge gaps for artists transitioning between specializations
 - Workflow Acceleration: Eliminate repetitive tasks through context-aware code generation
 
-Over the past decade, generative large language models (LLMs) have emerged and gained prominence. Aside the hype surrounding those new tools, you've probably already experienced the frustration of copy-pasting AI-generated code, only to find it doesn't work/behave as expected. The Houdini LLM agent represents a more sophisticated solution an intelligent system that doesn't just generate code, but would also validates and self-corrects it within the Houdini environment. 
+Over the past decade, generative large language models (LLMs) have emerged and gained prominence. 
+Aside the hype surrounding those new tools, you've probably already experienced the frustration of 
+copy-pasting AI-generated code, only to find it doesn't work/behave as expected. The Houdini LLM agent 
+represents a more sophisticated solution that doesn't just generate code, 
+but would also validates and self-corrects it within the Houdini environment. 
 
 By embedding the LLM agent directly into your Houdini session, we're transforming a hit-or-miss code generation process into a robust, iterative workflow. This approach goes beyond simple code generation, creating an intelligent assistant that:
 
-- Retrieve Houdini scene informations and use it as context to answer your requests or resolve your issue
-- Generates Houdini Python code
-- Validates the code's functionality in real-time
-- Recursively debugs and fixes errors
+- Optionally, retrieve Houdini scene informations and use it as context to our query
+- Generates Houdini hou module Python code
+- Validates the code's functionality and, recursively debugs and fixes errors in real-time if needed
 
-The agent concept opens up powerful new possibilities. Instead of hoping for working code, you now have a tool that actively works to understand and meet your specific requirements. It's not just about generating code it's about creating a collaborative AI assistant that speaks the language of Houdini, understands your workflow, and iteratively improves its output. 
+# Local vs. Hosted LLMs Agents
 
-# Using Local LLM Agents
+As AI-driven automation becomes more prevalent, businesses are increasingly dedicating resources to functional 
+AI departments. The goal isn’t to replace workers but to delegate repetitive tasks to AI, 
+allowing employees to focus on more complex, value-driven work. When implementing LLM-powered automation, 
+one of the key decisions is whether to rely on a hosted service or deploy models locally.
 
-While companies like Grok, OpenAI, and Anthropic have transformed LLM inference into a SaaS business, deploying AI models locally remains a crucial consideration for many organizations especially those handling sensitive intellectual property or operating in highly regulated industries.As data privacy becomes an increasing priority, businesses are seeking solutions that keep sensitive information within their own controlled environments. By leveraging local LLM servers, studios and enterprises can harness AI-driven code generation and workflow automation while ensuring strict control over data security and movement.
+## Hosted LLM Services: Convenience at a Cost
+Companies like OpenAI, Grok, and Anthropic offer powerful LLMs as SaaS solutions, making it easy to 
+integrate advanced AI capabilities into existing workflows. These models provide cutting-edge performance, 
+require no infrastructure management, and continuously improve with updates. However, they come with significant 
+costs, especially for high-frequency inference tasks. Additionally, relying on external providers means entrusting 
+them with potentially sensitive data, which may not be suitable for businesses handling proprietary intellectual 
+property or operating under strict regulatory requirements.
 
-In this blog, we will set up a local LLM server to build our agent, exploring various LLM models and weight configurations to assess their impact on the agent’s generative capabilities.
+## Local LLM Deployment: Control and Security at the Cost of Performance
+Running an LLM locally provides complete control over data security and long-term cost predictability. 
+Studios and enterprises handling confidential data or intellectual property often prefer this approach 
+to avoid external data exposure. However, the trade-off is performance—models that can run efficiently 
+on commercial-level GPUs tend to be smaller, leading to a decrease in generative quality and efficiency 
+compared to their cloud-based counterparts depending on the available hardware. Maintaining an internal 
+AI infrastructure also requires dedicated technical resources to manage hardware, optimize inference, 
+and update models as advancements emerge.
 
 # Implementation
 To implement this setup, we will rely on the following technology stack:
