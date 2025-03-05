@@ -201,9 +201,7 @@ All the code and logic are encapsulated within the Python TOP node `run_llm_and_
 
 <br>
 
-## Failling Models
-
-We observe on previous screenshot that not all LLM models successfully generate working Houdini code, with some failing after reaching the iteration threshold.By analyzing the work item logs, we can see that certain models struggled significantly more than others to adhere to the prompt requirements. Instead, their responses included extraneous elements such as:
+As we can observe on previous screenshot, not all LLM models were able to successfully generate working Houdini code, with some failing after reaching the iteration threshold.By analyzing the work item logs, we can see that certain models struggled significantly more than others to adhere to the prompt requirements. Instead, their responses included extraneous elements such as:
 
 - The generated output included comments within the code block.
 - Some models added "thoughts" or reasoning sections, explaining their process before or after the code.
