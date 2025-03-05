@@ -126,11 +126,7 @@ run the following commands:
 """
 ```
 As you can see, the prompt provides a highly structured list of actions for the model to follow. This level of explicit instruction is necessary because we are employing a zero-shot approach asking the model to generate code without supplying any additional examples or contextual guidance.
-This is especially important when using general-purpose LLMs, as there are currently no models fine-tuned specifically for Houdini at the time of writing. By testing models in a zero-shot setting, we can establish a baseline for their adaptability and determine how effectively they can produce meaningful outputs solely based on structured prompts.
-
-In order to improve the model’s responses in the future, we could supplement the prompt with additional Houdini documentation or node graph code representations. This would provide relevant context, allowing the LLM to generate more accurate and structured outputs. This approach is known as Retrieval-Augmented Generation (RAG), where external reference materials are incorporated into the prompt to enhance the model’s ability to generate domain-specific responses.
-
-To conclude on this topic, since we will be using the PDG Wedger to run the same query across different models, we have updated the /obj/geo node’s name to include the current model name. This modification allows us to easily inspect and validate the output for each model, ensuring a more structured comparison of their generative capabilities.
+This is especially important when using general-purpose LLMs, as there are currently no models fine-tuned specifically for Houdini at the time of writing. By testing models in a zero-shot setting, we can establish a baseline for their adaptability and determine how effectively they can produce meaningful outputs solely based on structured prompts. Finally, we will be using the PDG Wedger to run the same query across different models, we have updated the /obj/geo node’s name to include the current model name. This modification allows us to easily inspect and validate the output for each model.
 
 <div class="grid">
  <div class="cell cell--auto">
@@ -141,23 +137,21 @@ To conclude on this topic, since we will be using the PDG Wedger to run the same
 <br>
 
 ## LangGraph Agent
-Since covering LangChain and LangGraph for agent creation is beyond the scope of this blog, I won’t dive into the technical details of the agent’s code implementation that topic deserves a dedicated post on its own. 
+Since covering LangChain and LangGraph components for agent creation is beyond the scope of this blog, I won’t dive into the specific technical details of the agent’s code implementation that topic deserves a dedicated post on its own. 
 
 However, at a high level, the agent logic pseudo code key steps:
 
 - Runs outside the PDG context using the previously created virtual environment.
 - Calls Ollama with the current wedge LLM model name, stored in the PDG LLM_model attribute.
 - Executes the generated code in a headless Houdini session:
-  - If the 25 iteration threshold is reached without finding a solution, abort the process. This protect us from infinite loops in which the LLM models might get trapped if it isn't able to generate working python code as requested in our prompt. 
+  - If execution succeeds, the final code is returned and stored as a new code_generated PDG attribute for the current work item.
   - If execution fails, the agent re-queries the LLM, providing:
       - The initial prompt
       - The previously generated code
       - The exception raised during execution.   This allows the model to refine and update the code accordingly.
-  - If execution succeeds, the final code is returned and stored as a new code_generated PDG attribute for the current work item.
+  - If the 25 iteration threshold is reached without finding a solution, abort the process. This protect us from infinite loops in which the LLM models might get trapped when being unable to generate runnable python code output. 
 
-This approach enables a dynamic and iterative refinement process, improving the quality of generated code while leveraging Houdini’s procedural capabilities.
-
-Here is an example of the updated prompt after the model meets an execution error
+This approach enables a dynamic and iterative refinement process, for instance here is an example of the updated prompt after the model meets an execution error
 ```
 Based on this user initial request:
 
@@ -199,12 +193,9 @@ All the code and logic are encapsulated within the Python TOP node `run_llm_and_
 
 <br>
 
-As we can observe on previous screenshot, not all LLM models were able to successfully generate working Houdini code, with some failing after reaching the iteration threshold.By analyzing the work item logs, we can see that certain models struggled significantly more than others to adhere to the prompt requirements. Instead, their responses included extraneous elements such as:
+## Executing Code
 
-- The generated output included comments within the code block.
-- Some models added "thoughts" or reasoning sections, explaining their process before or after the code.
-- Certain models structured their response in a conversational or markdown format, rather than providing a raw executable script.
-- Hallucinated Python hou method's name, which doesn't exists in the Houdini hou library.
+Once the code have been generated by models, we use the exec builtin python method to run the generated code string within the current houdini session using a python TOP node.
 
 <div class="grid">
  <div class="cell cell--auto">
@@ -214,20 +205,33 @@ As we can observe on previous screenshot, not all LLM models were able to succes
 
 <br>
 
-In a later section, we will explore potential improvements for our agent when working with models that have failed.
+# Discussion
 
-## Executing Code
+As seen in the previous screenshots, not all LLM models were able to successfully generate working Houdini hou Python code, each failing for different reasons. However, one key takeaway from this observation is that the effectiveness of the agent’s code generation is highly dependent on the specific model used. If you plan to undertake a similar project, I strongly recommend testing multiple models, as I have done here, to determine which best suits your base agent setup.
 
-Once the code have been generated by models, we use the exec builtin python method to run the generated code string within the current houdini session using a python TOP node.
+While not visible in the screenshots, some smaller models, such as CodeLlama and Codestral, occasionally managed to produce outputs before reaching the iteration threshold and aborting—aside from Llama 3.3. However, this came at the cost of a higher average fix iteration ratio, as the code generated by these smaller models was less reliable and required more corrections compared to the one generated by Llama 3.3.
 
-<div class="grid">
- <div class="cell cell--auto">
-  <img src="https://github.com/logan169/logan169.github.io/blob/master/assets/images/posts_images/houdini_llm_agent/image-7.png?raw=true" alt="HOUDINI PDG AI LLM models">
- </div>
-</div>
+Some models related to the DeepSeek family, while capable of generating Python code, struggled to adhere strictly to the system prompt's requirements specifically, outputting only runnable Python code. For clarity, the base behavior of each model is guided by a system prompt like the one I've used in my agent setup below, which explicitly instructs the model to generate only valid, executable Houdini (hou) package Python code, without explanations or markdown formatting:
 
-<br>
+```python
+ prompt = ChatPromptTemplate.from_messages([
+        ("system", """You are an expert SideFx Houdini Python programmer specializing in the hou package library.
+        Your task is to convert user requests into runnable hou package Python code .
 
+        Rules:
+        1. Only output valid, runnable hou package Python code without any explanations
+        2. If data is needed, generate sample data that makes sense to answer the prompt
+        3. Include appropriate imports, including the hou houdini python module
+        4. Do NOT include markdown code blocks or any text other than pure Python code
+        5. Ensure the code is properly indented
+
+        Remember, your output will be directly executed, so ensure it is valid Python code."""),
+        ("human", "{user_input}")
+    ])
+```
+Despite these explicit instructions, some models deviated by including additional text, hallucinated code methods, "thoughts" or reasoning sections, or formatting python code elements, which disrupted automation workflows. 
+
+In a later section, we will explore potential improvements to mitigate some challenges that comes with working with models that don't follow up system prompt or lack the relevant information to answer properly.
 
 # Improving Our Agent
 To enhance LLM performance in generating Houdini code, several strategies can be employed:
@@ -236,16 +240,16 @@ To enhance LLM performance in generating Houdini code, several strategies can be
 
 - Retrieval-Augmented Generation (RAG): RAG integrates LLMs with real-time retrieval of relevant Houdini documentation and code, improving context and accuracy. By storing Houdini data in a vector database, RAG agents can supply the LLM with up-to-date, task-specific information for more reliable code generation.
 
-- Utilizing LangChain Tools: These tools help reduce randomness in model outputs by providing structured inputs and outputs, thus guiding the model’s responses. However, not all models, such as DeepSeek, support LangChain tools, so additional code logic may be required to accommodate these models.
+- Utilizing LangChain Tools: These tools standarize a task procedure by only delegating the method's input choices to the model. This helps reduce randomness in model outputs by providing structured inputs and outputs, thus guiding the model’s responses. However, not all models such as DeepSeek, support tools usage, so additional code logic may be required to accommodate these models as discussed [here](https://www.reddit.com/r/LangChain/comments/1j0wsz7/update_tool_calling_for_deepseekr1_with_langchain/).
 
 - Optimizing Code Validation Logic: Testing code line by line, rather than as a complete block, reduces the amount of information the model needs to process when resolving errors, allowing it to generate more precise and refined code with each iteration.
 
-Together, these strategies improve the reliability and effectiveness of LLMs within Houdini workflows.
+Together, these strategies would improve the reliability and effectiveness of LLMs within Houdini workflows. This might be enough to mitigate the previously mentionned issues we've met.
 
 # Final Thoughts
 
 Integrating Large Language Models (LLMs) into Houdini workflows offers promising avenues for automating complex tasks and enhancing creative processes. 
 
-The most reliable and capable model for generating executable code using a zero-shot approach was Llama 3.3 (70B) by far. While smaller LLMs like CodeLlama (34B) and Codestral (22B) occasionally produced working outputs, my experiments showed that, despite potential speed advantages, they consistently required more iterations than Llama 3.3 to generate code within a reasonable timeframe, making them less effective as a useful agent assistant.
+The most reliable and capable model for generating executable code using a zero-shot approach was Llama 3.3 (70B) by far. While smaller LLMs like CodeLlama (34B) and Codestral (22B) occasionally produced working outputs, my experiments showed that, despite potential speed advantages, without advanced optimization, they consistently required more iterations than Llama 3.3 to generate code within a reasonable timeframe, making them less effective as a useful agent assistant.
 
-In conclusion, selecting the ideal LLM for Houdini workflows requires balancing model size, performance, and available resources. Llama 3.3 (70B) stands out for its reliability and effectiveness in a zero-shot approach. When computational resources are limited, models such as CodeLlama and Codestral might offer viable alternatives when combined with optimizations discussed earlier. 
+In conclusion, selecting the ideal LLM for Houdini workflows requires balancing model size, performance, and available resources. Llama 3.3 (70B) stands out for its reliability and effectiveness in a zero-shot approach. When computational resources are limited, models such as CodeLlama and Codestral might offer viable alternatives when combined with optimizations discussed previously. 
