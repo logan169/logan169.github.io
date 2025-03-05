@@ -38,7 +38,7 @@ AI departments. The goal isn’t to replace workers but to delegate repetitive t
 allowing employees to focus on more complex, value-driven work. When implementing LLM-powered automation, 
 one of the key decisions is whether to rely on a hosted service or deploy models locally.
 
-## Hosted LLM Services: Convenience at a Cost
+## Hosted LLM Services
 Companies like OpenAI, Grok, and Anthropic offer powerful LLMs as SaaS solutions, making it easy to 
 integrate advanced AI capabilities into existing workflows. These models provide cutting-edge performance, 
 require no infrastructure management, and continuously improve with updates. However, they come with significant 
@@ -46,7 +46,7 @@ costs, especially for high-frequency inference tasks. Additionally, relying on e
 them with potentially sensitive data, which may not be suitable for businesses handling proprietary intellectual 
 property or operating under strict regulatory requirements.
 
-## Local LLM Deployment: Control and Security at the Cost of Performance
+## Local LLM Deployment
 Running an LLM locally provides complete control over data security and long-term cost predictability. 
 Studios and enterprises handling confidential data or intellectual property often prefer this approach 
 to avoid external data exposure. However, the trade-off is performance—models that can run efficiently 
@@ -87,9 +87,7 @@ Another noteworthy feature of Ollama is its automatic multi-GPU support. If mult
 
 ## Runtime Environment Setup
 
-We are utilizing the Houdini TOP Virtual Env Node to set up a dedicated virtual environment where all required Python dependencies are installed and made accessible to subsequent nodes. 
-
-Below is a glimpse of how this setup is structured. 
+We are utilizing the Houdini TOP Virtual Env Node to set up a dedicated virtual environment where all required Python dependencies are installed and made accessible to subsequent nodes as seen below. 
 
 <div class="grid">
  <div class="cell cell--auto">
@@ -101,7 +99,7 @@ Below is a glimpse of how this setup is structured.
 
 ## Setuping A Wedger
 
-Using Houdini PDG Wedger, we create a wedge for each of our installed Ollama LLM models. This approach enables us to compare the efficiency and speed of each model, allowing for a clear assessment of their performance under identical conditions.
+Using Houdini PDG Wedger, we create a wedge for each of our installed Ollama LLM models. This approach enables us to compare the efficiency and speed of each model under identical conditions.
 
 <div class="grid">
  <div class="cell cell--auto">
@@ -128,7 +126,7 @@ run the following commands:
 """
 ```
 As you can see, the prompt provides a highly structured list of actions for the model to follow. This level of explicit instruction is necessary because we are employing a zero-shot approach asking the model to generate code without supplying any additional examples or contextual guidance.
-This is especially important when using general-purpose LLMs, as there are currently no models fine-tuned specifically for Houdini at the time of writing.
+This is especially important when using general-purpose LLMs, as there are currently no models fine-tuned specifically for Houdini at the time of writing. By testing models in a zero-shot setting, we can establish a baseline for their adaptability and determine how effectively they can produce meaningful outputs solely based on structured prompts.
 
 In order to improve the model’s responses in the future, we could supplement the prompt with additional Houdini documentation or node graph code representations. This would provide relevant context, allowing the LLM to generate more accurate and structured outputs. This approach is known as Retrieval-Augmented Generation (RAG), where external reference materials are incorporated into the prompt to enhance the model’s ability to generate domain-specific responses.
 
@@ -142,7 +140,7 @@ To conclude on this topic, since we will be using the PDG Wedger to run the same
 
 <br>
 
-## Coding Our Agent
+## LangGraph Agent
 Since covering LangChain and LangGraph for agent creation is beyond the scope of this blog, I won’t dive into the technical details of the agent’s code implementation that topic deserves a dedicated post on its own. 
 
 However, at a high level, the agent logic pseudo code key steps:
