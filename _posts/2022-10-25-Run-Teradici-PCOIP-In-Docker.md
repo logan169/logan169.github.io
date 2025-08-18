@@ -63,7 +63,7 @@ docker build . pcoip-client
 
 ### Create an alias
 ```
-alias pcoip-client=='xhost +local:root && sudo docker run -d --rm -h myhost \
+alias pcoip-client='xhost +local:root && sudo docker run -d --rm -h myhost \
   -v $HOME/.config/:$HOME/.config/Teradici \
   -v $HOME/.logs:$HOME/.logs \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
