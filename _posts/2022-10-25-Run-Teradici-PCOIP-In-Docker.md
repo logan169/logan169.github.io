@@ -15,20 +15,20 @@ out how to workaround the existing issues it have and ended up with this code th
 
 ## Dockerfile
 ```
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 # Use the following two lines to install the Teradici repository package
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y curl
-RUN curl -1sLf https://dl.teradici.com/DeAdBCiUYInHcSTy/pcoip-client/cfg/setup/bash.deb.sh | sh=ubuntu codename=focal bash
+RUN curl -1sLf https://dl.anyware.hp.com/DeAdBCiUYInHcSTy/pcoip-client/cfg/setup/bash.deb.sh | distro=ubuntu codename=jammy bash
 
 # Install apt-transport-https to support the client installation
-RUN apt-get update && apt-get install -y apt-transport-https
+RUN apt-get update && apt-get install -y apt-transport-https libx11-xcb1 libxcb1 libxcb-render0 libxcb-shape0 libxcb-xfixes0
 
 # Install the client application
 # here we precise the version we want, you can do a apt list -a pcoip-client to see available versions
 # obviously the version needs to match with the ubuntu image version
-RUN apt-get install -y pcoip-client=22.07.3-20.04 
+RUN apt-get install -y pcoip-client
 
 
 # Setup a functional user within the docker container with the same permissions as your local user.
@@ -61,9 +61,18 @@ ENTRYPOINT exec pcoip-client
 docker build . pcoip-client
 ```
 
+### Create an alias
+```
+alias pcoip-client=='xhost +local:root && sudo docker run -d --rm -h myhost \
+  -v $HOME/.config/:$HOME/.config/Teradici \
+  -v $HOME/.logs:$HOME/.logs \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  -e DISPLAY=$DISPLAY \
+  -e TZ=America/New_York \
+  pcoip-client'
+```
 
 ### Launch Pcoip-Client
 ```
-# Replace master with your local username 
-docker run -d --rm -h myhost -v $(pwd)/.config/:/home/master/.config/Teradici -v $(pwd)/.logs:/tmp/Teradici/$USER/PCoIPClient/logs -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY pcoip-client --entrypoint /bin/bash
+pcoip-client
 ```
