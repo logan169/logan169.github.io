@@ -69,6 +69,7 @@ alias pcoip-client='xhost +local:root && sudo docker run -d --rm -h myhost \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -e DISPLAY=$DISPLAY \
   -e TZ=America/New_York \
+  -e MESA_LOADER_DRIVER_OVERRIDE=i965 \
   pcoip-client'
 ```
 
